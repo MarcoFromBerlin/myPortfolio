@@ -1,4 +1,4 @@
-import "./css/index.css";
+import "./css/main.css";
 import Menu from "./components/Menu";
 
 const App = () => {

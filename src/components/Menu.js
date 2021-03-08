@@ -9,7 +9,7 @@ import Projects from "../pages/Projects";
 const Menu = () => {
   return (
     <Router>
-      <div>
+      <div className="menu">
         <nav>
           <ul>
             <li>
