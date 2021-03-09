@@ -12,30 +12,15 @@
         text-decoration: none;
 
         &:hover {
+          transition: all 0s;
           color: $menu-font-color-hover;
+          border-bottom: 3px solid $menu-underline;
         }
       }
     }
   }
 }
-.current {
-  & ul {
-    display: flex;
-    float: $menu-position;
-
-    & li {
-      list-style-type: none;
-      margin-right: 20px;
-      & a {
-        transition: all 0.3s;
-        color: $menu-font-color-curr;
-        text-decoration: none;
-        border: 3px black solid;
-
-        // &:hover {
-        //   color: $menu-font-color-hover;
-        // }
-      }
-    }
-  }
+.menu__current__item {
+  color: $menu-font-color-hover !important;
+  border-bottom: 3px solid $menu-underline;
 }

@@ -1,12 +1,24 @@
 // colors
-$primary-color: #a5243d; // darkred
+$primary-color: #333533; // darkred
+$secondary-color: #f5cb5c; // darkred
+$black-color: #242423;
+
+// menu
+$menu-font-color: grey;
+$menu-font-color-hover: #f5cb5c;
+$menu-font-color-curr: red;
+
+$menu-underline: $secondary-color;
 $menu-background: $primary-color; // darkred
 $menu-item: #cee0dc; // lavanda
 $menu-item-hover: #afaab9; // silver metallic
-// B9CFD4 // columbia blue
-// CEE0DC // light cyan
-// #afaab9; // silver metallic
-// #b48291; // lavanda
+
+// Backgrounds
+$background-gradient-home: linear-gradient(
+  48deg,
+  rgba(232, 237, 223, 1) 0%,
+  rgba(207, 219, 213, 1) 100%
+);
 
 // BTNS COLORS
 $light-blue: rgb(142, 194, 242);

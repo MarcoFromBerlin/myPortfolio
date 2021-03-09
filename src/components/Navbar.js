@@ -1,20 +1,30 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <Fragment>
-      <div className="menu">
+      <div className="menu row-1">
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink exact activeClassName="menu__current__item" to="/">
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink exact activeClassName="menu__current__item" to="/about">
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/projects">Projects</Link>
+              <NavLink
+                exact
+                activeClassName="menu__current__item"
+                to="/projects"
+              >
+                Projects
+              </NavLink>
             </li>
           </ul>
         </nav>
