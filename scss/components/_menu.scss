@@ -11,14 +11,13 @@
 //IMPORTANT
 .scrolled {
   position: fixed;
-  // top: 0;
-  // float: $menu-position;
-  // left: 0;
+  top: 0;
+  left: 100px;
 }
 .menu {
   height: 20px;
   letter-spacing: 1px;
-  background-color: $eerie-black;
+  // background-color: $eerie-black;
   height: 40px;
   padding-top: 10px;
   padding-right: 20px;

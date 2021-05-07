@@ -3,6 +3,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { HashLink as NavLink } from "react-router-hash-link";
 
 const Navbar = () => {
+  console.log(
+    "${location.pathname}${location.hash}",
+    window.location.pathname,
+    window.location.hash.toString().substr(1)
+  );
+
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -22,8 +28,6 @@ const Navbar = () => {
 
   if (scrolled) {
     navbarClasses.push("scrolled ");
-
-    console.log(navbarClasses);
   }
 
   return (
@@ -49,20 +53,43 @@ const Navbar = () => {
         <nav className="navigation">
           <ul>
             <li>
-              <NavLink exact activeClassName="menu__current__item" to="/">
+              <NavLink
+                exact
+                className={
+                  window.location.hash.toString().substr(1) === ""
+                    ? "menu__current__item"
+                    : ""
+                }
+                smooth
+                to="#"
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink exact activeClassName="menu__current__item" to="#about">
+              <NavLink
+                exact
+                className={
+                  window.location.hash.toString().substr(1) === "about"
+                    ? "menu__current__item"
+                    : ""
+                }
+                smooth
+                to="#about"
+              >
                 About
               </NavLink>
             </li>
             <li>
               <NavLink
                 exact
-                activeClassName="menu__current__item"
-                to="/projects"
+                className={
+                  window.location.hash.toString().substr(1) === "projects"
+                    ? "menu__current__item"
+                    : ""
+                }
+                smooth
+                to="#projects"
               >
                 Projects
               </NavLink>
