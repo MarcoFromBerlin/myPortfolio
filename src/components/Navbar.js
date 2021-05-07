@@ -1,12 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
 // import { NavLink } from "react-router-dom";
 import { HashLink as NavLink } from "react-router-hash-link";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation().hash.toString().substr(1);
+
   console.log(
     "${location.pathname}${location.hash}",
-    window.location.pathname,
-    window.location.hash.toString().substr(1)
+    // location.pathname,
+    location
   );
 
   const [scrolled, setScrolled] = useState(false);
@@ -55,11 +58,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 exact
-                className={
-                  window.location.hash.toString().substr(1) === ""
-                    ? "menu__current__item"
-                    : ""
-                }
+                className={location === "" ? "menu__current__item" : ""}
                 smooth
                 to="#"
               >
@@ -69,11 +68,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 exact
-                className={
-                  window.location.hash.toString().substr(1) === "about"
-                    ? "menu__current__item"
-                    : ""
-                }
+                className={location === "about" ? "menu__current__item" : ""}
                 smooth
                 to="#about"
               >
@@ -83,11 +78,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 exact
-                className={
-                  window.location.hash.toString().substr(1) === "projects"
-                    ? "menu__current__item"
-                    : ""
-                }
+                className={location === "projects" ? "menu__current__item" : ""}
                 smooth
                 to="#projects"
               >
