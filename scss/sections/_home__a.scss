@@ -3,7 +3,25 @@
 :root {
   font-weight: $thin;
 }
+.home__main {
+  // flex-wrap: wrap;
+  // margin: 0;
 
+  // & :after {
+  //   content: "";
+  //   display: table-cell;
+  //   width: 100%;
+  // }
+  span {
+    background-color: red;
+
+    h1 {
+      color: $jet;
+      // border-bottom: $jet 10px solid;
+      text-decoration: underline;
+    }
+  }
+}
 h4 {
   font-weight: $normal;
   color: #575366;
