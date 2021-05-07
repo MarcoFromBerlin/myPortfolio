@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { HashLink as NavLink } from "react-router-hash-link";
 
 const Navbar = () => {
   return (
