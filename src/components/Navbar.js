@@ -6,17 +6,11 @@ import { useLocation } from "react-router-dom";
 const Navbar = () => {
   const location = useLocation().hash.toString().substr(1);
 
-  console.log(
-    "${location.pathname}${location.hash}",
-    // location.pathname,
-    location
-  );
-
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
     const offset = window.scrollY;
-    if (offset > 200) {
+    if (offset > 400) {
       setScrolled(true);
     } else {
       setScrolled(false);
