@@ -13,7 +13,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink exact activeClassName="menu__current__item" to="/about">
+              <NavLink exact activeClassName="menu__current__item" to="#about">
                 About
               </NavLink>
             </li>

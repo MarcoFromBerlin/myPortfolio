@@ -3,10 +3,17 @@ $primary-color: #333533; // darkred
 $secondary-color: #f5cb5c; // darkred
 $black-color: #242423;
 
+// colors
+$timberwolf: #cfdbd5;
+$alabaster: #e8eddf;
+$maize-crayola: #f5cb5c;
+$eerie-black: #242423;
+$jet: #333533;
+
 // menu
-$menu-font-color: grey;
-$menu-font-color-hover: #f5cb5c;
-$menu-font-color-curr: red;
+$menu-font-color: white;
+$menu-font-color-hover: $eerie-black;
+$menu-font-color-curr: $jet;
 
 $menu-underline: $secondary-color;
 $menu-background: $primary-color; // darkred

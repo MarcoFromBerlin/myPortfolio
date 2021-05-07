@@ -8,7 +8,18 @@ h4 {
   font-weight: $normal;
   color: #575366;
 }
+
+.home__main__wrap {
+  // filter: drop-shadow(2px 2px 6px #000000);
+}
+.home__main {
+  margin-left: 80px;
+}
 .home__a {
+  // clip-path: polygon(95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+  // background-color: $maize-crayola;
+  // height: 100vh;
+  // border-radius: 20px;
 }
 
 .full-col {

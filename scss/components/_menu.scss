@@ -1,11 +1,16 @@
 .menu {
+  height: 20px;
+  letter-spacing: 1px;
   & ul {
     display: flex;
     float: $menu-position;
+    text-transform: uppercase;
+    font-weight: 500;
 
     & li {
       list-style-type: none;
       margin-right: 20px;
+
       & a {
         transition: all 0.3s;
         color: $menu-font-color;
@@ -14,7 +19,7 @@
         &:hover {
           transition: all 0s;
           color: $menu-font-color-hover;
-          border-bottom: 3px solid $menu-underline;
+          // border-bottom: 3px solid $menu-underline;
         }
       }
     }
@@ -22,5 +27,6 @@
 }
 .menu__current__item {
   color: $menu-font-color-hover !important;
-  border-bottom: 3px solid $menu-underline;
+  border-bottom: 3px solid $menu-font-color-hover;
+  font-weight: 600;
 }
