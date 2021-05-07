@@ -18,10 +18,10 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
   });
 
-  let navbarClasses = ["navbar"];
+  let navbarClasses = [];
 
   if (scrolled) {
-    navbarClasses.push("scrolled");
+    navbarClasses.push("scrolled ");
 
     console.log(navbarClasses);
   }
@@ -44,7 +44,8 @@ const Navbar = () => {
     // </header>
 
     <Fragment>
-      <div className={`${navbarClasses.join(" ")}" menu row-1"`}>
+      <div className={`${navbarClasses.join(" ")}menu row-1"`}>
+        {/* <div className={`"menu row-1"`}> */}
         <nav className="navigation">
           <ul>
             <li>

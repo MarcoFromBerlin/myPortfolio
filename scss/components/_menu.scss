@@ -1,76 +1,56 @@
-.navbar {
-  width: 100%;
-  min-height: 6vh;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #eee;
-  transition: all 0.7s ease-in;
-}
+// .navbar {
+//   width: 100%;
+//   // min-height: 6vh;
+//   box-sizing: border-box;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   background-color: #eee;
+//   transition: all 0.7s ease-in;
+// }
 //IMPORTANT
 .scrolled {
   position: fixed;
-  top: 0;
-  left: 0;
-  background-color: lightblue;
+  // top: 0;
+  // float: $menu-position;
+  // left: 0;
+}
+.menu {
+  height: 20px;
+  letter-spacing: 1px;
+  background-color: $eerie-black;
+  height: 40px;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+
+  & ul {
+    display: flex;
+    float: $menu-position;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    & li {
+      list-style-type: none;
+      margin-right: 20px;
+
+      & a {
+        transition: all 0.3s;
+        color: $menu-font-color;
+        text-decoration: none;
+
+        &:hover {
+          transition: all 0s;
+          color: $menu-font-color-hover;
+          // border-bottom: 3px solid $menu-underline;
+        }
+      }
+    }
+  }
 }
 
-.logo img {
-  width: 50px;
+.menu__current__item {
+  color: $menu-font-color-hover !important;
+  border-bottom: 3px solid $menu-font-color-hover;
+  font-weight: 600;
 }
-.navigation {
-  //your navigation styles
-}
-
-.content {
-  width: 80%;
-  margin: 2rem 10% 0 10%;
-  max-width: 100%;
-  box-sizing: border-box;
-  min-height: 100vh;
-}
-.box {
-  width: 80%;
-  margin: 2rem 10% 0 10%;
-  height: 100vh;
-  background-color: plum;
-}
-
-// .menu {
-//   height: 20px;
-//   letter-spacing: 1px;
-
-//   // position: -webkit-sticky; /* Safari */
-//   // position: sticky;
-//   // top: 0;
-
-//   & ul {
-//     display: flex;
-//     float: $menu-position;
-//     text-transform: uppercase;
-//     font-weight: 500;
-
-//     & li {
-//       list-style-type: none;
-//       margin-right: 20px;
-
-//       & a {
-//         transition: all 0.3s;
-//         color: $menu-font-color;
-//         text-decoration: none;
-
-//         &:hover {
-//           transition: all 0s;
-//           color: $menu-font-color-hover;
-//           // border-bottom: 3px solid $menu-underline;
-//         }
-//       }
-//     }
-//   }
-// }
-// .menu__current__item {
-//   color: $menu-font-color-hover !important;
-//   border-bottom: 3px solid $menu-font-color-hover;
-//   font-weight: 600;
-// }
