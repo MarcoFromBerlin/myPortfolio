@@ -11,13 +11,6 @@ const Home = () => {
           <h4>Here we are</h4>
         </div>
       </div>
-      <div className="row home__a center-x-y">
-        <div className="col-12 t-center ">
-          {/* <span> */}
-          <h4>Here we are</h4>
-          {/* </span> */}
-        </div>
-      </div>
     </div>
   );
 };
