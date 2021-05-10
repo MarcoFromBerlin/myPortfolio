@@ -28,25 +28,8 @@ const Navbar = () => {
   }
 
   return (
-    // <header className={x.join(" ")}>
-    //     <div className="logo">
-    //       <img src={Logo} alt="Logo" title="Logo" />
-    //     </div>
-
-    //     <nav className="navigation">
-    //         <ul>
-    //           <li><a href="#post1">Home</a></li>
-    //           <li><a href="#post2">Home</a></li>
-    //           <li><a href="#post3">Home</a></li>
-    //           <li><a href="#post4">Home</a></li>
-    //         </ul>
-    //     </nav>
-
-    // </header>
-
     <Fragment>
       <div className={`${navbarClasses.join(" ")}menu row-1"`}>
-        {/* <div className={`"menu row-1"`}> */}
         <nav className="navigation">
           <ul>
             <li>
