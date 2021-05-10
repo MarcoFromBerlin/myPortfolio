@@ -18,19 +18,19 @@ const App = () => {
   return (
     <div className="container">
       <Router>
-        <MuiThemeProvider theme={theme}>
-          <Fragment>
-            <Navbar />
-            <Home />
-            <About />
-            <Projects />
-            {/* <Switch>
+        {/* <MuiThemeProvider theme={theme}> */}
+        <Fragment>
+          <Navbar />
+          <Home />
+          <About />
+          <Projects />
+          {/* <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/projects" component={Projects} />
           </Switch> */}
-          </Fragment>
-        </MuiThemeProvider>
+        </Fragment>
+        {/* </MuiThemeProvider> */}
       </Router>
     </div>
   );
