@@ -19,7 +19,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={13}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -44,6 +44,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    width: "100%",
+  },
+  tabs: {
+    // background in Theme.js
+    backgroundColor: theme.palette.common.blue,
   },
 }));
 
@@ -66,6 +71,7 @@ const Projects = () => {
                 value={value}
                 onChange={handleChange}
                 aria-label="simple tabs example"
+                className={classes.tabs}
               >
                 <Tab label="Item One" {...a11yProps(0)} />
                 <Tab label="Item Two" {...a11yProps(1)} />
