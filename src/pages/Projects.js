@@ -49,19 +49,19 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
     // background in Theme.js
     backgroundColor: theme.palette.background.paper,
-    boxShadow: "0px 0px 0px",
+    boxShadow: "0px",
   },
   tab: {
-    // ...theme.typography.tab,
+    ...theme.typography.tab,
     backgroundColor: theme.palette.background.paper,
     minWidth: 10,
     marginLeft: "10px",
-    color: "white",
+    color: "black",
     label: {
       color: "white",
     },
     "&:hover": {
-      color: "white",
+      color: "red",
     },
   },
 }));
@@ -80,26 +80,26 @@ const Projects = () => {
         <div className="col-1"></div>
         <div className="col-10 t-center home__main">
           <h1 className="text-white">Projects</h1>
-          <div className={classes.root}>
+          {/* <div className={classes.root}>
             <AppBar position="static">
               <Tabs
                 value={value}
                 onChange={handleChange}
                 aria-label="Projects tabs"
-                // className={classes.tabs}
+                className={classes.tabs}
               >
                 <Tab
-                  // className={classes.tab}
+                  className={classes.tab}
                   label="Item One"
                   {...a11yProps(0)}
                 />
                 <Tab
-                  // className={classes.tab}
+                  className={classes.tab}
                   label="Item Two"
                   {...a11yProps(1)}
                 />
                 <Tab
-                  // className={classes.tab}
+                  className={classes.tab}
                   label="Item Three"
                   {...a11yProps(2)}
                 />
@@ -115,6 +115,7 @@ const Projects = () => {
               Item Three
             </TabPanel>
           </div>
+        */}
         </div>
         <div className="col-1"></div>
       </div>
