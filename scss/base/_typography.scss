@@ -59,3 +59,9 @@ h6 {
     font-weight: $thin;
   }
 }
+
+// Portofolio custom
+.section__title {
+  text-decoration: underline;
+  color: $section-title;
+}
