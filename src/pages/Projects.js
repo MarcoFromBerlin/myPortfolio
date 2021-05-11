@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Switch from "@material-ui/core/Switch";
 import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
+import { display } from "@material-ui/system";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -56,7 +57,6 @@ const Projects = () => {
    * @param {*} obj { thumb: "one", value: true }
    */
   const handleOver = (obj) => {
-    console.log(obj);
     objShowDetails[obj.thumb] = obj.value;
     setShowDetails(objShowDetails);
   };
@@ -66,6 +66,9 @@ const Projects = () => {
       <div className="row home__c center-x-y">
         <div className="col-12 t-center home__main">
           <h1 className="section__title">Projects</h1>
+          <h4 className="section__subtitle">
+            A few projects I made using different tecnologies
+          </h4>
           <div className="row project__thumb__container">
             <div
               className="col-4 project__thumb"
