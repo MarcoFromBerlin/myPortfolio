@@ -57,6 +57,28 @@ const Projects = () => {
     setShowDetails(objShowDetails);
   };
 
+  const Thumb = (props) => {
+    const { slideNumber, directionEnter, classSlide, classPaper, children } =
+      props;
+
+    return (
+      <Slide
+        direction={directionEnter}
+        in={showDetails[slideNumber]}
+        mountOnEnter
+        unmountOnExit
+        className={classSlide}
+      >
+        <Paper elevation={4} className={classPaper}>
+          {/* <svg className={classes.svg}>
+          <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
+        </svg> */}
+          {children}
+        </Paper>
+      </Slide>
+    );
+  };
+
   return (
     <div id="projects" className="home__main__wrap">
       <div className="row home__c center-x-y">
@@ -72,7 +94,15 @@ const Projects = () => {
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               onClick={() => console.log("open project")}
             >
-              <Slide
+              <Thumb
+                slideNumber={"one"}
+                directionEnter={"right"}
+                classSlide={classes.slide}
+                classPaper={classes.paper}
+              >
+                Test test
+              </Thumb>
+              {/* <Slide
                 direction="right"
                 in={showDetails["one"]}
                 mountOnEnter
@@ -87,7 +117,7 @@ const Projects = () => {
                     />
                   </svg>
                 </Paper>
-              </Slide>
+              </Slide> */}
             </div>
             <div
               className="col-4 project__thumb"
@@ -96,21 +126,14 @@ const Projects = () => {
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
               onClick={() => console.log("open project")}
             >
-              <Slide
-                direction="up"
-                in={showDetails["two"]}
-                mountOnEnter
-                unmountOnExit
+              <Thumb
+                slideNumber={"two"}
+                directionEnter={"up"}
+                classSlide={classes.slide}
+                classPaper={classes.paper}
               >
-                <Paper elevation={4} className={classes.paper}>
-                  <svg className={classes.svg}>
-                    <polygon
-                      points="0,100 50,00, 100,100"
-                      className={classes.polygon}
-                    />
-                  </svg>
-                </Paper>
-              </Slide>
+                Test test
+              </Thumb>
             </div>
             <div
               className="col-4 project__thumb"
@@ -119,21 +142,14 @@ const Projects = () => {
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
               onClick={() => console.log("open project")}
             >
-              <Slide
-                direction="left"
-                in={showDetails["three"]}
-                mountOnEnter
-                unmountOnExit
+              <Thumb
+                slideNumber={"three"}
+                directionEnter={"left"}
+                classSlide={classes.slide}
+                classPaper={classes.paper}
               >
-                <Paper elevation={4} className={classes.paper}>
-                  <svg className={classes.svg}>
-                    <polygon
-                      points="0,100 50,00, 100,100"
-                      className={classes.polygon}
-                    />
-                  </svg>
-                </Paper>
-              </Slide>
+                Test test
+              </Thumb>
             </div>
           </div>
         </div>
