@@ -1,77 +1,64 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+import Switch from "@material-ui/core/Switch";
+import Paper from "@material-ui/core/Paper";
+import Slide from "@material-ui/core/Slide";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={13}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    width: "100%",
+    height: 180,
   },
-  tabs: {
-    // background in Theme.js
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: "0px",
+  slide: {
+    backgroundColor: "blue",
+    // overflow: "auto",
+    // zIndex: -1000,
+    marginTop: 100,
+    // height: 200,
   },
-  tab: {
-    ...theme.typography.tab,
-    backgroundColor: theme.palette.background.paper,
-    minWidth: 10,
-    marginLeft: "10px",
-    color: "black",
-    label: {
-      color: "white",
-    },
-    "&:hover": {
-      color: "red",
-    },
+  wrapper: {
+    width: 100 + theme.spacing(2),
+  },
+  paper: {
+    zIndex: 1,
+    position: "relative",
+    margin: theme.spacing(1),
+  },
+  svg: {
+    width: 100,
+    height: 100,
+  },
+  polygon: {
+    fill: theme.palette.common.white,
+    stroke: theme.palette.divider,
+    strokeWidth: 1,
   },
 }));
 
 const Projects = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const [checked, setChecked] = React.useState(false);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  /**
+   * @description obj to handle the show details thumbs
+   */
+
+  let objShowDetails = {
+    one: false,
+    two: false,
+    three: false,
+  };
+
+  const [showDetails, setShowDetails] = useState(objShowDetails);
+
+  /**
+   * @description handles hover
+   * @param {*} obj { thumb: "one", value: true }
+   */
+  const handleOver = (obj) => {
+    console.log(obj);
+    objShowDetails[obj.thumb] = obj.value;
+    setShowDetails(objShowDetails);
   };
 
   return (
@@ -80,9 +67,75 @@ const Projects = () => {
         <div className="col-12 t-center home__main">
           <h1 className="section__title">Projects</h1>
           <div className="row project__thumb__container">
-            <div className="col-4 project__thumb">1</div>
-            <div className="col-4 project__thumb">2</div>
-            <div className="col-4 project__thumb">3</div>
+            <div
+              className="col-4 project__thumb"
+              onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+              onClick={() => console.log("open project")}
+            >
+              <Slide
+                direction="right"
+                in={showDetails["one"]}
+                mountOnEnter
+                unmountOnExit
+                className={classes.slide}
+              >
+                <Paper elevation={4} className={classes.paper}>
+                  <svg className={classes.svg}>
+                    <polygon
+                      points="0,100 50,00, 100,100"
+                      className={classes.polygon}
+                    />
+                  </svg>
+                </Paper>
+              </Slide>
+            </div>
+            <div
+              className="col-4 project__thumb"
+              className="col-4 project__thumb"
+              onMouseEnter={() => handleOver({ thumb: "two", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "two", value: false })}
+              onClick={() => console.log("open project")}
+            >
+              <Slide
+                direction="up"
+                in={showDetails["two"]}
+                mountOnEnter
+                unmountOnExit
+              >
+                <Paper elevation={4} className={classes.paper}>
+                  <svg className={classes.svg}>
+                    <polygon
+                      points="0,100 50,00, 100,100"
+                      className={classes.polygon}
+                    />
+                  </svg>
+                </Paper>
+              </Slide>
+            </div>
+            <div
+              className="col-4 project__thumb"
+              className="col-4 project__thumb"
+              onMouseEnter={() => handleOver({ thumb: "three", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "three", value: false })}
+              onClick={() => console.log("open project")}
+            >
+              <Slide
+                direction="left"
+                in={showDetails["three"]}
+                mountOnEnter
+                unmountOnExit
+              >
+                <Paper elevation={4} className={classes.paper}>
+                  <svg className={classes.svg}>
+                    <polygon
+                      points="0,100 50,00, 100,100"
+                      className={classes.polygon}
+                    />
+                  </svg>
+                </Paper>
+              </Slide>
+            </div>
           </div>
         </div>
         <div className="col-1"></div>
