@@ -22,8 +22,8 @@ const App = () => {
           <Fragment>
             <Navbar />
             <Home />
-            <About />
             <Projects />
+            <About />
             {/* <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />

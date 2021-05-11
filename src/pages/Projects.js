@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Switch from "@material-ui/core/Switch";
 import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
-import { display } from "@material-ui/system";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = () => {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState(false);
-
   /**
    * @description obj to handle the show details thumbs
    */

@@ -42,16 +42,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                exact
-                className={location === "about" ? "menu__current__item" : ""}
-                smooth
-                to="#about"
-              >
-                About
-              </NavLink>
-            </li>
+
             <li>
               <NavLink
                 exact
@@ -60,6 +51,16 @@ const Navbar = () => {
                 to="#projects"
               >
                 Projects
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                exact
+                className={location === "about" ? "menu__current__item" : ""}
+                smooth
+                to="#about"
+              >
+                About
               </NavLink>
             </li>
           </ul>
