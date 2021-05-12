@@ -66,7 +66,7 @@ const Projects = () => {
         direction={directionEnter}
         in={showDetails === undefined ? false : showDetails[slideNumber]}
         mountOnEnter
-        unmountOnExit
+        // unmountOnExit
         // className={classSlide}
         timeout={{ enter: 700, exit: 700 }}
       >
@@ -97,14 +97,18 @@ const Projects = () => {
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               onClick={() => console.log("open project")}
             >
-              <Thumb
-                slideNumber={"one"}
-                directionEnter={"right"}
-                classSlide={classes.slide}
-                classPaper={classes.paper}
+              <Slide
+                direction="right"
+                in={showDetails === undefined ? false : showDetails["one"]}
+                mountOnEnter
+                unmountOnExit
+                className={classes.slide}
+                timeout={{ enter: 700, exit: 700 }}
               >
-                Test test
-              </Thumb>
+                <Paper elevation={4} className={classes.paper}>
+                  test
+                </Paper>
+              </Slide>
               {/* <Slide
                 direction="right"
                 in={showDetails["one"]}
