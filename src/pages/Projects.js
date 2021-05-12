@@ -62,7 +62,7 @@ const Projects = () => {
     const { slideNumber, directionEnter, classSlide, classPaper, children } =
       props;
 
-    console.log(showDetails);
+    // console.log(showDetails);
 
     return (
       <Slide
@@ -93,8 +93,10 @@ const Projects = () => {
           <div className="row project__thumb__container">
             <div
               className="col-4 project__thumb"
-              onMouseEnter={() => handleOver({ thumb: "one", value: true })}
-              onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+              onMouseEnter={() => console.log("enter")}
+              onMouseLeave={() => console.log("leave")}
+              // onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+              // onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               onClick={() => console.log("open project")}
             >
               <Thumb
