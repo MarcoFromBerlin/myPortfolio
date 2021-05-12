@@ -22,10 +22,17 @@ const useStyles = makeStyles((theme) => ({
   },
   slide: {
     backgroundColor: "blue",
-    // overflow: "auto",
-    // zIndex: -1000,
+    overflow: "auto",
+    zIndex: -1000,
+    marginRight: 10,
     marginTop: 100,
-    // height: 200,
+    height: 100,
+    borderRadius: 0,
+    padding: 10,
+    textAlign: "left",
+  },
+  icons: {
+    color: "red",
   },
   wrapper: {
     width: 100 + theme.spacing(2),
@@ -46,14 +53,10 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
-  svg: {
-    width: 100,
-    height: 100,
-  },
   polygon: {
-    fill: theme.palette.common.white,
-    stroke: theme.palette.divider,
-    strokeWidth: 1,
+    // fill: theme.palette.common.white,
+    // stroke: theme.palette.divider,
+    // strokeWidth: 1,
   },
 }));
 
@@ -65,10 +68,7 @@ const Projects = () => {
    */
 
   const [open, setOpen] = useState(false);
-  const [modalContents, setModalContents] = useState({
-    title: "Defalt title",
-    text: "Default text",
-  });
+  const [modalContents, setModalContents] = useState({});
 
   /**
    *
@@ -133,6 +133,7 @@ const Projects = () => {
       </Modal>
     );
   });
+
   const ref = createRef();
 
   return (
@@ -159,14 +160,26 @@ const Projects = () => {
               <div>
                 <Slide
                   direction="right"
-                  in={showDetails === undefined ? false : showDetails["one"]}
+                  // in={showDetails === undefined ? false : showDetails["one"]}
+                  in={true}
                   mountOnEnter
                   unmountOnExit
                   className={classes.slide}
                   timeout={timeoutSlides}
                 >
                   <Paper elevation={4} className={classes.paper}>
-                    test
+                    <h5>My Second Hand Bookstore</h5>
+                    <h6>
+                      Web App + iOS/Android App to find and stock second hand
+                      books
+                    </h6>
+                    <div className={classes.icons}>
+                      <i class="fab fa-react"></i>
+                      <i class="fab fa-wordpress-simple"></i>
+                      <i class="fab fa-apple"></i>
+                      <i class="fab fa-android"></i>
+                      <i class="fab fa-chrome"></i>
+                    </div>
                   </Paper>
                 </Slide>
               </div>
