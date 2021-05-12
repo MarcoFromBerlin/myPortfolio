@@ -109,22 +109,6 @@ const Projects = () => {
                   test
                 </Paper>
               </Slide>
-              {/* <Slide
-                direction="right"
-                in={showDetails["one"]}
-                mountOnEnter
-                unmountOnExit
-                className={classes.slide}
-              >
-                <Paper elevation={4} className={classes.paper}>
-                  <svg className={classes.svg}>
-                    <polygon
-                      points="0,100 50,00, 100,100"
-                      className={classes.polygon}
-                    />
-                  </svg>
-                </Paper>
-              </Slide> */}
             </div>
             <div
               className="col-4 project__thumb"
@@ -133,14 +117,18 @@ const Projects = () => {
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
               onClick={() => console.log("open project")}
             >
-              <Thumb
-                slideNumber={"two"}
-                directionEnter={"up"}
-                classSlide={classes.slide}
-                classPaper={classes.paper}
+              <Slide
+                direction="up"
+                in={showDetails === undefined ? false : showDetails["two"]}
+                mountOnEnter
+                unmountOnExit
+                className={classes.slide}
+                timeout={{ enter: 700, exit: 700 }}
               >
-                Test test
-              </Thumb>
+                <Paper elevation={4} className={classes.paper}>
+                  test
+                </Paper>
+              </Slide>
             </div>
             <div
               className="col-4 project__thumb"
@@ -149,14 +137,18 @@ const Projects = () => {
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
               onClick={() => console.log("open project")}
             >
-              <Thumb
-                slideNumber={"three"}
-                directionEnter={"left"}
-                classSlide={classes.slide}
-                classPaper={classes.paper}
+              <Slide
+                direction="left"
+                in={showDetails === undefined ? false : showDetails["three"]}
+                mountOnEnter
+                unmountOnExit
+                className={classes.slide}
+                timeout={{ enter: 700, exit: 700 }}
               >
-                Test test
-              </Thumb>
+                <Paper elevation={4} className={classes.paper}>
+                  test
+                </Paper>
+              </Slide>
             </div>
           </div>
         </div>
