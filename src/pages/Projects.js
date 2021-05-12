@@ -63,15 +63,15 @@ const Projects = () => {
   //   setOpen((open) => !open);
   // };
   const handleOpen = () => {
-    console.log("open");
+    // console.log("open");
     setOpen(true);
   };
 
   const handleClose = (e) => {
     e.preventDefault();
-    console.log("close", e);
+    // console.log("close", e);
     setOpen(false);
-    console.log("open", open);
+    // console.log("open", open);
   };
 
   /**
@@ -132,15 +132,36 @@ const Projects = () => {
             A few projects I made using different tecnologies
           </h4>
           <div className="row project__thumb__container">
-            {/* <div className="btn-no-css" onClick={() => handleOpen()}> */}
-            <div
+            <button
+              className="btn-no-css col-4 project__thumb"
+              onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+              onClick={() => handleOpen()}
+            >
+              <div>
+                <Slide
+                  direction="right"
+                  in={showDetails === undefined ? false : showDetails["one"]}
+                  mountOnEnter
+                  unmountOnExit
+                  className={classes.slide}
+                  timeout={timeoutSlides}
+                >
+                  <Paper elevation={4} className={classes.paper}>
+                    test
+                  </Paper>
+                </Slide>
+              </div>
+            </button>
+
+            <button
               className="col-4 project__thumb"
               // onMouseEnter={() => console.log("enter")}
               // onMouseLeave={() => console.log("leave")}
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               // onClick={() => setOpen(true)}
-              onClick={handleOpen}
+              // onClick={handleOpen}
             >
               {/* <div onClick={(e) => handleOpen(e)}> */}
               <Slide
@@ -179,8 +200,7 @@ const Projects = () => {
                 </Fade>
               </Modal>
               {/* <ModalProject /> */}
-              {/* </div> */}
-            </div>
+            </button>
             {/* </div> */}
             {/* <button onClick={(e) => handleOpen(e)}></button> */}
             <div
