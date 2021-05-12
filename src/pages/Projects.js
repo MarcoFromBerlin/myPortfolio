@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 
@@ -46,7 +46,7 @@ const Projects = () => {
     three: false,
   };
 
-  const [showDetails, setShowDetails] = useState(objShowDetails);
+  const [showDetails, setShowDetails] = useState();
 
   /**
    * @description handles hover
@@ -54,7 +54,6 @@ const Projects = () => {
    */
   const handleOver = (obj) => {
     objShowDetails[obj.thumb] = obj.value;
-    // console.log(obj);
     setShowDetails(objShowDetails);
   };
 
@@ -62,12 +61,10 @@ const Projects = () => {
     const { slideNumber, directionEnter, classSlide, classPaper, children } =
       props;
 
-    // console.log(showDetails);
-
     return (
       <Slide
         direction={directionEnter}
-        in={showDetails[slideNumber]}
+        in={showDetails === undefined ? false : showDetails[slideNumber]}
         mountOnEnter
         unmountOnExit
         className={classSlide}
@@ -93,10 +90,10 @@ const Projects = () => {
           <div className="row project__thumb__container">
             <div
               className="col-4 project__thumb"
-              onMouseEnter={() => console.log("enter")}
-              onMouseLeave={() => console.log("leave")}
-              // onMouseEnter={() => handleOver({ thumb: "one", value: true })}
-              // onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+              // onMouseEnter={() => console.log("enter")}
+              // onMouseLeave={() => console.log("leave")}
+              onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               onClick={() => console.log("open project")}
             >
               <Thumb
