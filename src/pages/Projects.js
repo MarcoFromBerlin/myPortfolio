@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef, forwardRef } from "react";
 import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 
@@ -57,9 +57,14 @@ const Projects = () => {
    */
 
   const [open, setOpen] = useState(false);
+  const [modalContents, setModalContents] = useState({
+    title: "Defalt title",
+    text: "Default text",
+  });
 
-  const handleOpen = () => {
+  const handleOpen = (obj) => {
     setOpen(true);
+    setModalContents(obj);
   };
 
   const handleClose = () => {
@@ -89,7 +94,8 @@ const Projects = () => {
     setShowDetails(objShowDetails);
   };
 
-  const ModalProject = () => {
+  const ModalProject = forwardRef((props, ref) => {
+    const { ...children } = props;
     return (
       <Modal
         aria-labelledby="transition-modal-title"
@@ -102,21 +108,28 @@ const Projects = () => {
         BackdropProps={{
           timeout: 500,
         }}
+        ref={ref}
       >
         <Fade in={open}>
           <div className={classes.paperModal}>
-            <h2 id="transition-modal-title">Transition modal</h2>
+            {children.content.title}
+            {children.content.text}
+            {/* <h2 id="transition-modal-title">Transition modal</h2>
             <p id="transition-modal-description">
               react-transition-group animates me.
-            </p>
+            </p> */}
           </div>
         </Fade>
       </Modal>
     );
-  };
+  });
+  const ref = createRef();
 
   return (
     <div id="projects" className="home__main__wrap">
+      {/* MODAL */}
+      <ModalProject ref={ref} content={modalContents} />
+      {/* MODAL */}
       <div className="row home__c center-x-y">
         <div className="col-12 t-center home__main">
           <h1 className="section__title">Projects</h1>
@@ -128,7 +141,7 @@ const Projects = () => {
               className="col-4 project__thumb btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              onClick={() => handleOpen()}
+              onClick={() => handleOpen({ title: "title", text: "text" })}
             >
               <div>
                 <Slide
@@ -145,7 +158,6 @@ const Projects = () => {
                 </Slide>
               </div>
             </button>
-            <ModalProject />
 
             <button
               className="col-4 project__thumb btn-no-css"
