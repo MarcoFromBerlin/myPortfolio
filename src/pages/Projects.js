@@ -58,20 +58,12 @@ const Projects = () => {
 
   const [open, setOpen] = useState(false);
 
-  // const handleOpen = () => {
-  //   console.log("open");
-  //   setOpen((open) => !open);
-  // };
   const handleOpen = () => {
-    // console.log("open");
     setOpen(true);
   };
 
-  const handleClose = (e) => {
-    e.preventDefault();
-    // console.log("close", e);
+  const handleClose = () => {
     setOpen(false);
-    // console.log("open", open);
   };
 
   /**
@@ -133,7 +125,7 @@ const Projects = () => {
           </h4>
           <div className="row project__thumb__container">
             <button
-              className="btn-no-css col-4 project__thumb"
+              className="col-4 project__thumb btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               onClick={() => handleOpen()}
@@ -153,62 +145,13 @@ const Projects = () => {
                 </Slide>
               </div>
             </button>
+            <ModalProject />
 
             <button
-              className="col-4 project__thumb"
-              // onMouseEnter={() => console.log("enter")}
-              // onMouseLeave={() => console.log("leave")}
-              onMouseEnter={() => handleOver({ thumb: "one", value: true })}
-              onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              // onClick={() => setOpen(true)}
-              // onClick={handleOpen}
-            >
-              {/* <div onClick={(e) => handleOpen(e)}> */}
-              <Slide
-                direction="right"
-                in={showDetails === undefined ? false : showDetails["one"]}
-                mountOnEnter
-                unmountOnExit
-                className={classes.slide}
-                timeout={timeoutSlides}
-              >
-                <Paper elevation={4} className={classes.paper}>
-                  test
-                </Paper>
-              </Slide>
-              <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                className={classes.modal}
-                open={open}
-                onClose={handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                  timeout: 500,
-                }}
-              >
-                <Fade in={open}>
-                  <div className={classes.paperModal}>
-                    <h2 id="transition-modal-title">Transition modal</h2>
-                    <p id="transition-modal-description">
-                      react-transition-group animates me.
-                    </p>
-                    <button onClick={(e) => handleClose(e)}>Close</button>
-                    <button onClick={() => setOpen(false)}>Close</button>
-                  </div>
-                </Fade>
-              </Modal>
-              {/* <ModalProject /> */}
-            </button>
-            {/* </div> */}
-            {/* <button onClick={(e) => handleOpen(e)}></button> */}
-            <div
-              className="col-4 project__thumb"
-              className="col-4 project__thumb"
+              className="col-4 project__thumb btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "two", value: true })}
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-              onClick={() => console.log("open project")}
+              onClick={() => handleOpen()}
             >
               <Slide
                 direction="up"
@@ -222,13 +165,12 @@ const Projects = () => {
                   test
                 </Paper>
               </Slide>
-            </div>
-            <div
-              className="col-4 project__thumb"
-              className="col-4 project__thumb"
+            </button>
+            <button
+              className="col-4 project__thumb btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-              onClick={() => console.log("open project")}
+              onClick={() => handleOpen()}
             >
               <Slide
                 direction="left"
@@ -242,7 +184,7 @@ const Projects = () => {
                   test
                 </Paper>
               </Slide>
-            </div>
+            </button>
           </div>
         </div>
         <div className="col-1"></div>
