@@ -8,6 +8,14 @@ import Fade from "@material-ui/core/Fade";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+/**
+ * @description Slides
+ */
+
+import Slide01 from "../slides/Slide01";
+import Slide02 from "../slides/Slide02";
+import Slide03 from "../slides/Slide03";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
@@ -62,6 +70,11 @@ const Projects = () => {
     text: "Default text",
   });
 
+  /**
+   *
+   * @param {*} obj is a slide
+   * that gets forwared to the modal
+   */
   const handleOpen = (obj) => {
     setOpen(true);
     setModalContents(obj);
@@ -94,6 +107,10 @@ const Projects = () => {
     setShowDetails(objShowDetails);
   };
 
+  /**
+   * @description gets the Slides with the state modalContent
+   */
+
   const ModalProject = forwardRef((props, ref) => {
     const { ...children } = props;
     return (
@@ -111,14 +128,7 @@ const Projects = () => {
         ref={ref}
       >
         <Fade in={open}>
-          <div className={classes.paperModal}>
-            {children.content.title}
-            {children.content.text}
-            {/* <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">
-              react-transition-group animates me.
-            </p> */}
-          </div>
+          <div className={classes.paperModal}>{children.content}</div>
         </Fade>
       </Modal>
     );
@@ -127,7 +137,10 @@ const Projects = () => {
 
   return (
     <div id="projects" className="home__main__wrap">
-      {/* MODAL */}
+      {/* MODAL 
+      /*
+       * @description gets the content from the state modalContents
+      */}
       <ModalProject ref={ref} content={modalContents} />
       {/* MODAL */}
       <div className="row home__c center-x-y">
@@ -141,7 +154,7 @@ const Projects = () => {
               className="col-4 project__thumb btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              onClick={() => handleOpen({ title: "title", text: "text" })}
+              onClick={() => handleOpen(<Slide01 />)}
             >
               <div>
                 <Slide
@@ -163,7 +176,7 @@ const Projects = () => {
               className="col-4 project__thumb btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "two", value: true })}
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-              onClick={() => handleOpen()}
+              onClick={() => handleOpen(<Slide02 />)}
             >
               <Slide
                 direction="up"
@@ -182,7 +195,7 @@ const Projects = () => {
               className="col-4 project__thumb btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-              onClick={() => handleOpen()}
+              onClick={() => handleOpen(<Slide03 />)}
             >
               <Slide
                 direction="left"
