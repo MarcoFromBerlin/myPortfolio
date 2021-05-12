@@ -54,12 +54,15 @@ const Projects = () => {
    */
   const handleOver = (obj) => {
     objShowDetails[obj.thumb] = obj.value;
+    // console.log(obj);
     setShowDetails(objShowDetails);
   };
 
   const Thumb = (props) => {
     const { slideNumber, directionEnter, classSlide, classPaper, children } =
       props;
+
+    console.log(showDetails);
 
     return (
       <Slide
