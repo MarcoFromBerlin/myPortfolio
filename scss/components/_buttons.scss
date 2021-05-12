@@ -61,6 +61,11 @@
 
 // DEFINE BUTTONS
 
+.btn-no-css {
+  width: 100%;
+  background-color: transparent;
+}
+
 .btn {
   &-blue {
     @include button(
