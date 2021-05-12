@@ -48,6 +48,8 @@ const Projects = () => {
 
   const [showDetails, setShowDetails] = useState();
 
+  const timeoutSlides = { enter: 700, exit: 500 };
+
   /**
    * @description handles hover
    * @param {*} obj { thumb: "one", value: true }
@@ -55,29 +57,6 @@ const Projects = () => {
   const handleOver = (obj) => {
     objShowDetails[obj.thumb] = obj.value;
     setShowDetails(objShowDetails);
-  };
-
-  const Thumb = (props) => {
-    const { slideNumber, directionEnter, classSlide, classPaper, children } =
-      props;
-
-    return (
-      <Slide
-        direction={directionEnter}
-        in={showDetails === undefined ? false : showDetails[slideNumber]}
-        mountOnEnter
-        // unmountOnExit
-        // className={classSlide}
-        timeout={{ enter: 700, exit: 700 }}
-      >
-        <Paper elevation={4} className={classPaper}>
-          {/* <svg className={classes.svg}>
-          <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
-        </svg> */}
-          {children}
-        </Paper>
-      </Slide>
-    );
   };
 
   return (
@@ -103,7 +82,7 @@ const Projects = () => {
                 mountOnEnter
                 unmountOnExit
                 className={classes.slide}
-                timeout={{ enter: 700, exit: 700 }}
+                timeout={timeoutSlides}
               >
                 <Paper elevation={4} className={classes.paper}>
                   test
@@ -123,7 +102,7 @@ const Projects = () => {
                 mountOnEnter
                 unmountOnExit
                 className={classes.slide}
-                timeout={{ enter: 700, exit: 700 }}
+                timeout={timeoutSlides}
               >
                 <Paper elevation={4} className={classes.paper}>
                   test
@@ -143,7 +122,7 @@ const Projects = () => {
                 mountOnEnter
                 unmountOnExit
                 className={classes.slide}
-                timeout={{ enter: 700, exit: 700 }}
+                timeout={timeoutSlides}
               >
                 <Paper elevation={4} className={classes.paper}>
                   test
