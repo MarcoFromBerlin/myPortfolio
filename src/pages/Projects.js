@@ -67,7 +67,8 @@ const Projects = () => {
         in={showDetails === undefined ? false : showDetails[slideNumber]}
         mountOnEnter
         unmountOnExit
-        className={classSlide}
+        // className={classSlide}
+        timeout={{ enter: 700, exit: 700 }}
       >
         <Paper elevation={4} className={classPaper}>
           {/* <svg className={classes.svg}>
