@@ -1,6 +1,24 @@
+.slide__title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.slide__description {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  font-style: oblique;
+  font-size: 1rem;
+}
+
 .slide__icons {
-  background-color: red;
-  * i {
-    color: red;
+  //   background-color: red;
+  margin-top: 10px;
+
+  * {
+    margin-right: 10px;
+    // color: red;
   }
 }

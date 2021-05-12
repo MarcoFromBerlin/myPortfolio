@@ -1,11 +1,15 @@
-import React, { useState, useEffect, createRef, forwardRef } from "react";
+import React, { useState, createRef, forwardRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+/**
+ * @description Mat UI
+ */
+
 import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
-
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-
 import { makeStyles } from "@material-ui/core/styles";
 
 /**
@@ -21,18 +25,18 @@ const useStyles = makeStyles((theme) => ({
     height: 180,
   },
   slide: {
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     overflow: "auto",
     zIndex: -1000,
     marginRight: 10,
-    marginTop: 100,
-    height: 100,
+    marginTop: 10,
+    height: 180,
     borderRadius: 0,
     padding: 10,
     textAlign: "left",
   },
   icons: {
-    color: "red",
+    // color: "red",
   },
   wrapper: {
     width: 100 + theme.spacing(2),
@@ -160,25 +164,29 @@ const Projects = () => {
               <div>
                 <Slide
                   direction="right"
-                  // in={showDetails === undefined ? false : showDetails["one"]}
-                  in={true}
+                  in={showDetails === undefined ? false : showDetails["one"]}
+                  // in={true}
                   mountOnEnter
                   unmountOnExit
                   className={classes.slide}
                   timeout={timeoutSlides}
                 >
                   <Paper elevation={4} className={classes.paper}>
-                    <h5>My Second Hand Bookstore</h5>
-                    <h6>
+                    <h5 className="slide__title">My Second Hand Bookstore</h5>
+                    <h6 className="slide__description">
                       Web App + iOS/Android App to find and stock second hand
                       books
                     </h6>
-                    <div className={classes.icons}>
-                      <i class="fab fa-react"></i>
-                      <i class="fab fa-wordpress-simple"></i>
-                      <i class="fab fa-apple"></i>
-                      <i class="fab fa-android"></i>
-                      <i class="fab fa-chrome"></i>
+                    <div className="slide__icons">
+                      {/* faReact, faWordpressSimple, faApple, faAndroid, faChrome, */}
+                      <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                      <FontAwesomeIcon
+                        icon={["fab", "wordpress-simple"]}
+                        size="2x"
+                      />
+                      <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                      <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
+                      <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
                     </div>
                   </Paper>
                 </Slide>
@@ -200,7 +208,22 @@ const Projects = () => {
                 timeout={timeoutSlides}
               >
                 <Paper elevation={4} className={classes.paper}>
-                  test
+                  <h5 className="slide__title">My Second Hand Bookstore</h5>
+                  <h6 className="slide__description">
+                    Web App + iOS/Android App to find and stock second hand
+                    books
+                  </h6>
+                  <div className="slide__icons">
+                    {/* faReact, faWordpressSimple, faApple, faAndroid, faChrome, */}
+                    <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                    <FontAwesomeIcon
+                      icon={["fab", "wordpress-simple"]}
+                      size="2x"
+                    />
+                    <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                    <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
+                    <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
+                  </div>
                 </Paper>
               </Slide>
             </button>
@@ -219,7 +242,22 @@ const Projects = () => {
                 timeout={timeoutSlides}
               >
                 <Paper elevation={4} className={classes.paper}>
-                  test
+                  <h5 className="slide__title">My Second Hand Bookstore</h5>
+                  <h6 className="slide__description">
+                    Web App + iOS/Android App to find and stock second hand
+                    books
+                  </h6>
+                  <div className="slide__icons">
+                    {/* faReact, faWordpressSimple, faApple, faAndroid, faChrome, */}
+                    <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                    <FontAwesomeIcon
+                      icon={["fab", "wordpress-simple"]}
+                      size="2x"
+                    />
+                    <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                    <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
+                    <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
+                  </div>
                 </Paper>
               </Slide>
             </button>

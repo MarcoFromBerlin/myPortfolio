@@ -10,9 +10,29 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 
+/**
+ * @description Mat UI
+ */
 import { theme } from "../src/styles/Theme";
-
 import { MuiThemeProvider } from "@material-ui/core/styles";
+
+/**
+ *
+ * @description FontAwesome
+ */
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faReact,
+  faChrome,
+  faWordpressSimple,
+  faAndroid,
+  faApple,
+} from "@fortawesome/free-brands-svg-icons";
+// import {
+// } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faReact, faChrome, faWordpressSimple, faAndroid, faApple);
 
 const App = () => {
   return (
