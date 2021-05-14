@@ -14,10 +14,11 @@
 
   &:hover {
     transform-origin: 50% 0%;
-    // transform: scaleX(1.5);
+    // transform: scaleX(1.5) perspective(10px);
     background-color: green;
     cursor: pointer;
-    width: 150%;
+    // width: 150%;
     z-index: 9999;
+    float: left;
   }
 }
