@@ -1,4 +1,4 @@
-import React, { useState, createRef, forwardRef } from "react";
+import React, { useState, createRef, forwardRef, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /**
@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = () => {
   const classes = useStyles();
+  const refSlideOne = useRef();
 
   /**
    * @description modal handles
@@ -139,7 +140,9 @@ const Projects = () => {
   });
 
   const ref = createRef();
-
+  // console.log(refSlideOne.current);
+  // const testSlide = (refSlideOne.current.style.width = "500px");
+  // console.log(testSlide);
   return (
     <div id="projects" className="home__main__wrap">
       {/* MODAL 
@@ -156,10 +159,11 @@ const Projects = () => {
           </h4>
           <div className="row project__thumb__container">
             <button
-              className="col-4 project__thumb btn-no-css"
+              className="col-4 project__thumb-left btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               onClick={() => handleOpen(<Slide01 />)}
+              ref={refSlideOne}
             >
               <div>
                 <Slide
@@ -194,7 +198,7 @@ const Projects = () => {
             </button>
 
             <button
-              className="col-4 project__thumb btn-no-css"
+              className="col-4 project__thumb-center btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "two", value: true })}
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
               onClick={() => handleOpen(<Slide02 />)}
@@ -228,7 +232,7 @@ const Projects = () => {
               </Slide>
             </button>
             <button
-              className="col-4 project__thumb btn-no-css"
+              className="col-4 project__thumb-right btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
               onClick={() => handleOpen(<Slide03 />)}

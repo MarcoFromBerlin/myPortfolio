@@ -6,19 +6,35 @@
   margin-bottom: 30px;
 }
 .project__thumb {
-  transition: all 0.5s;
-  // width: 100%;
-  height: 250px;
-  background-color: red;
-  overflow: hidden;
-
-  &:hover {
-    transform-origin: 50% 0%;
-    // transform: scaleX(1.5) perspective(10px);
-    background-color: green;
-    cursor: pointer;
-    // width: 150%;
-    z-index: 9999;
-    float: left;
+  &-left,
+  &-center,
+  &-right {
+    transition: all 0.5s;
+    // width: 100%;
+    height: 250px;
+    background-color: red;
+    overflow: hidden;
+    // &::before {
+    // }
+    &:hover {
+      // transform: scaleX(1.5) perspective(10px);
+      margin-left: 0px;
+      // transform-origin: 50% 0%;
+      background-color: green;
+      cursor: pointer;
+      z-index: 9999;
+      // float: left;
+      width: 150%;
+    }
+  }
+  &-center {
+    &:hover {
+      margin-left: -75px;
+    }
+  }
+  &-right {
+    &:hover {
+      margin-left: -150px;
+    }
   }
 }
