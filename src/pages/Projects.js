@@ -20,6 +20,12 @@ import Slide01 from "../slides/Slide01";
 import Slide02 from "../slides/Slide02";
 import Slide03 from "../slides/Slide03";
 
+/**
+ * @description images
+ */
+
+import mongoDbIcon from "../images/mongoDb.png";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
@@ -164,7 +170,6 @@ const Projects = () => {
                 <Slide
                   direction="right"
                   in={showDetails === undefined ? false : showDetails["one"]}
-                  // in={true}
                   mountOnEnter
                   unmountOnExit
                   className={classes.slide}
@@ -177,7 +182,6 @@ const Projects = () => {
                       books
                     </h6>
                     <div className="slide__icons">
-                      {/* faReact, faWordpressSimple, faApple, faAndroid, faChrome, */}
                       <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
                       <FontAwesomeIcon
                         icon={["fab", "wordpress-simple"]}
@@ -207,21 +211,20 @@ const Projects = () => {
                 timeout={timeoutSlides}
               >
                 <Paper elevation={4} className={classes.paper}>
-                  <h5 className="slide__title">My Second Hand Bookstore</h5>
+                  <h5 className="slide__title">Let's Talk About the weather</h5>
                   <h6 className="slide__description">
-                    Web App + iOS/Android App to find and stock second hand
-                    books
+                    Dashboard that shows all the locations and the weather of a
+                    team
                   </h6>
                   <div className="slide__icons">
-                    {/* faReact, faWordpressSimple, faApple, faAndroid, faChrome, */}
-                    <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
-                    <FontAwesomeIcon
-                      icon={["fab", "wordpress-simple"]}
-                      size="2x"
-                    />
+                    <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+                    <FontAwesomeIcon icon={["fab", "js"]} size="2x" />
                     <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                    <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
-                    <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
+                    <img
+                      src={mongoDbIcon}
+                      className="svg__icon"
+                      alt="React Logo"
+                    />
                   </div>
                 </Paper>
               </Slide>
@@ -241,13 +244,11 @@ const Projects = () => {
                 timeout={timeoutSlides}
               >
                 <Paper elevation={4} className={classes.paper}>
-                  <h5 className="slide__title">My Second Hand Bookstore</h5>
+                  <h5 className="slide__title">Spotify Library</h5>
                   <h6 className="slide__description">
-                    Web App + iOS/Android App to find and stock second hand
-                    books
+                    Web App to organize by category your Spotify Collection
                   </h6>
                   <div className="slide__icons">
-                    {/* faReact, faWordpressSimple, faApple, faAndroid, faChrome, */}
                     <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
                     <FontAwesomeIcon
                       icon={["fab", "wordpress-simple"]}
@@ -256,6 +257,11 @@ const Projects = () => {
                     <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
                     <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
                     <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
+                    <img
+                      src={mongoDbIcon}
+                      className="svg__icon"
+                      alt="React Logo"
+                    />
                   </div>
                 </Paper>
               </Slide>

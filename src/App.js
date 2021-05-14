@@ -28,11 +28,21 @@ import {
   faWordpressSimple,
   faAndroid,
   faApple,
+  faNodeJs,
+  faJs,
 } from "@fortawesome/free-brands-svg-icons";
 // import {
 // } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faReact, faChrome, faWordpressSimple, faAndroid, faApple);
+library.add(
+  faReact,
+  faChrome,
+  faWordpressSimple,
+  faAndroid,
+  faApple,
+  faJs,
+  faNodeJs
+);
 
 const App = () => {
   return (

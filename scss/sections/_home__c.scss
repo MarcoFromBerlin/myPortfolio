@@ -15,20 +15,26 @@
     overflow: hidden;
 
     &:hover {
+      z-index: 9999;
       margin-left: 0px;
+      margin-top: -4px;
       background-color: green;
       cursor: pointer;
-      z-index: 9999;
       width: 150%;
+      height: 103%;
+      box-shadow: 5px 5px 7px -5px rgba(0, 0, 0, 0.75);
     }
   }
   &-center {
     &:hover {
+      margin-top: -4px;
       margin-left: -75px;
+      box-shadow: 5px 5px 7px -6px rgba(0, 0, 0, 0.75);
     }
   }
   &-right {
     &:hover {
+      margin-top: -4px;
       margin-left: -150px;
     }
   }
