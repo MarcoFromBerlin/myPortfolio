@@ -25,6 +25,7 @@ import Slide03 from "../slides/Slide03";
  */
 
 import mongoDbIcon from "../images/mongoDb.png";
+import imageSlide03 from "../images/image_slide03.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
     padding: 20,
     textAlign: "left",
+    opacity: 0.8,
   },
   icons: {
     // color: "red",
@@ -234,6 +236,7 @@ const Projects = () => {
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
               onClick={() => handleOpen(<Slide03 />)}
+              style={{ backgroundImage: `url(${imageSlide03})` }}
             >
               <Slide
                 direction="left"
