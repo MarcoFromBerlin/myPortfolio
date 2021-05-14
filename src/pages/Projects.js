@@ -1,4 +1,4 @@
-import React, { useState, createRef, forwardRef, useRef } from "react";
+import React, { useState, createRef, forwardRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /**
@@ -28,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "blue",
     overflow: "auto",
     zIndex: -1000,
-    marginRight: 10,
+    // marginRight: 10,
     marginTop: 10,
     height: 180,
     borderRadius: 0,
-    padding: 10,
+    padding: 20,
     textAlign: "left",
   },
   icons: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = () => {
   const classes = useStyles();
-  const refSlideOne = useRef();
+  const ref = createRef();
 
   /**
    * @description modal handles
@@ -139,10 +139,6 @@ const Projects = () => {
     );
   });
 
-  const ref = createRef();
-  // console.log(refSlideOne.current);
-  // const testSlide = (refSlideOne.current.style.width = "500px");
-  // console.log(testSlide);
   return (
     <div id="projects" className="home__main__wrap">
       {/* MODAL 
@@ -163,7 +159,6 @@ const Projects = () => {
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
               onClick={() => handleOpen(<Slide01 />)}
-              ref={refSlideOne}
             >
               <div>
                 <Slide
