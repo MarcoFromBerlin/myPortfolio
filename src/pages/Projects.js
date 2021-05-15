@@ -16,15 +16,17 @@ import { makeStyles } from "@material-ui/core/styles";
  * @description Slides
  */
 
-import Slide01 from "../slides/Slide01";
-import Slide02 from "../slides/Slide02";
-import Slide03 from "../slides/Slide03";
+import Modal01 from "../slides/Modal01";
+import Modal02 from "../slides/Modal02";
+import Modal03 from "../slides/Modal03";
 
 /**
  * @description images
  */
 
 import mongoDbIcon from "../images/mongoDb.png";
+import reduxIcon from "../images/redux.png";
+
 import imageSlide03 from "../images/image_slide03.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -166,7 +168,7 @@ const Projects = () => {
               className="col-4 project__thumb-left btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              onClick={() => handleOpen(<Slide01 />)}
+              onClick={() => handleOpen(<Modal01 />)}
             >
               <div>
                 <Slide
@@ -202,7 +204,7 @@ const Projects = () => {
               className="col-4 project__thumb-center btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "two", value: true })}
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-              onClick={() => handleOpen(<Slide02 />)}
+              onClick={() => handleOpen(<Modal02 />)}
             >
               <Slide
                 direction="up"
@@ -235,8 +237,13 @@ const Projects = () => {
               className="col-4 project__thumb-right btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-              onClick={() => handleOpen(<Slide03 />)}
-              style={{ backgroundImage: `url(${imageSlide03})` }}
+              onClick={() => handleOpen(<Modal03 />)}
+              style={{
+                backgroundImage: `url(${imageSlide03})`,
+                backgroundSize: 400,
+                backgroundPositionX: -50,
+                backgroundPositionY: -50,
+              }}
             >
               <Slide
                 direction="left"
@@ -253,13 +260,13 @@ const Projects = () => {
                   </h6>
                   <div className="slide__icons">
                     <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
-                    <FontAwesomeIcon
-                      icon={["fab", "wordpress-simple"]}
-                      size="2x"
+                    <img
+                      src={reduxIcon}
+                      className="png__icon"
+                      alt="Redux Logo"
                     />
+                    <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
                     <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                    <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
-                    <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
                     <img
                       src={mongoDbIcon}
                       className="svg__icon"

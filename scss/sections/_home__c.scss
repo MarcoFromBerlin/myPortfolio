@@ -14,9 +14,7 @@
     // background-color: red;
     overflow: hidden;
     box-shadow: 5px 5px 7px -5px rgba(0, 0, 0, 0.75);
-    * > img {
-      width: 100px;
-    }
+
     &:hover {
       z-index: 1;
       margin-left: 0px;
