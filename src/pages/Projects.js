@@ -29,8 +29,6 @@ import reduxIcon from "../images/redux.png";
 
 import imageSlide03 from "../images/image_slide03.png";
 
-import HorizontalScroll from "react-scroll-horizontal";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
@@ -80,9 +78,6 @@ const Projects = () => {
   const classes = useStyles();
   const ref = createRef();
   const projectWindow = useRef();
-
-  const child = { width: `30em`, height: `100%` };
-  const parent = { width: `60em`, height: `100%` };
 
   /**
    * @description modal handles
@@ -163,8 +158,8 @@ const Projects = () => {
       */}
       <ModalProject ref={ref} content={modalContents} />
       {/* MODAL */}
-      <div className="row home__c center-x-y projects__window">
-        <div className="col-12 t-center home__main">
+      <div className="row home__c center-x-y ">
+        <div className="col-12 t-center home__main projects__window">
           <h1 className="section__title">Projects</h1>
           <h4 className="section__subtitle">
             A few projects I made using different tecnologies
@@ -284,7 +279,6 @@ const Projects = () => {
             </button>
           </div>
         </div>
-        <div className="col-1"></div>
       </div>
     </div>
   );
