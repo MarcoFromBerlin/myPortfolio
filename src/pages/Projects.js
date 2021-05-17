@@ -286,13 +286,6 @@ const Projects = () => {
         </div>
         <div className="col-1"></div>
       </div>
-      <div style={parent}>
-        <HorizontalScroll>
-          <div style={child}>PPPPPPP</div>
-          <div style={child}>PPPPPPP</div>
-          <div style={child}>PPPPPPP</div>
-        </HorizontalScroll>
-      </div>
     </div>
   );
 };
