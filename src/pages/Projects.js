@@ -1,4 +1,10 @@
-import React, { useState, createRef, forwardRef, useRef } from "react";
+import React, {
+  useState,
+  createRef,
+  forwardRef,
+  useRef,
+  useEffect,
+} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /**
@@ -78,6 +84,9 @@ const Projects = () => {
   const classes = useStyles();
   const ref = createRef();
   const projectWindow = useRef();
+  const projectOne = useRef();
+  const projectTwo = useRef();
+  const projectThree = useRef();
 
   /**
    * @description modal handles
@@ -98,6 +107,12 @@ const Projects = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const goToProject = (project) => {
+    project.current.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   /**
@@ -150,15 +165,19 @@ const Projects = () => {
     );
   });
 
+  console.log(projectWindow);
+
+  // projectWindow.current.scrollLeft = 1100;
+
   return (
-    <div id="projects" className="home__main__wrap">
+    <div ref={projectWindow} id="projects" className="home__main__wrap">
       {/* MODAL 
       /*
        * @description gets the content from the state modalContents
       */}
       <ModalProject ref={ref} content={modalContents} />
       {/* MODAL */}
-      <div className="row home__c center-x-y ">
+      <div className="row home__c center-x-y projects">
         <div className="col-12 t-center home__main projects__window">
           <h1 className="section__title">Projects</h1>
           <h4 className="section__subtitle">
@@ -238,7 +257,7 @@ const Projects = () => {
               className="col-4 project__thumb-right btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-              onClick={() => handleOpen(<Modal03 />)}
+              onClick={() => goToProject(projectThree)}
               style={{
                 backgroundImage: `url(${imageSlide03})`,
                 backgroundSize: 400,
@@ -279,6 +298,16 @@ const Projects = () => {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="modals__window" ref={projectOne}>
+        <Modal01 />
+      </div>
+      <div className="modals__window" ref={projectTwo}>
+        <Modal02 />
+      </div>
+      <div className="modals__window" ref={projectThree}>
+        <Modal03 />
       </div>
     </div>
   );
