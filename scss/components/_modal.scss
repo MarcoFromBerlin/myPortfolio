@@ -1,9 +1,9 @@
 .modal {
   // width: 100vw;
-  height: 100vh;
+  // height: 100vh;
   margin: 0 auto;
   // margin-left: -15px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   // width: 100%;
   // display: inline-block;
   background: linear-gradient(
@@ -37,13 +37,13 @@
   box-shadow: 2px 2px 13px -1px rgba(0, 0, 0, 0.55);
   // display: inline-block;
 
-  //   overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .modal__container__menu {
   // background-color: wheat;
   // padding: 30px;
-  padding-top: 10px;
+  padding-top: 20px;
   // padding-top: 10px;
   margin-top: 20px;
   // margin-bottom: 30px;
