@@ -18,7 +18,7 @@ const Modal02 = () => {
         <ProjectNavbar />
         <div className="row modal__container">
           <div className="col-12">
-            <h2>Let's Talk About tthe Weather</h2>
+            <h2>Let's Talk About the Weather</h2>
           </div>
           <div className="col-12">
             <h4>Web App to organize by category your Spotify Collection</h4>

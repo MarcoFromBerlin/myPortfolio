@@ -42,7 +42,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            {/* All the project anchors are givin the current item class */}
+            {/* All the project anchors are givin the current item */}
             <li>
               <NavLink
                 exact
