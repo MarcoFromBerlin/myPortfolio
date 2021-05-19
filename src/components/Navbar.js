@@ -42,11 +42,18 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-
+            {/* All the project anchors are givin the current item class */}
             <li>
               <NavLink
                 exact
-                className={location === "projects" ? "menu__current__item" : ""}
+                className={
+                  location === "projects" ||
+                  location === "letstalk" ||
+                  location === "mysecondhandbookstore" ||
+                  location === "spotifylibray"
+                    ? "menu__current__item"
+                    : ""
+                }
                 smooth
                 to="#projects"
               >
