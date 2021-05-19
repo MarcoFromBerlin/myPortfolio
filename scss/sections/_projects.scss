@@ -29,3 +29,48 @@
   // width: 300px;
   // white-space: nowrap;
 }
+
+.projects__navbar {
+  height: 35px !important;
+  letter-spacing: 1px;
+  // background-color: $eerie-black;
+  // height: 40px;
+  // padding-top: 10px;
+  padding-left: 50px;
+  font-size: 13px;
+  text-transform: capitalize !important;
+  // padding-bottom: 20px;
+  font-weight: $normal;
+  // z-index: -1;
+  & ul {
+    display: flex;
+    // float: $menu-position;
+    // text-transform: uppercase;
+    // font-weight: 500;
+
+    & li {
+      background-color: $maize-crayola;
+      /* extends the menu under the page */
+      padding-bottom: 5px;
+      padding-top: 5px;
+      padding-right: 7px;
+      padding-left: 7px;
+
+      list-style-type: none;
+      margin-right: 20px;
+      border-radius: 4px;
+
+      & a {
+        transition: all 0.3s;
+        color: $menu-font-color;
+        text-decoration: none;
+
+        &:hover {
+          transition: all 0s;
+          color: $menu-font-color-hover;
+          // border-bottom: 3px solid $menu-underline;
+        }
+      }
+    }
+  }
+}
