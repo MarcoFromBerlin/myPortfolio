@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, forwardRef } from "react";
 // import { NavLink } from "react-router-dom";
 import { HashLink as NavLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = forwardRef((props, ref) => {
   const location = useLocation().hash.toString().substr(1);
 
   return (
@@ -16,7 +16,7 @@ const Navbar = () => {
                 exact
                 // className={location === "" ? "menu__current__item" : ""}
                 smooth
-                to="#"
+                to="#mysecondhandbookstore"
               >
                 My Second Hand Bookstore
               </NavLink>
@@ -27,7 +27,7 @@ const Navbar = () => {
                 exact
                 // className={location === "projects" ? "menu__current__item" : ""}
                 smooth
-                to="#projects"
+                to="#letstalk"
               >
                 Let's talk about the weather
               </NavLink>
@@ -37,7 +37,8 @@ const Navbar = () => {
                 exact
                 // className={location === "about" ? "menu__current__item" : ""}
                 smooth
-                to="#about"
+                to="#spotifylibray"
+                // onClick={goToProject(ref)}
               >
                 Spotify Library
               </NavLink>
@@ -47,6 +48,6 @@ const Navbar = () => {
       </div>
     </Fragment>
   );
-};
+});
 
 export default Navbar;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ProjectNavbar from "../components/ProjectNavbar";
@@ -13,7 +13,7 @@ import sc_schema_01 from "../images/sc_schema_01.png";
 
 const Modal03 = () => {
   return (
-    <div className="modal">
+    <div id="spotifylibray" className="modal">
       <div className="modal__container__menu">
         <ProjectNavbar />
         <div className="row modal__container">
