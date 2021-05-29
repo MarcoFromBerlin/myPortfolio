@@ -1,4 +1,16 @@
+.pink {
+  background: linear-gradient(to right, deeppink 0%, coral 100%);
+}
+
+.teal {
+  background: linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%);
+}
+
+.tomato {
+}
+
 #projects {
+  background: linear-gradient(to right, tomato 0%, gold 100%);
   width: 400%;
   display: inline-block;
   display: flex;
