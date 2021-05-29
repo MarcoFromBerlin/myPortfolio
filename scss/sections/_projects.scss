@@ -10,12 +10,53 @@
 }
 
 #projects {
-  background: linear-gradient(to right, tomato 0%, gold 100%);
+  background: linear-gradient(to right, #ff6347 0%, #ffd700 100%);
   width: 400%;
   display: inline-block;
   display: flex;
   flex-direction: row;
   // overflow-x: scroll !important;
+
+  background: linear-gradient(91deg, #ff6347, #ffd700);
+  background-size: 800% 800%;
+
+  -webkit-animation: AnimationName 7s ease infinite;
+  -moz-animation: AnimationName 7s ease infinite;
+  animation: AnimationName 7s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 76%;
+  }
+  50% {
+    background-position: 100% 25%;
+  }
+  100% {
+    background-position: 0% 76%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 76%;
+  }
+  50% {
+    background-position: 100% 25%;
+  }
+  100% {
+    background-position: 0% 76%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 76%;
+  }
+  50% {
+    background-position: 100% 25%;
+  }
+  100% {
+    background-position: 0% 76%;
+  }
 }
 .projects__window {
   width: 100%;
