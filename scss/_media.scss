@@ -68,9 +68,54 @@
   * @desc new classes
   */
 
+  .menu {
+    width: 100%;
+    height: 20px;
+    letter-spacing: 1px;
+    // background-color: $eerie-black;
+    height: 40px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    font-size: 1.4rem;
+
+    & ul {
+      display: flex;
+      // float: center;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: auto;
+
+      & li {
+        list-style-type: none;
+        margin-right: 0px;
+        padding-right: 20px;
+        padding-left: 20px;
+
+        & a {
+          transition: all 0.3s;
+          color: $menu-font-color;
+          text-decoration: none;
+
+          &:hover {
+            transition: all 0s;
+            color: $menu-font-color-hover;
+            // border-bottom: 3px solid $menu-underline;
+          }
+        }
+      }
+    }
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .home__main {
     padding-bottom: 0px;
-    padding-top: 20px;
+    padding-top: 40px;
   }
 
   .hide {
