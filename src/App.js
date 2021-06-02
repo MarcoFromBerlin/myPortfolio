@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 import "./css/main.css";
 import Navbar from "./components/Navbar";
@@ -48,35 +48,32 @@ library.add(
  * @description for dynamic page width
  * passed to the <AlbumItem/> by props
  */
-
-const [width, setWidth] = useState(window.innerWidth);
-const [height, setHeight] = useState(window.innerHeight);
-const updateDimensions = () => {
-  setWidth(window.innerWidth);
-  setHeight(window.innerHeight);
-};
-useEffect(() => {
-  window.addEventListener("resize", updateDimensions);
-  return () => window.removeEventListener("resize", updateDimensions);
-}, []);
-
-console.log(width, height);
-
 const App = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  console.log(width, height);
+
   return (
-    <div className="container">
+    <div
+      className="container"
+      // style={{ height: "1000px" }}
+    >
       <Router>
         <MuiThemeProvider theme={theme}>
           <Fragment>
             <Navbar />
-            <Home />
-            <Projects />
-            <About />
-            {/* <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/projects" component={Projects} />
-          </Switch> */}
+            <Home windowHeight={height} />
+            <Projects windowHeight={height} />
+            <About windowHeight={height} />
           </Fragment>
         </MuiThemeProvider>
       </Router>

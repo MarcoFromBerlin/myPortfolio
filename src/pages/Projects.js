@@ -81,7 +81,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Projects = () => {
+const Projects = (props) => {
+  const { windowHeight } = props;
+
   const classes = useStyles();
   const ref = createRef();
   const projectWindow = useRef();
@@ -145,6 +147,7 @@ const Projects = () => {
 
   const ModalProject = forwardRef((props, ref) => {
     const { ...children } = props;
+
     return (
       <Modal
         aria-labelledby="transition-modal-title"
@@ -167,12 +170,17 @@ const Projects = () => {
   });
 
   return (
-    <div ref={projectWindow} id="projects" className="home__main__wrap">
+    <div
+      ref={projectWindow}
+      id="projects"
+      className="home__main__wrap"
+      style={{ height: windowHeight }}
+    >
       {/* MODAL 
       /*
        * @description gets the content from the state modalContents
       */}
-      <ModalProject ref={ref} content={modalContents} />
+      {/* <ModalProject ref={ref} content={modalContents} /> */}
       {/* MODAL */}
       <div className="row home__c center-x-y projects">
         <div className="col-12 t-center home__main projects__window">
