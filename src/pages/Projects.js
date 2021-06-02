@@ -180,7 +180,8 @@ const Projects = () => {
           <h4 className="section__subtitle">
             A few projects I made using different tecnologies
           </h4>
-          <div className="row project__thumb__container">
+          {/* WEB VERSION */}
+          <div className="row project__thumb__container hide-phone hide-tablet">
             <button
               className="col-4 project__thumb-left btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
@@ -321,6 +322,99 @@ const Projects = () => {
               </NavLink>
             </button>
           </div>
+        </div>
+        {/* MOBILE VERSION */}
+        <div className="col-12 project__thumb__container__mobile">
+          <button
+            className=" project__thumb__mobile btn-no-css"
+            onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+            onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+            // onClick={() => handleOpen(<Modal01 />)}
+          >
+            <NavLink
+              exact
+              // className={location === "about" ? "menu__current__item" : ""}
+              smooth
+              to="#mysecondhandbookstore"
+              // onClick={goToProject(ref)}
+            >
+              <div>
+                <h5 className="slide__title">My Second Hand Bookstore</h5>
+                <h6 className="slide__description">
+                  Web App + iOS/Android App to find and stock second hand books
+                </h6>
+                <div className="slide__icons">
+                  <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                  <FontAwesomeIcon
+                    icon={["fab", "wordpress-simple"]}
+                    size="2x"
+                  />
+                  <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                  <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
+                  <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
+                </div>
+              </div>
+            </NavLink>
+          </button>
+
+          <button
+            className="project__thumb__mobile btn-no-css"
+            onMouseEnter={() => handleOver({ thumb: "two", value: true })}
+            onMouseLeave={() => handleOver({ thumb: "two", value: false })}
+            // onClick={() => handleOpen(<Modal02 />)}
+          >
+            <NavLink
+              exact
+              // className={location === "about" ? "menu__current__item" : ""}
+              smooth
+              to="#letstalk"
+              // onClick={goToProject(ref)}
+            >
+              <h5 className="slide__title">Let's Talk About the weather</h5>
+              <h6 className="slide__description">
+                Dashboard that shows all the locations and the weather of a team
+              </h6>
+              <div className="slide__icons">
+                <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+                <FontAwesomeIcon icon={["fab", "js"]} size="2x" />
+                <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                <img src={mongoDbIcon} className="svg__icon" alt="React Logo" />
+              </div>
+            </NavLink>
+          </button>
+
+          <button
+            className="project__thumb__mobile btn-no-css"
+            onMouseEnter={() => handleOver({ thumb: "three", value: true })}
+            onMouseLeave={() => handleOver({ thumb: "three", value: false })}
+            // onClick={() => goToProject(projectThree)}
+            style={{
+              backgroundImage: `url(${imageSlide03})`,
+              backgroundSize: 400,
+              backgroundPositionX: -50,
+              backgroundPositionY: -50,
+            }}
+          >
+            <NavLink
+              exact
+              // className={location === "about" ? "menu__current__item" : ""}
+              smooth
+              to="#spotifylibray"
+              // onClick={goToProject(ref)}
+            >
+              <h5 className="slide__title">Spotify Library</h5>
+              <h6 className="slide__description">
+                Web App to organize by category your Spotify Collection
+              </h6>
+              <div className="slide__icons">
+                <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                <img src={reduxIcon} className="png__icon" alt="Redux Logo" />
+                <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+                <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                <img src={mongoDbIcon} className="svg__icon" alt="React Logo" />
+              </div>
+            </NavLink>
+          </button>
         </div>
       </div>
 

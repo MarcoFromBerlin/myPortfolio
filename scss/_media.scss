@@ -33,6 +33,8 @@
 
 @include media($phone) {
   :root {
+    width: 100%;
+    min-height: 100%;
   }
 
   .row {
@@ -44,7 +46,17 @@
   @for $i from 1 through $columns-phone {
     .col-lg-#{$i} {
       grid-column: span $i;
+      width: 100%;
     }
+  }
+
+  /**
+  * @desc new classes
+  */
+
+  .home__main {
+    padding-bottom: 0px;
+    padding-top: 20px;
   }
 
   .hide {
