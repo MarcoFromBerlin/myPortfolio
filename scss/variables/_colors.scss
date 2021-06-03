@@ -10,6 +10,12 @@ $maize-crayola: #f5cb5c;
 $eerie-black: #242423;
 $jet: #333533;
 
+$backgroud-gradient1: linear-gradient(
+  25deg,
+  rgba(245, 203, 92, 1) 19%,
+  rgba(186, 186, 186, 1) 100%
+);
+
 // menu
 $menu-font-color: white;
 $menu-font-color-hover: $eerie-black;
