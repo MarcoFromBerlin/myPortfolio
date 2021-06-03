@@ -1,4 +1,10 @@
-import React, { Fragment, useState, useEffect, useRef } from "react";
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from "react";
 
 import "./css/main.css";
 import Navbar from "./components/Navbar";
@@ -62,6 +68,12 @@ const App = () => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+  useLayoutEffect(() => {
+    console.log("useE", arrClasses);
+    console.log(containerRef.current);
+    containerRef.current.classList.remove("matrix__start");
+  });
+
   /**
    * @desc function to change matrix once the scroll is over
    */
@@ -77,14 +89,15 @@ const App = () => {
     window.addEventListener(
       "scroll",
       function (event) {
-        console.log("start", arrClasses.join(" "));
+        console.log("start", containerRef.current);
 
         // arrClasses = [];
-
+        if (containerRef.current === undefined) return;
         if (arrClasses.length === 1) arrClasses.splice(0, 1);
         if (arrClasses.length >= 2) return;
+        containerRef.current.classList.add("matrix__start");
 
-        arrClasses.push("matrix__start");
+        arrClasses.push("matrix__start ");
         // Clear our timeout throughout the scroll
         window.clearTimeout(isScrolling);
 
@@ -98,29 +111,30 @@ const App = () => {
   scrollStop(() => {
     arrClasses.splice(0, 1);
     // arrClasses = [];
+    containerRef.current.classList.remove("matrix__start");
 
-    arrClasses.push("matrix__stop");
-    console.log("stop", arrClasses.join(" "));
+    arrClasses.push("matrix__stop ");
+    // console.log("stop", arrClasses.join(" "));
   });
 
-  console.log("out", arrClasses.join(" "));
-
+  // console.log("out", arrClasses.join(" "));
   return (
-    <div
-      className={`${arrClasses.join(" ")}container`}
-      // style={{ height: "1000px" }}
-    >
-      <Router>
-        <MuiThemeProvider theme={theme}>
-          <Fragment>
+    <Router>
+      <MuiThemeProvider theme={theme}>
+        <Fragment>
+          <div
+            ref={containerRef}
+            className={`${arrClasses.join(" ")}container`}
+            // style={{ height: "1000px" }}
+          >
             <Navbar />
             <Home windowHeight={height} />
             <Projects windowHeight={height} />
             <About windowHeight={height} />
-          </Fragment>
-        </MuiThemeProvider>
-      </Router>
-    </div>
+          </div>
+        </Fragment>
+      </MuiThemeProvider>
+    </Router>
   );
 };
 

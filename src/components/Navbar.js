@@ -27,8 +27,6 @@ const Navbar = () => {
     navbarClasses.push("scrolled ");
   }
 
-  console.log("aa");
-
   return (
     <Fragment>
       <div className={`${navbarClasses.join(" ")}menu row-1"`}>
