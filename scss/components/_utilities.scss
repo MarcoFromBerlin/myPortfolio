@@ -9,6 +9,7 @@
 
   transform-origin: center center 0px;
   transition: all 1s ease 0.1s;
+  // transition-delay: 0s, 1s;
   // -webkit-transform-origin: center center 0px;
   // -webkit-transition: all 2s ease 0.1s;
 }
@@ -27,7 +28,7 @@
 
 //
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .items-w-100 {

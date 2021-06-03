@@ -57,6 +57,11 @@ library.add(
 const App = () => {
   const containerRef = useRef();
   const [arrClasses, setArrClasses] = useState([]);
+
+  const [anchorHome, setAnchorHome] = useState();
+  const [anchorProject, setAnchorProject] = useState();
+  const [anchorAbout, setAnchorAbout] = useState();
+
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
   const updateDimensions = () => {
@@ -69,11 +74,75 @@ const App = () => {
   }, []);
 
   useLayoutEffect(() => {
+    setAnchorHome(document.querySelector("#home"));
+    setAnchorProject(document.querySelector("#projects"));
+    setAnchorAbout(document.querySelector("#about"));
     // console.log("useE", arrClasses);
     // console.log(containerRef.current);
     containerRef.current.classList.remove("matrix__start");
+    // console.log(anchor.getBoundingClientRect());
+
     //eslint-disable-next-line
   }, []);
+
+  const checkDivsPosition = () => {
+    if (
+      anchorHome === undefined ||
+      anchorProject === undefined ||
+      anchorAbout === undefined
+    )
+      return;
+
+    const posHome = anchorHome.getBoundingClientRect().top;
+    const posProj = anchorProject.getBoundingClientRect().top;
+    const posAbout = anchorAbout.getBoundingClientRect().top;
+    /**
+     * @desc creates arr with all the values
+     */
+    let arrPos = [
+      { anchor: "#home", pos: posHome },
+      { anchor: "#projects", pos: posProj },
+      { anchor: "#about", pos: posAbout },
+    ];
+
+    // const closestDiv = arrPos.reduce(function (prev, curr) {
+    //   return prev.pos > curr.pos ? prev : curr;
+    // });
+
+    const closestDiv = arrPos.reduce((a, b) => {
+      return Math.abs(b.pos - 0) < Math.abs(a.pos - 0) ? b : a;
+    });
+
+    return closestDiv;
+
+    // console.log("Home", anchorHome.getBoundingClientRect().top);
+    // console.log("Project", anchorProject.getBoundingClientRect().top);
+    // console.log("About", anchorAbout.getBoundingClientRect().top);
+  };
+
+  useEffect(() => {
+    var mouseIsDown = false;
+
+    window.addEventListener("scroll", checkDivsPosition);
+    window.addEventListener("mousedown", function () {
+      console.log("mousedown");
+      // mouseIsDown = true;
+      // setTimeout(function () {
+      //   if (mouseIsDown) {
+      //     // mouse was held down for > 2 seconds
+      //     console.log("mouse");
+      //   }
+      // }, 2000);
+    });
+  });
+
+  /**
+   * @desc to make a relase scroll into view
+   * 1. get current page anchor
+   * 2. anchor into view
+   * 3. find nearest anchor with getBoundingClientRect the closest
+   *
+   */
 
   /**
    * @desc function to change matrix once the scroll is over
@@ -109,17 +178,27 @@ const App = () => {
     );
   }
 
-  scrollStop(() => {
-    // arrClasses.splice(0, 1);
-    // arrClasses = [];
-    // setTimeout(() => {
-    containerRef.current.classList.remove("matrix__start");
-    //   console.log("removed");
-    // }, 2000);
+  // scrollStop(() => {
+  //   // anchorProject.scrollIntoView();
 
-    // arrClasses.push("matrix__stop ");
-    // console.log("stop", arrClasses.join(" "));
-  });
+  //   // arrClasses.splice(0, 1);
+  //   // arrClasses = [];
+  //   // setTimeout(() => {
+  //   containerRef.current.classList.remove("matrix__start");
+  //   //   console.log("removed");
+  //   // }, 2000);
+
+  //   // arrClasses.push("matrix__stop ");
+  //   // console.log("stop", arrClasses.join(" "));
+  // });
+
+  const scrollToDiv = () => {
+    console.log("into", document.querySelector("#about"));
+    document
+      .querySelector("#about")
+      .scrollIntoView({ behavior: "smooth", block: "nearest", inline: "end" });
+    // console.log(checkDivsPosition().anchor);
+  };
 
   // console.log("out", arrClasses.join(" "));
   return (
@@ -127,6 +206,8 @@ const App = () => {
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <div
+            onTouchStart={() => console.log("touch start")}
+            onTouchEnd={scrollToDiv}
             ref={containerRef}
             className={`${arrClasses.join(" ")}container`}
             // style={{ height: "1000px" }}
