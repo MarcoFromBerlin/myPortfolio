@@ -45,7 +45,7 @@ const Navbar = () => {
             {/* All the project anchors are givin the current item */}
             <li>
               <NavLink
-                exact
+                // exact
                 className={
                   location === "projects" ||
                   location === "letstalk" ||
@@ -56,6 +56,9 @@ const Navbar = () => {
                 }
                 smooth
                 to="#projects"
+                // scroll={(el) =>
+                //   el.scrollIntoView({ behavior: "auto", block: "end" })
+                // }
               >
                 Projects
               </NavLink>
