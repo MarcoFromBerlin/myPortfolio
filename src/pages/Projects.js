@@ -396,12 +396,12 @@ const Projects = (props) => {
             onMouseEnter={() => handleOver({ thumb: "three", value: true })}
             onMouseLeave={() => handleOver({ thumb: "three", value: false })}
             // onClick={() => goToProject(projectThree)}
-            style={{
-              backgroundImage: `url(${imageSlide03})`,
-              backgroundSize: 400,
-              backgroundPositionX: -50,
-              backgroundPositionY: -50,
-            }}
+            // style={{
+            //   backgroundImage: `url(${imageSlide03})`,
+            //   backgroundSize: 400,
+            //   backgroundPositionX: -50,
+            //   backgroundPositionY: -50,
+            // }}
           >
             <NavLink
               exact
