@@ -426,13 +426,13 @@ const Projects = (props) => {
         </div>
       </div>
 
-      <div className="modals__window" ref={projectOne}>
+      <div className="modals__window hide-phone hide-tablet" ref={projectOne}>
         <Modal01 />
       </div>
-      <div className="modals__window" ref={projectTwo}>
+      <div className="modals__window hide-phone hide-tablet" ref={projectTwo}>
         <Modal02 />
       </div>
-      <div className="modals__window" ref={projectThree}>
+      <div className="modals__window hide-phone hide-tablet" ref={projectThree}>
         <Modal03 />
       </div>
     </div>
