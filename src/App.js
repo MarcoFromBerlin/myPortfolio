@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 
 import "./css/main.css";
 import Navbar from "./components/Navbar";
@@ -49,6 +49,8 @@ library.add(
  * passed to the <AlbumItem/> by props
  */
 const App = () => {
+  const containerRef = useRef();
+  const [arrClasses, setArrClasses] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
   const updateDimensions = () => {
@@ -60,11 +62,52 @@ const App = () => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  console.log(width, height);
+  /**
+   * @desc function to change matrix once the scroll is over
+   */
+
+  function scrollStop(callback, refresh = 66) {
+    // Make sure a valid callback was provided
+    if (!callback || typeof callback !== "function") return;
+
+    // Setup scrolling variable
+    let isScrolling;
+
+    // Listen for scroll events
+    window.addEventListener(
+      "scroll",
+      function (event) {
+        console.log("start", arrClasses.join(" "));
+
+        // arrClasses = [];
+
+        if (arrClasses.length === 1) arrClasses.splice(0, 1);
+        if (arrClasses.length >= 2) return;
+
+        arrClasses.push("matrix__start");
+        // Clear our timeout throughout the scroll
+        window.clearTimeout(isScrolling);
+
+        // Set a timeout to run after scrolling ends
+        isScrolling = setTimeout(callback, refresh);
+      },
+      false
+    );
+  }
+
+  scrollStop(() => {
+    arrClasses.splice(0, 1);
+    // arrClasses = [];
+
+    arrClasses.push("matrix__stop");
+    console.log("stop", arrClasses.join(" "));
+  });
+
+  console.log("out", arrClasses.join(" "));
 
   return (
     <div
-      className="container"
+      className={`${arrClasses.join(" ")}container`}
       // style={{ height: "1000px" }}
     >
       <Router>
