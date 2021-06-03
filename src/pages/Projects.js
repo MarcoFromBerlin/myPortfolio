@@ -332,7 +332,7 @@ const Projects = (props) => {
           </div>
         </div>
         {/* MOBILE VERSION */}
-        <div className="col-12 project__thumb__container__mobile">
+        <div className="col-12 project__thumb__container__mobile hide">
           <button
             className=" project__thumb__mobile btn-no-css"
             onMouseEnter={() => handleOver({ thumb: "one", value: true })}
