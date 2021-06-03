@@ -69,10 +69,11 @@ const App = () => {
   }, []);
 
   useLayoutEffect(() => {
-    console.log("useE", arrClasses);
-    console.log(containerRef.current);
+    // console.log("useE", arrClasses);
+    // console.log(containerRef.current);
     containerRef.current.classList.remove("matrix__start");
-  });
+    //eslint-disable-next-line
+  }, []);
 
   /**
    * @desc function to change matrix once the scroll is over
@@ -89,15 +90,15 @@ const App = () => {
     window.addEventListener(
       "scroll",
       function (event) {
-        console.log("start", containerRef.current);
+        // console.log("start", containerRef.current);
 
         // arrClasses = [];
         if (containerRef.current === undefined) return;
-        if (arrClasses.length === 1) arrClasses.splice(0, 1);
-        if (arrClasses.length >= 2) return;
+        // if (arrClasses.length === 1) arrClasses.splice(0, 1);
+        // if (arrClasses.length >= 2) return;
         containerRef.current.classList.add("matrix__start");
 
-        arrClasses.push("matrix__start ");
+        // arrClasses.push("matrix__start ");
         // Clear our timeout throughout the scroll
         window.clearTimeout(isScrolling);
 
@@ -109,11 +110,14 @@ const App = () => {
   }
 
   scrollStop(() => {
-    arrClasses.splice(0, 1);
+    // arrClasses.splice(0, 1);
     // arrClasses = [];
+    // setTimeout(() => {
     containerRef.current.classList.remove("matrix__start");
+    //   console.log("removed");
+    // }, 2000);
 
-    arrClasses.push("matrix__stop ");
+    // arrClasses.push("matrix__stop ");
     // console.log("stop", arrClasses.join(" "));
   });
 
