@@ -3,7 +3,11 @@ import React from "react";
 const Home = (props) => {
   const { windowHeight } = props;
   return (
-    <div className="home__main__wrap" style={{ height: windowHeight }}>
+    <div
+      id="home"
+      className="home__main__wrap"
+      style={{ height: windowHeight }}
+    >
       <div className="row-1 home__a center-x-y">
         <div className="col-121 t-center home__main">
           <span>

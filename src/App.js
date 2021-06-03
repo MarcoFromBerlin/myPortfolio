@@ -60,8 +60,6 @@ const App = () => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  console.log(width, height);
-
   return (
     <div
       className="container"
