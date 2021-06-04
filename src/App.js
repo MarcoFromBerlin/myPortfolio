@@ -124,16 +124,16 @@ const App = () => {
     var mouseIsDown = false;
 
     window.addEventListener("scroll", checkDivsPosition);
-    window.addEventListener("mousedown", function () {
-      console.log("mousedown");
-      // mouseIsDown = true;
-      // setTimeout(function () {
-      //   if (mouseIsDown) {
-      //     // mouse was held down for > 2 seconds
-      //     console.log("mouse");
-      //   }
-      // }, 2000);
-    });
+    // window.addEventListener("mousedown", function () {
+    //   console.log("mousedown");
+    //   // mouseIsDown = true;
+    //   // setTimeout(function () {
+    //   //   if (mouseIsDown) {
+    //   //     // mouse was held down for > 2 seconds
+    //   //     console.log("mouse");
+    //   //   }
+    //   // }, 2000);
+    // });
   });
 
   /**
@@ -178,26 +178,31 @@ const App = () => {
     );
   }
 
-  // scrollStop(() => {
-  //   // anchorProject.scrollIntoView();
+  scrollStop(() => {
+    // anchorProject.scrollIntoView();
 
-  //   // arrClasses.splice(0, 1);
-  //   // arrClasses = [];
-  //   // setTimeout(() => {
-  //   containerRef.current.classList.remove("matrix__start");
-  //   //   console.log("removed");
-  //   // }, 2000);
+    // arrClasses.splice(0, 1);
+    // arrClasses = [];
+    // setTimeout(() => {
+    containerRef.current.classList.remove("matrix__start");
+    //   console.log("removed");
+    // }, 2000);
 
-  //   // arrClasses.push("matrix__stop ");
-  //   // console.log("stop", arrClasses.join(" "));
-  // });
+    // arrClasses.push("matrix__stop ");
+    // console.log("stop", arrClasses.join(" "));
+  });
 
   const scrollToDiv = () => {
-    console.log("into", document.querySelector("#about"));
-    document
-      .querySelector("#about")
-      .scrollIntoView({ behavior: "smooth", block: "nearest", inline: "end" });
+    // console.log("into", document.querySelector("#about"));
+    // console.log("into", anchorAbout);
+    anchorAbout.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "end",
+    });
+    // .scrollIntoView(true);
     // console.log(checkDivsPosition().anchor);
+    console.log("end");
   };
 
   // console.log("out", arrClasses.join(" "));
@@ -206,8 +211,14 @@ const App = () => {
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <div
-            onTouchStart={() => console.log("touch start")}
+            // onTouchStart={() => console.log("onTouchStart")}
+            // onTouchEnd={() => console.log("onTouchEnd")}
             onTouchEnd={scrollToDiv}
+            // onTouchEndCapture={() => console.log("onTouchEndCapture")}
+            // onTouchEndCapture={scrollToDiv}
+            // onTouchMove={scrollToDiv}
+            // onTransitionEnd={scrollToDiv}
+
             ref={containerRef}
             className={`${arrClasses.join(" ")}container`}
             // style={{ height: "1000px" }}
