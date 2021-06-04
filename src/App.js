@@ -138,7 +138,9 @@ const App = () => {
 
   // console.log(useMatrix(containerRef, translationMatrixStart));
 
-  const [matrix, setMatrix] = useState(useMatrix(containerRef, 0.75));
+  const [matrix, setMatrix] = useState(
+    useMatrix(containerRef, translationMatrixStart, 0.75)
+  );
 
   /**
    * @desc matrix3d JS
