@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <div className={`${navbarClasses.join(" ")}menu row-1"`}>
+      <div id="menu" className={`${navbarClasses.join(" ")}menu row-1"`}>
         <nav className="navigation">
           <ul>
             <li>

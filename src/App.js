@@ -61,22 +61,26 @@ const App = () => {
   const [anchorHome, setAnchorHome] = useState();
   const [anchorProject, setAnchorProject] = useState();
   const [anchorAbout, setAnchorAbout] = useState();
+  const [anchorMenu, setAnchorMenu] = useState();
 
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
+
   const updateDimensions = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
   };
+
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setAnchorHome(document.querySelector("#home"));
     setAnchorProject(document.querySelector("#projects"));
     setAnchorAbout(document.querySelector("#about"));
+    setAnchorMenu(document.querySelector(".menu"));
     // console.log("useE", arrClasses);
     // console.log(containerRef.current);
     containerRef.current.classList.remove("matrix__start");
@@ -145,49 +149,49 @@ const App = () => {
    * @desc function to change matrix once the scroll is over
    */
 
-  function scrollStop(callback, refresh = 66) {
-    // Make sure a valid callback was provided
-    if (!callback || typeof callback !== "function") return;
+  // function scrollStop(callback, refresh = 66) {
+  //   // Make sure a valid callback was provided
+  //   if (!callback || typeof callback !== "function") return;
 
-    // Setup scrolling variable
-    let isScrolling;
+  //   // Setup scrolling variable
+  //   let isScrolling;
 
-    // Listen for scroll events
-    window.addEventListener(
-      "scroll",
-      function (event) {
-        // console.log("start", containerRef.current);
+  //   // Listen for scroll events
+  //   window.addEventListener(
+  //     "scroll",
+  //     function (event) {
+  //       // console.log("start", containerRef.current);
 
-        // arrClasses = [];
-        if (containerRef.current === undefined) return;
-        // if (arrClasses.length === 1) arrClasses.splice(0, 1);
-        // if (arrClasses.length >= 2) return;
-        // containerRef.current.classList.add("matrix__start");
+  //       // arrClasses = [];
+  //       if (containerRef.current === undefined) return;
+  //       // if (arrClasses.length === 1) arrClasses.splice(0, 1);
+  //       // if (arrClasses.length >= 2) return;
+  //       // containerRef.current.classList.add("matrix__start");
 
-        // arrClasses.push("matrix__start ");
-        // Clear our timeout throughout the scroll
-        window.clearTimeout(isScrolling);
+  //       // arrClasses.push("matrix__start ");
+  //       // Clear our timeout throughout the scroll
+  //       window.clearTimeout(isScrolling);
 
-        // Set a timeout to run after scrolling ends
-        isScrolling = setTimeout(callback, refresh);
-      },
-      false
-    );
-  }
+  //       // Set a timeout to run after scrolling ends
+  //       isScrolling = setTimeout(callback, refresh);
+  //     },
+  //     false
+  //   );
+  // }
 
-  scrollStop(() => {
-    // anchorProject.scrollIntoView();
+  // scrollStop(() => {
+  //   // anchorProject.scrollIntoView();
 
-    // arrClasses.splice(0, 1);
-    // arrClasses = [];
-    // setTimeout(() => {
-    containerRef.current.classList.remove("matrix__start");
-    //   console.log("removed");
-    // }, 2000);
+  //   // arrClasses.splice(0, 1);
+  //   // arrClasses = [];
+  //   // setTimeout(() => {
+  //   containerRef.current.classList.remove("matrix__start");
+  //   //   console.log("removed");
+  //   // }, 2000);
 
-    // arrClasses.push("matrix__stop ");
-    // console.log("stop", arrClasses.join(" "));
-  });
+  //   // arrClasses.push("matrix__stop ");
+  //   // console.log("stop", arrClasses.join(" "));
+  // });
 
   /**
    * @desc creating matrix with js
@@ -226,7 +230,7 @@ const App = () => {
     // });
     // .scrollIntoView(true);
     // console.log(checkDivsPosition().anchor);
-    console.log("start");
+    // console.log("start");
   };
 
   const scrollTouchEnd = () => {
@@ -240,14 +244,24 @@ const App = () => {
     //   // block: "nearest",
     //   // inline: "end",
     // });
-    console.log("checkDivsPosition", checkDivsPosition());
+    // console.log("checkDivsPosition", checkDivsPosition());
 
     if (checkDivsPosition() === undefined) return console.log("undef");
 
-    console.log("window", window);
+    // console.log("window", window);
     setTimeout(() => {
+      console.log(document.querySelector("#menu"));
       window.scrollTo(0, checkDivsPosition().offsetTop);
+      document
+        .querySelector("#menu")
+        .scrollTo(0, checkDivsPosition().offsetTop);
     }, 300);
+
+    // setTimeout(() => {
+    //   document
+    //     .querySelector(".menu")
+    //     .scrollTo(0, checkDivsPosition().offsetTop);
+    // }, 500);
 
     // document.querySelector("#about").scrollIntoView({
     //   behavior: "smooth",
@@ -257,7 +271,7 @@ const App = () => {
 
     // console.log(checkDivsPosition().anchor);
 
-    console.log("end");
+    // console.log("end");
   };
 
   // console.log("out", arrClasses.join(" "));
