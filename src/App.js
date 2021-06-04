@@ -162,7 +162,7 @@ const App = () => {
         if (containerRef.current === undefined) return;
         // if (arrClasses.length === 1) arrClasses.splice(0, 1);
         // if (arrClasses.length >= 2) return;
-        containerRef.current.classList.add("matrix__start");
+        // containerRef.current.classList.add("matrix__start");
 
         // arrClasses.push("matrix__start ");
         // Clear our timeout throughout the scroll
@@ -253,7 +253,7 @@ const App = () => {
     //   behavior: "smooth",
     //   block: "start",
     //   inline: "start",
-    // });
+    // });//
 
     // console.log(checkDivsPosition().anchor);
 
