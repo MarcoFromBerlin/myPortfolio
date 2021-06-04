@@ -138,63 +138,65 @@ const App = () => {
   });
 
   /**
-   * @desc to make a relase scroll into view
-   * 1. get current page anchor
-   * 2. anchor into view
-   * 3. find nearest anchor with getBoundingClientRect the closest
-   *
+   * @desc function to start/stop matrix3d
+   * for desktop
    */
 
-  /**
-   * @desc function to change matrix once the scroll is over
-   */
+  function scrollStop(callback, refresh = 66) {
+    // Make sure a valid callback was provided
+    if (!callback || typeof callback !== "function") return;
 
-  // function scrollStop(callback, refresh = 66) {
-  //   // Make sure a valid callback was provided
-  //   if (!callback || typeof callback !== "function") return;
+    // Setup scrolling variable
+    let isScrolling;
 
-  //   // Setup scrolling variable
-  //   let isScrolling;
+    // Listen for scroll events
+    window.addEventListener(
+      "scroll",
+      function (event) {
+        // console.log("start", containerRef.current);
 
-  //   // Listen for scroll events
-  //   window.addEventListener(
-  //     "scroll",
-  //     function (event) {
-  //       // console.log("start", containerRef.current);
+        // arrClasses = [];
+        if (containerRef.current === undefined) return;
+        // if (arrClasses.length === 1) arrClasses.splice(0, 1);
+        // if (arrClasses.length >= 2) return;
+        // containerRef.current.classList.add("matrix__start");
+        containerRef.current.style.transition = "all 1s ease 0.1s";
+        containerRef.current.style.transform = matrix3dStart;
 
-  //       // arrClasses = [];
-  //       if (containerRef.current === undefined) return;
-  //       // if (arrClasses.length === 1) arrClasses.splice(0, 1);
-  //       // if (arrClasses.length >= 2) return;
-  //       // containerRef.current.classList.add("matrix__start");
+        // arrClasses.push("matrix__start ");
+        // Clear our timeout throughout the scroll
+        window.clearTimeout(isScrolling);
 
-  //       // arrClasses.push("matrix__start ");
-  //       // Clear our timeout throughout the scroll
-  //       window.clearTimeout(isScrolling);
+        // Set a timeout to run after scrolling ends
+        isScrolling = setTimeout(callback, refresh);
+      },
+      false
+    );
+  }
 
-  //       // Set a timeout to run after scrolling ends
-  //       isScrolling = setTimeout(callback, refresh);
-  //     },
-  //     false
-  //   );
-  // }
+  scrollStop(() => {
+    // anchorProject.scrollIntoView();
+    containerRef.current.style.transition = "all 1s ease 0.1s";
+    containerRef.current.style.transform = matrix3dStop;
+    setTimeout(() => {
+      containerRef.current.style.transition = null;
+      containerRef.current.style.transform = null;
+    }, 100);
 
-  // scrollStop(() => {
-  //   // anchorProject.scrollIntoView();
+    // arrClasses.splice(0, 1);
+    // arrClasses = [];
+    // setTimeout(() => {
+    // containerRef.current.classList.remove("matrix__start");
+    //   console.log("removed");
+    // }, 2000);
 
-  //   // arrClasses.splice(0, 1);
-  //   // arrClasses = [];
-  //   // setTimeout(() => {
-  //   containerRef.current.classList.remove("matrix__start");
-  //   //   console.log("removed");
-  //   // }, 2000);
-
-  //   // arrClasses.push("matrix__stop ");
-  //   // console.log("stop", arrClasses.join(" "));
-  // });
+    // arrClasses.push("matrix__stop ");
+    // console.log("stop", arrClasses.join(" "));
+  });
 
   /**
    * @desc creating matrix with js
+   * for mobile
    */
 
   // let x = 50;
