@@ -22,6 +22,8 @@ import Projects from "./pages/Projects";
 import { theme } from "../src/styles/Theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
+import { useMatrix } from "./components/useMatrix";
+
 /**
  *
  * @description FontAwesome
@@ -61,7 +63,6 @@ const App = () => {
   const [anchorHome, setAnchorHome] = useState();
   const [anchorProject, setAnchorProject] = useState();
   const [anchorAbout, setAnchorAbout] = useState();
-  const [anchorMenu, setAnchorMenu] = useState();
 
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
@@ -83,8 +84,6 @@ const App = () => {
     setAnchorHome(document.querySelector("#home"));
     setAnchorProject(document.querySelector("#projects"));
     setAnchorAbout(document.querySelector("#about"));
-    setAnchorMenu(document.querySelector(".menu"));
-    containerRef.current.classList.remove("matrix__start");
 
     //eslint-disable-next-line
   }, []);
@@ -132,39 +131,48 @@ const App = () => {
     window.addEventListener("touchend", scrollTouchEnd);
   });
 
-  /**
-   * @desc matrix3d JS
-   * used for desktop and mobile
-   */
-
   let translationMatrixStart = [
     0.34299999999999997, 0, 0.17, 0, 0, 0.46199999999999997, 0.64, 0.000144,
     -0.17, -0.64, 0.7546, 0, 20, 10, 100, 1,
   ];
 
-  let translationMatrixStop = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+  // console.log(useMatrix(containerRef, translationMatrixStart));
 
-  function matrixArrayToCssMatrix(array) {
-    return "matrix3d(" + array.join(",") + ")";
-  }
+  const [matrix, setMatrix] = useState(useMatrix(containerRef, 0.75));
 
-  // Returns a string: "matrix3d(..."
-  let matrix3dStart = matrixArrayToCssMatrix(translationMatrixStart);
-  let matrix3dStop = matrixArrayToCssMatrix(translationMatrixStop);
+  /**
+   * @desc matrix3d JS
+   * used for desktop and mobile
+   */
 
-  const addMatrix = () => {
-    containerRef.current.style.transition = "all 0.75s ease 0.1s";
-    containerRef.current.style.transform = matrix3dStart;
-  };
+  // let translationMatrixStart = [
+  //   0.34299999999999997, 0, 0.17, 0, 0, 0.46199999999999997, 0.64, 0.000144,
+  //   -0.17, -0.64, 0.7546, 0, 20, 10, 100, 1,
+  // ];
 
-  const removeMatrix = () => {
-    containerRef.current.style.transition = "all 0.75s ease 0.1s";
-    containerRef.current.style.transform = matrix3dStop;
-    setTimeout(() => {
-      containerRef.current.style.transition = null;
-      containerRef.current.style.transform = null;
-    }, 100);
-  };
+  // let translationMatrixStop = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+
+  // function matrixArrayToCssMatrix(array) {
+  //   return "matrix3d(" + array.join(",") + ")";
+  // }
+
+  // // Returns a string: "matrix3d(..."
+  // let matrix3dStart = matrixArrayToCssMatrix(translationMatrixStart);
+  // let matrix3dStop = matrixArrayToCssMatrix(translationMatrixStop);
+
+  // const addMatrix = () => {
+  //   containerRef.current.style.transition = "all 0.75s ease 0.1s";
+  //   containerRef.current.style.transform = matrix3dStart;
+  // };
+
+  // const removeMatrix = () => {
+  //   containerRef.current.style.transition = "all 0.75s ease 0.1s";
+  //   containerRef.current.style.transform = matrix3dStop;
+  //   setTimeout(() => {
+  //     containerRef.current.style.transition = null;
+  //     containerRef.current.style.transform = null;
+  //   }, 100);
+  // };
 
   /**
    * @desc function to start/stop matrix3d
@@ -181,7 +189,8 @@ const App = () => {
       function (event) {
         if (containerRef.current === undefined) return;
 
-        addMatrix();
+        // addMatrix();
+        matrix.addMatrix();
 
         window.clearTimeout(isScrolling);
 
@@ -192,7 +201,8 @@ const App = () => {
   }
 
   scrollStop(() => {
-    removeMatrix();
+    // removeMatrix();
+    matrix.removeMatrix();
   });
 
   /**
@@ -201,11 +211,13 @@ const App = () => {
    */
 
   const scrollTouchStart = () => {
-    addMatrix();
+    // addMatrix();
+    matrix.addMatrix();
   };
 
   const scrollTouchEnd = () => {
-    removeMatrix();
+    // removeMatrix();
+    matrix.removeMatrix();
 
     if (checkDivsPosition() === undefined) return console.log("undef");
 
