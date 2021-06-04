@@ -92,7 +92,6 @@ const App = () => {
       anchorAbout === undefined
     )
       return;
-
     const posHome = anchorHome.getBoundingClientRect().top;
     const posProj = anchorProject.getBoundingClientRect().top;
     const posAbout = anchorAbout.getBoundingClientRect().top;
@@ -100,14 +99,10 @@ const App = () => {
      * @desc creates arr with all the values
      */
     let arrPos = [
-      { anchor: "#home", pos: posHome },
-      { anchor: "#projects", pos: posProj },
-      { anchor: "#about", pos: posAbout },
+      { anchor: "#home", pos: posHome, offsetTop: anchorHome.offsetTop },
+      { anchor: "#projects", pos: posProj, offsetTop: anchorProject.offsetTop },
+      { anchor: "#about", pos: posAbout, offsetTop: anchorAbout.offsetTop },
     ];
-
-    // const closestDiv = arrPos.reduce(function (prev, curr) {
-    //   return prev.pos > curr.pos ? prev : curr;
-    // });
 
     const closestDiv = arrPos.reduce((a, b) => {
       return Math.abs(b.pos - 0) < Math.abs(a.pos - 0) ? b : a;
@@ -124,6 +119,8 @@ const App = () => {
     var mouseIsDown = false;
 
     window.addEventListener("scroll", checkDivsPosition);
+    window.addEventListener("touchstart", scrollTouchStart);
+    window.addEventListener("touchend", scrollTouchEnd);
     // window.addEventListener("mousedown", function () {
     //   console.log("mousedown");
     //   // mouseIsDown = true;
@@ -192,16 +189,74 @@ const App = () => {
     // console.log("stop", arrClasses.join(" "));
   });
 
-  const scrollToDiv = () => {
+  /**
+   * @desc creating matrix with js
+   */
+
+  // let x = 50;
+  // let y = 100;
+  // let z = 0;
+
+  let translationMatrixStart = [
+    0.34299999999999997, 0, 0.17, 0, 0, 0.46199999999999997, 0.64, 0.000144,
+    -0.17, -0.64, 0.7546, 0, 20, 10, 100, 1,
+  ];
+
+  let translationMatrixStop = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+
+  function matrixArrayToCssMatrix(array) {
+    return "matrix3d(" + array.join(",") + ")";
+  }
+
+  // Returns a string: "matrix3d(..."
+  let matrix3dStart = matrixArrayToCssMatrix(translationMatrixStart);
+  let matrix3dStop = matrixArrayToCssMatrix(translationMatrixStop);
+
+  // Set the transform
+
+  const scrollTouchStart = () => {
+    containerRef.current.style.transition = "all 1s ease 0.1s";
+    containerRef.current.style.transform = matrix3dStart;
     // console.log("into", document.querySelector("#about"));
     // console.log("into", anchorAbout);
-    anchorAbout.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "end",
-    });
+    // anchorAbout.scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "nearest",
+    //   inline: "end",
+    // });
     // .scrollIntoView(true);
     // console.log(checkDivsPosition().anchor);
+    console.log("start");
+  };
+
+  const scrollTouchEnd = () => {
+    containerRef.current.style.transition = "all 1s ease 0.1s";
+    containerRef.current.style.transform = matrix3dStop;
+    // console.log(anchorAbout);
+    // console.log("into", document.querySelector("#about"));
+    // console.log("into", anchorAbout);
+    // anchorAbout.scrollIntoView({
+    //   behavior: "smooth",
+    //   // block: "nearest",
+    //   // inline: "end",
+    // });
+    console.log("checkDivsPosition", checkDivsPosition());
+
+    if (checkDivsPosition() === undefined) return console.log("undef");
+
+    console.log("window", window);
+    setTimeout(() => {
+      window.scrollTo(0, checkDivsPosition().offsetTop);
+    }, 300);
+
+    // document.querySelector("#about").scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "start",
+    //   inline: "start",
+    // });
+
+    // console.log(checkDivsPosition().anchor);
+
     console.log("end");
   };
 
@@ -211,9 +266,9 @@ const App = () => {
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <div
-            // onTouchStart={() => console.log("onTouchStart")}
+            // onTouchStart={scrollTouchStart}
             // onTouchEnd={() => console.log("onTouchEnd")}
-            onTouchEnd={scrollToDiv}
+            // onTouchEnd={scrollTouchEnd}
             // onTouchEndCapture={() => console.log("onTouchEndCapture")}
             // onTouchEndCapture={scrollToDiv}
             // onTouchMove={scrollToDiv}
