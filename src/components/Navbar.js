@@ -19,7 +19,7 @@ const Navbar = (props) => {
 
   const updateNavbar = props.update;
 
-  console.log(updateNavbar);
+  // console.log(updateNavbar);
 
   const fadingMenu = useTransition(updateNavbar, {
     from: { opacity: 0 },

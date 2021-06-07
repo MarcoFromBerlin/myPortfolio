@@ -159,7 +159,7 @@ const App = () => {
       "scroll",
       function (event) {
         if (containerRef.current === undefined) return;
-
+        console.log("start");
         setUpdateNavbar(false);
         // setTimeout(() => {
         matrix.addMatrix();
@@ -174,6 +174,7 @@ const App = () => {
   }
 
   scrollStop(() => {
+    console.log("stop");
     setUpdateNavbar(true);
     matrix.removeMatrix();
   });
