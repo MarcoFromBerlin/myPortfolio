@@ -3,7 +3,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import { HashLink as NavLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  console.log(props);
   const location = useLocation().hash.toString().substr(1);
 
   const [scrolled, setScrolled] = useState(false);

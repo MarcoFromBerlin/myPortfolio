@@ -8,8 +8,6 @@
  */
 
 export function useMatrix(targetDiv, matrix, speed = 1) {
-  console.log(targetDiv, Array.isArray(matrix));
-
   if (!Array.isArray(matrix))
     return console.error(
       "Not valid array provided. Matrix MUST be an array of 16 numbers"

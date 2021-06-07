@@ -146,29 +146,29 @@ const Projects = (props) => {
    * @description gets the Slides with the state modalContent
    */
 
-  const ModalProject = forwardRef((props, ref) => {
-    const { ...children } = props;
+  // const ModalProject = forwardRef((props, ref) => {
+  //   const { ...children } = props;
 
-    return (
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-        ref={ref}
-      >
-        <Fade in={open}>
-          <div className={classes.paperModal}>{children.content}</div>
-        </Fade>
-      </Modal>
-    );
-  });
+  //   return (
+  //     <Modal
+  //       aria-labelledby="transition-modal-title"
+  //       aria-describedby="transition-modal-description"
+  //       className={classes.modal}
+  //       open={open}
+  //       onClose={handleClose}
+  //       closeAfterTransition
+  //       BackdropComponent={Backdrop}
+  //       BackdropProps={{
+  //         timeout: 500,
+  //       }}
+  //       ref={ref}
+  //     >
+  //       <Fade in={open}>
+  //         <div className={classes.paperModal}>{children.content}</div>
+  //       </Fade>
+  //     </Modal>
+  //   );
+  // });
 
   return (
     <div

@@ -129,6 +129,10 @@ const App = () => {
     window.addEventListener("scroll", checkDivsPosition);
     // window.addEventListener("touchstart", scrollTouchStart);
     // window.addEventListener("touchend", scrollTouchEnd);
+    /**
+     * @desc targets the container instead the window
+     * to exclude the navbar
+     */
     containerRef.current.addEventListener("touchstart", scrollTouchStart);
     containerRef.current.addEventListener("touchend", scrollTouchEnd);
   });
@@ -193,7 +197,6 @@ const App = () => {
       function (event) {
         if (containerRef.current === undefined) return;
 
-        // addMatrix();
         matrix.addMatrix();
 
         window.clearTimeout(isScrolling);
@@ -205,7 +208,6 @@ const App = () => {
   }
 
   scrollStop(() => {
-    // removeMatrix();
     matrix.removeMatrix();
   });
 
@@ -215,19 +217,13 @@ const App = () => {
    */
 
   const scrollTouchStart = () => {
-    // e.preventDefault();
-    // addMatrix();
     matrix.addMatrix();
   };
 
   const scrollTouchEnd = () => {
-    // e.preventDefault();
-    // removeMatrix();
     matrix.removeMatrix();
 
-    console.log(checkDivsPosition());
-
-    if (checkDivsPosition() === undefined) return console.log("undef");
+    if (checkDivsPosition() === undefined) return;
 
     /**
      * @uses checkDivsPosition
@@ -236,14 +232,14 @@ const App = () => {
 
     setTimeout(() => {
       window.scrollTo(0, checkDivsPosition().offsetTop);
-    }, 300);
+    }, 500);
   };
 
   return (
     <Router>
       <MuiThemeProvider theme={theme}>
         <Fragment>
-          <Navbar />
+          <Navbar update={"yes"} />
           <div ref={containerRef} className={`container`}>
             <Home windowHeight={height} />
             <Projects windowHeight={height} />
