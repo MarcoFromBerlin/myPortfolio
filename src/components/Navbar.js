@@ -8,7 +8,9 @@ const Navbar = (props) => {
   /**
    * @desc to get the anchor
    */
-  const location = useLocation().hash.toString().substr(1);
+
+  // const location = useLocation().hash.toString().substr(1);
+  const location = props.currentView.substring(1);
 
   /**
    * @desc animation fade in out
@@ -85,7 +87,7 @@ const Navbar = (props) => {
                 <li>
                   <NavLink
                     exact
-                    className={location === "" ? "menu__current__item" : ""}
+                    className={location === "home" ? "menu__current__item" : ""}
                     smooth
                     to="#"
                   >

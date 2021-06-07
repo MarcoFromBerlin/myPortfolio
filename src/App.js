@@ -58,7 +58,6 @@ library.add(
  */
 const App = () => {
   const containerRef = useRef();
-  const [arrClasses, setArrClasses] = useState([]);
 
   const [anchorHome, setAnchorHome] = useState();
   const [anchorProject, setAnchorProject] = useState();
@@ -159,22 +158,20 @@ const App = () => {
       "scroll",
       function (event) {
         if (containerRef.current === undefined) return;
-        console.log("start");
+
         setUpdateNavbar(false);
-        // setTimeout(() => {
+
         matrix.addMatrix();
 
         window.clearTimeout(isScrolling);
 
         isScrolling = setTimeout(callback, refresh);
-        // }, 1200);
       },
       false
     );
   }
 
   scrollStop(() => {
-    console.log("stop");
     setUpdateNavbar(true);
     matrix.removeMatrix();
   });
@@ -208,7 +205,14 @@ const App = () => {
     <Router>
       <MuiThemeProvider theme={theme}>
         <Fragment>
-          <Navbar update={updateNavbar} />
+          <Navbar
+            update={updateNavbar}
+            currentView={
+              checkDivsPosition() === undefined
+                ? ""
+                : checkDivsPosition().anchor
+            }
+          />
           <div ref={containerRef} className={`container`}>
             <Home windowHeight={height} />
             <Projects windowHeight={height} />
