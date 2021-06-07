@@ -84,8 +84,9 @@ const useStyles = makeStyles((theme) => ({
 const Projects = (props) => {
   const { windowHeight } = props;
 
-  const classes = useStyles();
   const ref = createRef();
+
+  const classes = useStyles();
   const projectWindow = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();

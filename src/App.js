@@ -127,8 +127,10 @@ const App = () => {
    */
   useEffect(() => {
     window.addEventListener("scroll", checkDivsPosition);
-    window.addEventListener("touchstart", scrollTouchStart);
-    window.addEventListener("touchend", scrollTouchEnd);
+    // window.addEventListener("touchstart", scrollTouchStart);
+    // window.addEventListener("touchend", scrollTouchEnd);
+    containerRef.current.addEventListener("touchstart", scrollTouchStart);
+    containerRef.current.addEventListener("touchend", scrollTouchEnd);
   });
 
   let translationMatrixStart = [
@@ -213,14 +215,18 @@ const App = () => {
    */
 
   const scrollTouchStart = () => {
+    // e.preventDefault();
     // addMatrix();
     matrix.addMatrix();
   };
 
   const scrollTouchEnd = () => {
+    // e.preventDefault();
     // removeMatrix();
     matrix.removeMatrix();
+
     console.log(checkDivsPosition());
+
     if (checkDivsPosition() === undefined) return console.log("undef");
 
     /**
@@ -237,8 +243,8 @@ const App = () => {
     <Router>
       <MuiThemeProvider theme={theme}>
         <Fragment>
+          <Navbar />
           <div ref={containerRef} className={`container`}>
-            <Navbar />
             <Home windowHeight={height} />
             <Projects windowHeight={height} />
             <About windowHeight={height} />
