@@ -104,20 +104,20 @@ const Projects = (props) => {
    * @param {*} obj is a slide
    * that gets forwared to the modal
    */
-  const handleOpen = (obj) => {
-    setOpen(true);
-    setModalContents(obj);
-  };
+  // const handleOpen = (obj) => {
+  //   setOpen(true);
+  //   setModalContents(obj);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
-  const goToProject = (project) => {
-    project.current.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+  // const goToProject = (project) => {
+  //   project.current.scrollIntoView({
+  //     behavior: "smooth",
+  //   });
+  // };
 
   /**
    * @description obj to handle the show details thumbs

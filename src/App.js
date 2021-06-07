@@ -67,6 +67,8 @@ const App = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
 
+  const [updateNavbar, setUpdateNavbar] = useState(true);
+
   const updateDimensions = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
@@ -116,10 +118,6 @@ const App = () => {
     });
 
     return closestDiv;
-
-    // console.log("Home", anchorHome.getBoundingClientRect().top);
-    // console.log("Project", anchorProject.getBoundingClientRect().top);
-    // console.log("About", anchorAbout.getBoundingClientRect().top);
   };
 
   /**
@@ -127,8 +125,6 @@ const App = () => {
    */
   useEffect(() => {
     window.addEventListener("scroll", checkDivsPosition);
-    // window.addEventListener("touchstart", scrollTouchStart);
-    // window.addEventListener("touchend", scrollTouchEnd);
     /**
      * @desc targets the container instead the window
      * to exclude the navbar
@@ -137,50 +133,17 @@ const App = () => {
     containerRef.current.addEventListener("touchend", scrollTouchEnd);
   });
 
+  /**
+   * @desc pass arguments to hook
+   */
   let translationMatrixStart = [
     0.34299999999999997, 0, 0.17, 0, 0, 0.46199999999999997, 0.64, 0.000144,
     -0.17, -0.64, 0.7546, 0, 20, 10, 100, 1,
   ];
 
-  // console.log(useMatrix(containerRef, translationMatrixStart));
-
   const [matrix, setMatrix] = useState(
     useMatrix(containerRef, translationMatrixStart, 0.75)
   );
-
-  /**
-   * @desc matrix3d JS
-   * used for desktop and mobile
-   */
-
-  // let translationMatrixStart = [
-  //   0.34299999999999997, 0, 0.17, 0, 0, 0.46199999999999997, 0.64, 0.000144,
-  //   -0.17, -0.64, 0.7546, 0, 20, 10, 100, 1,
-  // ];
-
-  // let translationMatrixStop = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
-
-  // function matrixArrayToCssMatrix(array) {
-  //   return "matrix3d(" + array.join(",") + ")";
-  // }
-
-  // // Returns a string: "matrix3d(..."
-  // let matrix3dStart = matrixArrayToCssMatrix(translationMatrixStart);
-  // let matrix3dStop = matrixArrayToCssMatrix(translationMatrixStop);
-
-  // const addMatrix = () => {
-  //   containerRef.current.style.transition = "all 0.75s ease 0.1s";
-  //   containerRef.current.style.transform = matrix3dStart;
-  // };
-
-  // const removeMatrix = () => {
-  //   containerRef.current.style.transition = "all 0.75s ease 0.1s";
-  //   containerRef.current.style.transform = matrix3dStop;
-  //   setTimeout(() => {
-  //     containerRef.current.style.transition = null;
-  //     containerRef.current.style.transform = null;
-  //   }, 100);
-  // };
 
   /**
    * @desc function to start/stop matrix3d
@@ -197,17 +160,21 @@ const App = () => {
       function (event) {
         if (containerRef.current === undefined) return;
 
+        setUpdateNavbar(false);
+        // setTimeout(() => {
         matrix.addMatrix();
 
         window.clearTimeout(isScrolling);
 
         isScrolling = setTimeout(callback, refresh);
+        // }, 1200);
       },
       false
     );
   }
 
   scrollStop(() => {
+    setUpdateNavbar(true);
     matrix.removeMatrix();
   });
 
@@ -217,6 +184,7 @@ const App = () => {
    */
 
   const scrollTouchStart = () => {
+    setUpdateNavbar(true);
     matrix.addMatrix();
   };
 
@@ -239,7 +207,7 @@ const App = () => {
     <Router>
       <MuiThemeProvider theme={theme}>
         <Fragment>
-          <Navbar update={"yes"} />
+          <Navbar update={updateNavbar} />
           <div ref={containerRef} className={`container`}>
             <Home windowHeight={height} />
             <Projects windowHeight={height} />
