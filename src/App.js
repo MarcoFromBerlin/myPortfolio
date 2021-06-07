@@ -220,7 +220,7 @@ const App = () => {
   const scrollTouchEnd = () => {
     // removeMatrix();
     matrix.removeMatrix();
-
+    console.log(checkDivsPosition());
     if (checkDivsPosition() === undefined) return console.log("undef");
 
     /**
