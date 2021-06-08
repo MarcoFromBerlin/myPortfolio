@@ -87,7 +87,8 @@ const Projects = (props) => {
   const ref = createRef();
 
   const classes = useStyles();
-  const projectWindow = useRef();
+  const containerWindow = useRef();
+  const projectsWindow = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
@@ -170,29 +171,30 @@ const Projects = (props) => {
   //   );
   // });
 
-  const rotate = () => {
-    console.log("rotate");
-    console.log(projectWindow.current);
-    if (projectWindow.current === undefined) return;
+  const flip = () => {
+    console.log("rotateY(180deg)");
+    console.log(containerWindow.current);
+    if (containerWindow.current === undefined) return;
 
-    projectWindow.current.classList.add("rotate__project");
+    /**
+     * @desc add rotation to both of the divs
+     */
+    containerWindow.current.classList.add("flip__project");
+    projectsWindow.current.classList.add("flip__project");
   };
 
   return (
     <div
-      ref={projectWindow}
+      ref={containerWindow}
       id="projects"
-      className="home__main__wrap"
+      className="home__main__wrap flip-card"
       style={{ height: windowHeight }}
     >
-      {/* MODAL 
-      /*
-       * @description gets the content from the state modalContents
-      */}
-      {/* <ModalProject ref={ref} content={modalContents} /> */}
-      {/* MODAL */}
-      <div className="row home__c center-x-y projects">
-        <div className="col-12 t-center home__main projects__window">
+      <div
+        ref={projectsWindow}
+        className="row home__c center-x-y projects flip-card-inner"
+      >
+        <div className="col-12 t-center home__main projects__window projects__summary">
           <h1 className="section__title">Projects</h1>
           <h4 className="section__subtitle">
             A few projects I made using different tecnologies
@@ -203,14 +205,14 @@ const Projects = (props) => {
               className="col-4 project__thumb-left btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              // onClick={() => handleOpen(<Modal01 />)}
+              onClick={flip}
             >
               <NavLink
                 exact
                 // className={location === "about" ? "menu__current__item" : ""}
                 smooth
                 to="#mysecondhandbookstore"
-                onClick={rotate}
+                // onClick={flip}
               >
                 <div>
                   <Slide
@@ -433,17 +435,23 @@ const Projects = (props) => {
             </NavLink>
           </button>
         </div>
-      </div>
 
-      <div className="modals__window hide-phone hide-tablet" ref={projectOne}>
+        <div className="project">
+          <Modal01 />
+        </div>
+      </div>
+      {/* <div className="modals__window hide-phone1 hide-tablet1" ref={projectOne}>
         <Modal01 />
       </div>
-      <div className="modals__window hide-phone hide-tablet" ref={projectTwo}>
+      <div className="modals__window hide-phone1 hide-tablet1" ref={projectTwo}>
         <Modal02 />
       </div>
-      <div className="modals__window hide-phone hide-tablet" ref={projectThree}>
+      <div
+        className="modals__window hide-phone1 hide-tablet1"
+        ref={projectThree}
+      >
         <Modal03 />
-      </div>
+      </div> */}
     </div>
   );
 };
