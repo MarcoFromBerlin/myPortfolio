@@ -6,6 +6,13 @@ import { useLocation } from "react-router-dom";
 const Navbar = forwardRef((props, ref) => {
   const location = useLocation().hash.toString().substr(1);
 
+  /**
+   * @desc Sends to parent the page to visit
+   */
+  const sendData = (to) => {
+    props.goTo(to);
+  };
+
   return (
     <Fragment>
       <div className={`projects__navbar row-1"`}>
@@ -17,6 +24,7 @@ const Navbar = forwardRef((props, ref) => {
                 // className={location === "" ? "menu__current__item" : ""}
                 smooth
                 to="#mysecondhandbookstore"
+                onClick={() => sendData("modal01")}
               >
                 My Second Hand Bookstore
               </NavLink>
@@ -28,6 +36,7 @@ const Navbar = forwardRef((props, ref) => {
                 // className={location === "projects" ? "menu__current__item" : ""}
                 smooth
                 to="#letstalk"
+                onClick={() => sendData("modal02")}
               >
                 Let's talk about the weather
               </NavLink>
@@ -39,6 +48,7 @@ const Navbar = forwardRef((props, ref) => {
                 smooth
                 to="#spotifylibray"
                 // onClick={goToProject(ref)}
+                onClick={() => sendData("modal03")}
               >
                 Spotify Library
               </NavLink>

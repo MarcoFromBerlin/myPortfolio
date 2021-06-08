@@ -24,7 +24,6 @@
   -moz-animation: AnimationName 7s ease infinite;
   animation: AnimationName 7s ease infinite;
 
-  border: 3px solid red;
   perspective: 1000px;
 }
 
@@ -77,6 +76,9 @@
 }
 
 .projects__navbar {
+  position: absolute;
+  z-index: 1;
+
   height: 35px !important;
   letter-spacing: 1px;
   // background-color: $eerie-black;

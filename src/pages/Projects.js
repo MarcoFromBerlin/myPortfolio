@@ -8,6 +8,8 @@ import React, {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink as NavLink } from "react-router-hash-link";
 
+import ProjectNavbar from "../components/ProjectNavbar";
+
 /**
  * @description Mat UI
  */
@@ -84,7 +86,8 @@ const useStyles = makeStyles((theme) => ({
 const Projects = (props) => {
   const { windowHeight } = props;
 
-  const [projectsBack, setProjectsBack] = useState(<Modal01 />);
+  const [projectsBack, setProjectsBack] = useState();
+  const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
   const ref = createRef();
 
@@ -173,12 +176,54 @@ const Projects = (props) => {
   //     </Modal>
   //   );
   // });
+  const components = {
+    photo: "PhotoStory",
+    video: "VideoStory",
+  };
+
+  function Story(props) {
+    // Correct! JSX type can be a capitalized variable.
+    const SpecificStory = components[props.storyType];
+    console.log(SpecificStory);
+    // console.log(SpecificStory);
+    return <SpecificStory story={props.story} />;
+  }
+  // console.log(<Story storyType={"photo1"} />);
 
   /**
    * @desc sets the back of the project
    */
   const flip = (obj) => {
-    console.log("rotateY(180deg)", obj);
+    // let component =
+    //   "<" +
+    //   obj.substring(0, 1).toUpperCase() +
+    //   obj.substring(1) +
+    //   " windowHeight={windowHeight} " +
+    //   "/>";
+
+    const components = {
+      modal01: <Modal01 windowHeight={windowHeight} />,
+      modal02: <Modal02 windowHeight={windowHeight} />,
+      modal03: <Modal03 windowHeight={windowHeight} />,
+    };
+    console.log(components[obj]);
+    // const Component = (props) => {
+    //   console.log(components.modal1);
+    //   // Correct! JSX type can be a capitalized variable.
+    //   const SpecificStory = components[props];
+    //   console.log(props);
+    //   return <SpecificStory windowHeight={windowHeight} />;
+    // };
+    // const Component = (props) => {
+    //   console.log(components.modal1);
+    //   // Correct! JSX type can be a capitalized variable.
+    //   const SpecificStory = components[props];
+    //   console.log(props);
+    //   return React.createElement(SpecificStory, { windowHeight: windowHeight });
+    //   // return <SpecificStory windowHeight={windowHeight} />;
+    // };
+    // console.log(Component(obj));
+
     if (containerWindow.current === undefined) return;
 
     /**
@@ -186,10 +231,12 @@ const Projects = (props) => {
      */
     // containerWindow.current.classList.add("flip__project");
     projectsWindow.current.classList.add("flip__project");
-
-    return setProjectsBack(obj);
+    setShowProjectsMenu(true);
+    // return setProjectsBack(obj);
+    return setProjectsBack(components[obj]);
+    // return <Component props={obj} />;
   };
-
+  // console.log(<Modal01 windowHeight={windowHeight} />);
   return (
     <div
       ref={containerWindow}
@@ -197,6 +244,8 @@ const Projects = (props) => {
       className="home__main__wrap flip-card"
       style={{ height: windowHeight }}
     >
+      {showProjectsMenu ? <ProjectNavbar goTo={(to) => flip(to)} /> : null}
+
       <div
         ref={projectsWindow}
         className="row home__c center-x-y projects flip-card-inner"
@@ -212,7 +261,8 @@ const Projects = (props) => {
               className="col-4 project__thumb-left btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              onClick={() => flip(<Modal01 />)}
+              onClick={() => flip("modal01")}
+              // onClick={() => flip(<Modal01 windowHeight={windowHeight} />)}
             >
               <NavLink
                 exact
@@ -256,7 +306,7 @@ const Projects = (props) => {
               className="col-4 project__thumb-center btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "two", value: true })}
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-              onClick={() => flip(<Modal02 />)}
+              onClick={() => flip(<Modal02 windowHeight={windowHeight} />)}
             >
               <NavLink
                 exact
@@ -300,7 +350,7 @@ const Projects = (props) => {
               className="col-4 project__thumb-right btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-              onClick={() => flip(<Modal03 />)}
+              onClick={() => flip(<Modal03 windowHeight={windowHeight} />)}
               style={{
                 backgroundImage: `url(${imageSlide03})`,
                 backgroundSize: 400,

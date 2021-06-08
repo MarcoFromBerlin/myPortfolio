@@ -11,11 +11,17 @@ import mongoDbIcon from "../images/mongoDb.png";
 import reduxIcon from "../images/redux.png";
 import sc_schema_01 from "../images/sc_schema_01.png";
 
-const Modal01 = () => {
+const Modal01 = (props) => {
+  const { windowHeight } = props;
+
   return (
-    <div id="mysecondhandbookstore" className="modal">
+    <div
+      id="mysecondhandbookstore"
+      className="modal"
+      style={{ height: windowHeight }}
+    >
       <div className="modal__container__menu">
-        <ProjectNavbar />
+        {/* <ProjectNavbar /> */}
         <div className="row modal__container">
           <div className="col-12">
             <h2>My Secondhand Book Store</h2>

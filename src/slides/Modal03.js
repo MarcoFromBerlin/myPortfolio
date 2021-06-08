@@ -11,11 +11,12 @@ import mongoDbIcon from "../images/mongoDb.png";
 import reduxIcon from "../images/redux.png";
 import sc_schema_01 from "../images/sc_schema_01.png";
 
-const Modal03 = () => {
+const Modal03 = (props) => {
+  const { windowHeight } = props;
   return (
-    <div id="spotifylibray" className="modal">
+    <div id="spotifylibray" className="modal" style={{ height: windowHeight }}>
       <div className="modal__container__menu">
-        <ProjectNavbar />
+        {/* <ProjectNavbar /> */}
         <div className="row modal__container">
           <div className="col-12">
             <h2>Spotify Library</h2>
