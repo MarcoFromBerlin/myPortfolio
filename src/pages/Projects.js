@@ -84,21 +84,24 @@ const useStyles = makeStyles((theme) => ({
 const Projects = (props) => {
   const { windowHeight } = props;
 
+  const [projectsBack, setProjectsBack] = useState(<Modal01 />);
+
   const ref = createRef();
 
   const classes = useStyles();
   const containerWindow = useRef();
   const projectsWindow = useRef();
+
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
 
-  /**
-   * @description modal handles
-   */
+  // /**
+  //  * @description modal handles
+  //  */
 
-  const [open, setOpen] = useState(false);
-  const [modalContents, setModalContents] = useState({});
+  // const [open, setOpen] = useState(false);
+  // const [modalContents, setModalContents] = useState({});
 
   /**
    *
@@ -171,16 +174,20 @@ const Projects = (props) => {
   //   );
   // });
 
-  const flip = () => {
-    console.log("rotateY(180deg)");
-    console.log(containerWindow.current);
+  /**
+   * @desc sets the back of the project
+   */
+  const flip = (obj) => {
+    console.log("rotateY(180deg)", obj);
     if (containerWindow.current === undefined) return;
 
     /**
      * @desc add rotation to both of the divs
      */
-    containerWindow.current.classList.add("flip__project");
+    // containerWindow.current.classList.add("flip__project");
     projectsWindow.current.classList.add("flip__project");
+
+    return setProjectsBack(obj);
   };
 
   return (
@@ -205,7 +212,7 @@ const Projects = (props) => {
               className="col-4 project__thumb-left btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
               onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              onClick={flip}
+              onClick={() => flip(<Modal01 />)}
             >
               <NavLink
                 exact
@@ -249,7 +256,7 @@ const Projects = (props) => {
               className="col-4 project__thumb-center btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "two", value: true })}
               onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-              // onClick={() => handleOpen(<Modal02 />)}
+              onClick={() => flip(<Modal02 />)}
             >
               <NavLink
                 exact
@@ -293,7 +300,7 @@ const Projects = (props) => {
               className="col-4 project__thumb-right btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-              // onClick={() => goToProject(projectThree)}
+              onClick={() => flip(<Modal03 />)}
               style={{
                 backgroundImage: `url(${imageSlide03})`,
                 backgroundSize: 400,
@@ -437,7 +444,9 @@ const Projects = (props) => {
         </div>
 
         <div className="project">
-          <Modal01 />
+          {/* <Modal01 /> */}
+          {projectsBack}
+          {/* <ProjectsBack /> */}
         </div>
       </div>
       {/* <div className="modals__window hide-phone1 hide-tablet1" ref={projectOne}>
