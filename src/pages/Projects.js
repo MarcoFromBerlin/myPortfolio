@@ -170,6 +170,14 @@ const Projects = (props) => {
   //   );
   // });
 
+  const rotate = () => {
+    console.log("rotate");
+    console.log(projectWindow.current);
+    if (projectWindow.current === undefined) return;
+
+    projectWindow.current.classList.add("rotate__project");
+  };
+
   return (
     <div
       ref={projectWindow}
@@ -202,7 +210,7 @@ const Projects = (props) => {
                 // className={location === "about" ? "menu__current__item" : ""}
                 smooth
                 to="#mysecondhandbookstore"
-                // onClick={goToProject(ref)}
+                onClick={rotate}
               >
                 <div>
                   <Slide

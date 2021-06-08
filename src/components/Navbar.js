@@ -7,6 +7,8 @@ import { useSpring, animated, useTransition } from "@react-spring/web";
 const Navbar = (props) => {
   /**
    * @desc to get the anchor
+   * location as prop allows to set current item
+   * with mobile scrolling
    */
 
   // const location = useLocation().hash.toString().substr(1);
