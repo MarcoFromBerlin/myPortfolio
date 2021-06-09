@@ -21,15 +21,15 @@ const Modal03 = (props) => {
       <div className="col-12">
         <h4>Web App to organize by category your Spotify Collection</h4>
       </div>
-      <div className="col-12">
+      {/* <div className="col-12">
         <h5>App made with:</h5>
-      </div>
+      </div> */}
       <div className="col-12">
         <div className="slide__icons">
-          <FontAwesomeIcon icon={["fab", "react"]} size="3x" />
+          <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
           <img src={reduxIcon} className="modal__png__icon" alt="Redux Logo" />
-          <FontAwesomeIcon icon={["fab", "node-js"]} size="3x" />
-          <FontAwesomeIcon icon={["fab", "chrome"]} size="3x" />
+          <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+          <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
           <img
             src={mongoDbIcon}
             className="modal__svg__icon"
