@@ -86,7 +86,9 @@ const useStyles = makeStyles((theme) => ({
 const Projects = (props) => {
   const { windowHeight } = props;
 
+  const [projectsFront, setProjectsFront] = useState();
   const [projectsBack, setProjectsBack] = useState();
+  // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
   const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
   const ref = createRef();
@@ -150,79 +152,14 @@ const Projects = (props) => {
   };
 
   /**
-   * @description gets the Slides with the state modalContent
-   */
-
-  // const ModalProject = forwardRef((props, ref) => {
-  //   const { ...children } = props;
-
-  //   return (
-  //     <Modal
-  //       aria-labelledby="transition-modal-title"
-  //       aria-describedby="transition-modal-description"
-  //       className={classes.modal}
-  //       open={open}
-  //       onClose={handleClose}
-  //       closeAfterTransition
-  //       BackdropComponent={Backdrop}
-  //       BackdropProps={{
-  //         timeout: 500,
-  //       }}
-  //       ref={ref}
-  //     >
-  //       <Fade in={open}>
-  //         <div className={classes.paperModal}>{children.content}</div>
-  //       </Fade>
-  //     </Modal>
-  //   );
-  // });
-  const components = {
-    photo: "PhotoStory",
-    video: "VideoStory",
-  };
-
-  function Story(props) {
-    // Correct! JSX type can be a capitalized variable.
-    const SpecificStory = components[props.storyType];
-    console.log(SpecificStory);
-    // console.log(SpecificStory);
-    return <SpecificStory story={props.story} />;
-  }
-  // console.log(<Story storyType={"photo1"} />);
-
-  /**
    * @desc sets the back of the project
    */
   const flip = (obj) => {
-    // let component =
-    //   "<" +
-    //   obj.substring(0, 1).toUpperCase() +
-    //   obj.substring(1) +
-    //   " windowHeight={windowHeight} " +
-    //   "/>";
-
     const components = {
       modal01: <Modal01 windowHeight={windowHeight} />,
       modal02: <Modal02 windowHeight={windowHeight} />,
       modal03: <Modal03 windowHeight={windowHeight} />,
     };
-    console.log(components[obj]);
-    // const Component = (props) => {
-    //   console.log(components.modal1);
-    //   // Correct! JSX type can be a capitalized variable.
-    //   const SpecificStory = components[props];
-    //   console.log(props);
-    //   return <SpecificStory windowHeight={windowHeight} />;
-    // };
-    // const Component = (props) => {
-    //   console.log(components.modal1);
-    //   // Correct! JSX type can be a capitalized variable.
-    //   const SpecificStory = components[props];
-    //   console.log(props);
-    //   return React.createElement(SpecificStory, { windowHeight: windowHeight });
-    //   // return <SpecificStory windowHeight={windowHeight} />;
-    // };
-    // console.log(Component(obj));
 
     if (containerWindow.current === undefined) return;
 
@@ -230,13 +167,16 @@ const Projects = (props) => {
      * @desc add rotation to both of the divs
      */
     // containerWindow.current.classList.add("flip__project");
-    projectsWindow.current.classList.add("flip__project");
+    projectsWindow.current.classList.remove("flip__project");
+
+    setTimeout(() => {
+      projectsWindow.current.classList.add("flip__project");
+    }, 600);
+
     setShowProjectsMenu(true);
-    // return setProjectsBack(obj);
     return setProjectsBack(components[obj]);
-    // return <Component props={obj} />;
   };
-  // console.log(<Modal01 windowHeight={windowHeight} />);
+
   return (
     <div
       ref={containerWindow}
@@ -249,6 +189,7 @@ const Projects = (props) => {
       <div
         ref={projectsWindow}
         className="row home__c center-x-y projects flip-card-inner"
+        // style={{ height: windowHeight }}
       >
         <div className="col-12 t-center home__main projects__window projects__summary">
           <h1 className="section__title">Projects</h1>
