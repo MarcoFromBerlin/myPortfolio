@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProjectsSummary = (props) => {
-  const { windowHeight } = props;
+  const { windowHeight, flip } = props;
 
   const [projectsFront, setProjectsFront] = useState();
   const [projectsBack, setProjectsBack] = useState();
@@ -118,35 +118,36 @@ const ProjectsSummary = (props) => {
   /**
    * @desc sets the back of the project
    */
-  const flip = (obj) => {
-    const components = {
-      modal01: <Modal01 windowHeight={windowHeight} />,
-      modal02: <Modal02 windowHeight={windowHeight} />,
-      modal03: <Modal03 windowHeight={windowHeight} />,
-    };
+  // const flip = (obj) => {
+  //   const components = {
+  //     modal01: <Modal01 windowHeight={windowHeight} />,
+  //     modal02: <Modal02 windowHeight={windowHeight} />,
+  //     modal03: <Modal03 windowHeight={windowHeight} />,
+  //   };
 
-    console.log(obj);
-    if (containerWindow.current === undefined) return;
-    /**
-     * @desc add rotation to both of the divs
-     */
-    // containerWindow.current.classList.add("flip__project");
-    projectsWindow.current.classList.remove("flip__project");
+  //   // console.log(obj);
+  //   if (containerWindow.current === undefined) return;
+  //   /**
+  //    * @desc add rotation to both of the divs
+  //    */
+  //   // containerWindow.current.classList.add("flip__project");
+  //   projectsWindow.current.classList.remove("flip__project");
 
-    setTimeout(() => {
-      projectsWindow.current.classList.add("flip__project");
-    }, 600);
+  //   setTimeout(() => {
+  //     projectsWindow.current.classList.add("flip__project");
+  //   }, 600);
 
-    setShowProjectsMenu(true);
-    return setProjectsBack(components[obj]);
-  };
+  //   setShowProjectsMenu(true);
+  //   return setProjectsBack(components[obj]);
+  // };
 
   return (
-    <div className="col-12 t-center home__main projects__window projects__summary">
-      <h1 className="section__title">Projects</h1>
+    // <div className="col-12 t-center home__main projects__window projects__summary">
+    <>
+      {/* <h1 className="section__title">Projects</h1>
       <h4 className="section__subtitle">
         A few projects I made using different tecnologies
-      </h4>
+      </h4> */}
       {/* WEB VERSION */}
       <div className="row project__thumb__container hide-phone hide-tablet">
         <button
@@ -198,7 +199,7 @@ const ProjectsSummary = (props) => {
           className="col-4 project__thumb-center btn-no-css"
           onMouseEnter={() => handleOver({ thumb: "two", value: true })}
           onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-          onClick={() => flip(<Modal02 windowHeight={windowHeight} />)}
+          onClick={() => flip("modal02")}
         >
           <NavLink
             exact
@@ -240,7 +241,7 @@ const ProjectsSummary = (props) => {
           className="col-4 project__thumb-right btn-no-css"
           onMouseEnter={() => handleOver({ thumb: "three", value: true })}
           onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-          onClick={() => flip(<Modal03 windowHeight={windowHeight} />)}
+          onClick={() => flip("modal03")}
           style={{
             backgroundImage: `url(${imageSlide03})`,
             backgroundSize: 400,
@@ -284,7 +285,7 @@ const ProjectsSummary = (props) => {
           </NavLink>
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

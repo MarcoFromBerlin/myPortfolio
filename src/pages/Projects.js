@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   useRef,
   useEffect,
+  useCallback,
 } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink as NavLink } from "react-router-hash-link";
@@ -86,7 +87,9 @@ const useStyles = makeStyles((theme) => ({
 const Projects = (props) => {
   const { windowHeight } = props;
 
-  const [projectsFront, setProjectsFront] = useState(<ProjectsSummary />);
+  const [projectsFront, setProjectsFront] = useState(
+    <ProjectsSummary flip={(obj) => flipCallback(obj)} />
+  );
   const [projectsBack, setProjectsBack] = useState();
   // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
   const [showProjectsMenu, setShowProjectsMenu] = useState(false);
@@ -176,6 +179,11 @@ const Projects = (props) => {
     setShowProjectsMenu(true);
     return setProjectsBack(components[obj]);
   };
+
+  const flipCallback = useCallback((obj) => {
+    console.log("callback");
+    flip(obj);
+  }, []);
 
   return (
     <div
