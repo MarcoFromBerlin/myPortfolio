@@ -157,6 +157,29 @@ const Projects = (props) => {
   /**
    * @desc sets the back of the project
    */
+  // const flip = (obj) => {
+  //   const components = {
+  //     modal01: <Modal01 windowHeight={windowHeight} />,
+  //     modal02: <Modal02 windowHeight={windowHeight} />,
+  //     modal03: <Modal03 windowHeight={windowHeight} />,
+  //   };
+
+  //   if (containerWindow.current === undefined) return;
+
+  //   /**
+  //    * @desc add rotation to both of the divs
+  //    */
+  //   // containerWindow.current.classList.add("flip__project");
+  //   projectsWindow.current.classList.remove("flip__project");
+
+  //   setTimeout(() => {
+  //     projectsWindow.current.classList.add("flip__project");
+  //   }, 600);
+
+  //   setShowProjectsMenu(true);
+  //   return setProjectsBack(components[obj]);
+  // };
+
   const flip = (obj) => {
     const components = {
       modal01: <Modal01 windowHeight={windowHeight} />,
@@ -165,23 +188,40 @@ const Projects = (props) => {
     };
 
     if (containerWindow.current === undefined) return;
-
+    // setProjectsFront(<Modal02 windowHeight={windowHeight} />);
     /**
      * @desc add rotation to both of the divs
      */
-    // containerWindow.current.classList.add("flip__project");
-    projectsWindow.current.classList.remove("flip__project");
 
-    setTimeout(() => {
-      projectsWindow.current.classList.add("flip__project");
-    }, 600);
+    // check if attribute is present and remove or add
 
+    // console.log(
+    //   Object.values(projectsWindow.current.classList).includes("flip__project")
+    // );
     setShowProjectsMenu(true);
-    return setProjectsBack(components[obj]);
+
+    if (
+      Object.values(projectsWindow.current.classList).includes("flip__project")
+    ) {
+      console.log("front");
+      projectsWindow.current.classList.remove("flip__project");
+      return setProjectsFront(components[obj]);
+    } else {
+      console.log("rear");
+      projectsWindow.current.classList.add("flip__project");
+      return setProjectsBack(components[obj]);
+    }
+    // containerWindow.current.classList.add("flip__project");
+
+    // setTimeout(() => {
+    // }, 600);
   };
 
+  /**
+   * @desc to use the input comming from <ProjectSummary/>
+   */
+
   const flipCallback = useCallback((obj) => {
-    console.log("callback");
     flip(obj);
   }, []);
 
