@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useRef,
   useLayoutEffect,
+  useCallback,
 } from "react";
 
 import "./css/main.css";
@@ -201,12 +202,33 @@ const App = () => {
     }, 500);
   };
 
+  const [projectSummary, setProjectSummary] = useState(false);
+
+  const setProjectHome = () => {};
+
+  const gotoSummaryCallback = useCallback(() => {
+    // console.log("gotoSummaryCallback");
+    // console.log(
+    //   window.location.href.substr(window.location.href.indexOf("#") + 1)
+    // );
+    /**
+     * @desc find location
+     * if the section is project
+     */
+    if (window.location.href.substr(window.location.href.indexOf("#") + 1)) {
+      setProjectSummary(true);
+    }
+    // setProjectHome();
+  }, []);
+
+  // console.log(projectSummary);
+
   return (
     <Router>
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <Navbar
-            // gotoSummary={}  // gotoSummaryCallback in <Projects/>
+            gotoSummary={gotoSummaryCallback} // gotoSummaryCallback in <Projects/>
             update={updateNavbar}
             currentView={
               checkDivsPosition() === undefined
@@ -216,7 +238,7 @@ const App = () => {
           />
           <div ref={containerRef} className={`container`}>
             <Home windowHeight={height} />
-            <Projects windowHeight={height} />
+            <Projects windowHeight={height} goBackToSummary={projectSummary} />
             <About windowHeight={height} />
           </div>
         </Fragment>

@@ -85,7 +85,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Projects = (props) => {
-  const { windowHeight } = props;
+  const { windowHeight, goBackToSummary } = props;
+  console.log(goBackToSummary);
+
+  useEffect(() => {
+    if (goBackToSummary) {
+      console.log("set summ");
+      flip("summary");
+    }
+  }, [goBackToSummary]);
 
   const [projectsFront, setProjectsFront] = useState(
     <ProjectsSummary flip={(obj) => flipCallback(obj)} />
