@@ -24,7 +24,7 @@ import { makeStyles } from "@material-ui/core/styles";
 /**
  * @description Slides
  */
-
+import ProjectsSummary from "../slides/ProjectsSummary";
 import Modal01 from "../slides/Modal01";
 import Modal02 from "../slides/Modal02";
 import Modal03 from "../slides/Modal03";
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
 const Projects = (props) => {
   const { windowHeight } = props;
 
-  const [projectsFront, setProjectsFront] = useState();
+  const [projectsFront, setProjectsFront] = useState(<ProjectsSummary />);
   const [projectsBack, setProjectsBack] = useState();
   // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
   const [showProjectsMenu, setShowProjectsMenu] = useState(false);
@@ -196,8 +196,9 @@ const Projects = (props) => {
           <h4 className="section__subtitle">
             A few projects I made using different tecnologies
           </h4>
+          {projectsFront}
           {/* WEB VERSION */}
-          <div className="row project__thumb__container hide-phone hide-tablet">
+          {/* <div className="row project__thumb__container hide-phone hide-tablet">
             <button
               className="col-4 project__thumb-left btn-no-css"
               onMouseEnter={() => handleOver({ thumb: "one", value: true })}
@@ -339,6 +340,7 @@ const Projects = (props) => {
               </NavLink>
             </button>
           </div>
+        */}
         </div>
         {/* MOBILE VERSION */}
         <div className="col-12 project__thumb__container__mobile hide">
