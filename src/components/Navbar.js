@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useSpring, animated, useTransition } from "@react-spring/web";
 
 const Navbar = (props) => {
+  const { gotToSummary } = props;
   /**
    * @desc to get the anchor
    * location as prop allows to set current item
@@ -113,6 +114,7 @@ const Navbar = (props) => {
                     // scroll={(el) =>
                     //   el.scrollIntoView({ behavior: "auto", block: "end" })
                     // }
+                    onClick={() => console.log("summary")}
                   >
                     Projects
                   </NavLink>

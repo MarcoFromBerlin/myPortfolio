@@ -206,6 +206,7 @@ const App = () => {
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <Navbar
+            // gotoSummary={}  // gotoSummaryCallback in <Projects/>
             update={updateNavbar}
             currentView={
               checkDivsPosition() === undefined

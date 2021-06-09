@@ -182,6 +182,7 @@ const Projects = (props) => {
 
   const flip = (obj) => {
     const components = {
+      summary: <ProjectsSummary windowHeight={windowHeight} />,
       modal01: <Modal01 windowHeight={windowHeight} />,
       modal02: <Modal02 windowHeight={windowHeight} />,
       modal03: <Modal03 windowHeight={windowHeight} />,
@@ -231,6 +232,10 @@ const Projects = (props) => {
 
   const flipCallback = useCallback((obj) => {
     flip(obj);
+  }, []);
+
+  const gotoSummaryCallback = useCallback(() => {
+    flip("summary");
   }, []);
 
   return (

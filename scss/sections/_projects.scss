@@ -158,9 +158,11 @@
 
 /* Style the back side */
 .project {
+  margin-top: 40px;
   // margin-top: 350px;
   // background-color: dodgerblue;
   // color: white;
+  position: absolute;
   transform: rotateY(180deg);
 }
 // .flip-card:hover .flip-card-inner {

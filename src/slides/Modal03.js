@@ -1,7 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ProjectNavbar from "../components/ProjectNavbar";
+
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
 /**
  * @description images
@@ -13,6 +16,9 @@ import sc_schema_01 from "../images/sc_schema_01.png";
 
 const Modal03 = (props) => {
   const { windowHeight } = props;
+
+  const [isImgZoomed, setIsImgZoomed] = useState(false);
+
   return (
     <div className="row modal__container">
       <div className="col-12">
@@ -38,7 +44,30 @@ const Modal03 = (props) => {
         </div>
       </div>
       <div className="col-12">
-        <img src={sc_schema_01} className="" alt="React Logo" />
+        <img
+          src={sc_schema_01}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+        {isImgZoomed ? (
+          <Lightbox
+            mainSrc={sc_schema_01}
+            // nextSrc={images[(photoIndex + 1) % images.length]}
+            // prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() => setIsImgZoomed(false)}
+            // onMovePrevRequest={() =>
+            //   this.setState({
+            //     photoIndex: (photoIndex + images.length - 1) % images.length,
+            //   })
+            // }
+            // onMoveNextRequest={() =>
+            //   this.setState({
+            //     photoIndex: (photoIndex + 1) % images.length,
+            //   })
+            // }
+          />
+        ) : null}
       </div>
     </div>
   );
