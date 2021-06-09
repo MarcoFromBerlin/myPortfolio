@@ -15,11 +15,12 @@ const Modal01 = (props) => {
   const { windowHeight } = props;
 
   return (
-    <div
-      id="mysecondhandbookstore"
-      className="modal"
-      style={{ height: windowHeight }}
-    >
+    // <div
+    //   id="mysecondhandbookstore"
+    //   className="modal1"
+    //   style={{ height: windowHeight }}
+    // >
+    <>
       {/* <div className="modal__container__menu"> */}
       {/* <ProjectNavbar /> */}
       <div className="row modal__container">
@@ -54,7 +55,7 @@ const Modal01 = (props) => {
         </div>
       </div>
       {/* </div> */}
-    </div>
+    </>
   );
 };
 

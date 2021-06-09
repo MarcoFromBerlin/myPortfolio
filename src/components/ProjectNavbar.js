@@ -23,7 +23,7 @@ const Navbar = forwardRef((props, ref) => {
                 exact
                 // className={location === "" ? "menu__current__item" : ""}
                 smooth
-                to="#mysecondhandbookstore"
+                // to="#mysecondhandbookstore"
                 onClick={() => sendData("modal01")}
               >
                 My Second Hand Bookstore
@@ -35,7 +35,7 @@ const Navbar = forwardRef((props, ref) => {
                 exact
                 // className={location === "projects" ? "menu__current__item" : ""}
                 smooth
-                to="#letstalk"
+                // to="#letstalk"
                 onClick={() => sendData("modal02")}
               >
                 Let's talk about the weather
@@ -46,7 +46,7 @@ const Navbar = forwardRef((props, ref) => {
                 exact
                 // className={location === "about" ? "menu__current__item" : ""}
                 smooth
-                to="#spotifylibray"
+                // to="#spotifylibray"
                 // onClick={goToProject(ref)}
                 onClick={() => sendData("modal03")}
               >
