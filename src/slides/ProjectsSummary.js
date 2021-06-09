@@ -144,10 +144,10 @@ const ProjectsSummary = (props) => {
   return (
     // <div className="col-12 t-center home__main projects__window projects__summary">
     <>
-      {/* <h1 className="section__title">Projects</h1>
+      <h1 className="section__title">Projects</h1>
       <h4 className="section__subtitle">
         A few projects I made using different tecnologies
-      </h4> */}
+      </h4>
       {/* WEB VERSION */}
       <div className="row project__thumb__container hide-phone hide-tablet">
         <button

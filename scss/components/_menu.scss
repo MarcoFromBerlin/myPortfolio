@@ -5,6 +5,7 @@
   right: 0;
 }
 .menu {
+  z-index: 9999;
   & ul {
     height: 20px;
     letter-spacing: 1px;

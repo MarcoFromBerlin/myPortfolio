@@ -203,13 +203,21 @@ const Projects = (props) => {
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
     ) {
-      console.log("front");
+      // projectsWindow.current.classList.add("flip__project_2");
+      setProjectsFront(components[obj]);
       projectsWindow.current.classList.remove("flip__project");
-      return setProjectsFront(components[obj]);
+      // setTimeout(() => {
+      //   return setProjectsBack(null);
+      // }, 3000);
     } else {
-      console.log("rear");
+      // projectsWindow.current.classList.remove("flip__project_2");
+
+      setProjectsBack(components[obj]);
       projectsWindow.current.classList.add("flip__project");
-      return setProjectsBack(components[obj]);
+
+      // setTimeout(() => {
+      //   return setProjectsFront(null);
+      // }, 3000);
     }
     // containerWindow.current.classList.add("flip__project");
 
@@ -218,7 +226,7 @@ const Projects = (props) => {
   };
 
   /**
-   * @desc to use the input comming from <ProjectSummary/>
+   * @desc to use the inputs comming from <ProjectSummary/>
    */
 
   const flipCallback = useCallback((obj) => {
@@ -240,155 +248,7 @@ const Projects = (props) => {
         // style={{ height: windowHeight }}
       >
         <div className="col-12 t-center home__main projects__window projects__summary">
-          <h1 className="section__title">Projects</h1>
-          <h4 className="section__subtitle">
-            A few projects I made using different tecnologies
-          </h4>
           {projectsFront}
-          {/* WEB VERSION */}
-          {/* <div className="row project__thumb__container hide-phone hide-tablet">
-            <button
-              className="col-4 project__thumb-left btn-no-css"
-              onMouseEnter={() => handleOver({ thumb: "one", value: true })}
-              onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-              onClick={() => flip("modal01")}
-              // onClick={() => flip(<Modal01 windowHeight={windowHeight} />)}
-            >
-              <NavLink
-                exact
-                // className={location === "about" ? "menu__current__item" : ""}
-                smooth
-                to="#mysecondhandbookstore"
-                // onClick={flip}
-              >
-                <div>
-                  <Slide
-                    direction="right"
-                    in={showDetails === undefined ? false : showDetails["one"]}
-                    mountOnEnter
-                    unmountOnExit
-                    className={classes.slide}
-                    timeout={timeoutSlides}
-                  >
-                    <Paper elevation={4} className={classes.paper}>
-                      <h5 className="slide__title">My Second Hand Bookstore</h5>
-                      <h6 className="slide__description">
-                        Web App + iOS/Android App to find and stock second hand
-                        books
-                      </h6>
-                      <div className="slide__icons">
-                        <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
-                        <FontAwesomeIcon
-                          icon={["fab", "wordpress-simple"]}
-                          size="2x"
-                        />
-                        <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                        <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
-                        <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
-                      </div>
-                    </Paper>
-                  </Slide>
-                </div>
-              </NavLink>
-            </button>
-
-            <button
-              className="col-4 project__thumb-center btn-no-css"
-              onMouseEnter={() => handleOver({ thumb: "two", value: true })}
-              onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-              onClick={() => flip(<Modal02 windowHeight={windowHeight} />)}
-            >
-              <NavLink
-                exact
-                // className={location === "about" ? "menu__current__item" : ""}
-                smooth
-                to="#letstalk"
-                // onClick={goToProject(ref)}
-              >
-                <Slide
-                  direction="up"
-                  in={showDetails === undefined ? false : showDetails["two"]}
-                  mountOnEnter
-                  unmountOnExit
-                  className={classes.slide}
-                  timeout={timeoutSlides}
-                >
-                  <Paper elevation={4} className={classes.paper}>
-                    <h5 className="slide__title">
-                      Let's Talk About the weather
-                    </h5>
-                    <h6 className="slide__description">
-                      Dashboard that shows all the locations and the weather of
-                      a team
-                    </h6>
-                    <div className="slide__icons">
-                      <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
-                      <FontAwesomeIcon icon={["fab", "js"]} size="2x" />
-                      <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                      <img
-                        src={mongoDbIcon}
-                        className="svg__icon"
-                        alt="React Logo"
-                      />
-                    </div>
-                  </Paper>
-                </Slide>
-              </NavLink>
-            </button>
-
-            <button
-              className="col-4 project__thumb-right btn-no-css"
-              onMouseEnter={() => handleOver({ thumb: "three", value: true })}
-              onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-              onClick={() => flip(<Modal03 windowHeight={windowHeight} />)}
-              style={{
-                backgroundImage: `url(${imageSlide03})`,
-                backgroundSize: 400,
-                backgroundPositionX: -50,
-                backgroundPositionY: -50,
-              }}
-            >
-              <NavLink
-                exact
-                // className={location === "about" ? "menu__current__item" : ""}
-                smooth
-                to="#spotifylibray"
-                // onClick={goToProject(ref)}
-              >
-                <Slide
-                  direction="left"
-                  in={showDetails === undefined ? false : showDetails["three"]}
-                  mountOnEnter
-                  unmountOnExit
-                  className={classes.slide}
-                  timeout={timeoutSlides}
-                >
-                  <Paper elevation={4} className={classes.paper}>
-                    <h5 className="slide__title">Spotify Library</h5>
-                    <h6 className="slide__description">
-                      Web App to organize by category your Spotify Collection
-                    </h6>
-                    <div className="slide__icons">
-                      <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
-                      <img
-                        src={reduxIcon}
-                        className="png__icon"
-                        alt="Redux Logo"
-                      />
-                      <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
-                      <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                      <img
-                        src={mongoDbIcon}
-                        className="svg__icon"
-                        alt="React Logo"
-                      />
-                    </div>
-                  </Paper>
-                </Slide>
-              </NavLink>
-            </button>
-          </div>
-        */}
         </div>
         {/* MOBILE VERSION */}
         <div className="col-12 project__thumb__container__mobile hide">

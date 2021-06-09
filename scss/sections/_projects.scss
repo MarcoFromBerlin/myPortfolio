@@ -156,12 +156,6 @@
   backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
-.projects__summary {
-  // background-color: #bbb;
-  // color: black;
-}
-
 /* Style the back side */
 .project {
   // margin-top: 350px;
@@ -173,6 +167,10 @@
 //   transform: rotateY(180deg);
 // }
 
+// just rotation
 .flip__project {
   transform: rotateY(180deg);
 }
+// .flip__project_2 {
+//   transform: rotateY(10deg);
+// }
