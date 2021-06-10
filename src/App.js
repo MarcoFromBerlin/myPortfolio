@@ -209,9 +209,14 @@ const App = () => {
      * @desc find location
      * if the section is project
      */
+
+    const getLocation = window.location.href.substr(
+      window.location.href.indexOf("#") + 1
+    );
     if (
-      window.location.href.substr(window.location.href.indexOf("#") + 1) ===
-      "projects"
+      getLocation === "mysecondhandbookstore" ||
+      getLocation === "letstalk" ||
+      getLocation === "spotifylibrary"
     ) {
       console.log("setProjectSummary");
       return setProjectSummary(value);
