@@ -94,10 +94,11 @@ const Projects = (props) => {
 
   useEffect(() => {
     if (goBackToSummary) {
+      console.log("useef");
       flip("summary");
     }
   }, [goBackToSummary]);
-
+  console.log(goBackToSummary);
   const [projectsFront, setProjectsFront] = useState(
     <ProjectsSummary
       windowHeight={windowHeight}

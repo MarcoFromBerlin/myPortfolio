@@ -204,6 +204,10 @@ const App = () => {
 
   const [projectSummary, setProjectSummary] = useState(false);
 
+  /**
+   * @used by <Navbar/>, <Projects/> with the prop "gotoSummary"
+   */
+
   const gotoSummaryCallback = useCallback((value) => {
     /**
      * @desc find location
@@ -213,6 +217,7 @@ const App = () => {
     const getLocation = window.location.href.substr(
       window.location.href.indexOf("#") + 1
     );
+
     if (
       getLocation === "mysecondhandbookstore" ||
       getLocation === "letstalk" ||
@@ -220,9 +225,17 @@ const App = () => {
     ) {
       console.log("setProjectSummary");
       return setProjectSummary(value);
-    } else {
-      return setProjectSummary(value);
     }
+    // console.log(getLocation);
+    if (
+      getLocation === "projects" ||
+      getLocation === "http://localhost:3000/" ||
+      getLocation === "about"
+    )
+      return console.log("projects");
+
+    console.log("projSummary", value);
+    return setProjectSummary(value);
   }, []);
 
   return (
