@@ -5,13 +5,16 @@ import { useLocation } from "react-router-dom";
 import { useSpring, animated, useTransition } from "@react-spring/web";
 
 const Navbar = (props) => {
-  const { gotoSummary } = props;
+  const { gotoSummary, forceHome, currentLocation } = props;
+
   /**
    * @desc to get the anchor
    * location as prop allows to set current item
    * with mobile scrolling
    */
-  const location = props.currentView.substring(1);
+  // const location = props.currentView.substring(1);
+
+  // console.log("currentLocation", currentLocation);
 
   /**
    * @desc animation fade in out
@@ -56,6 +59,8 @@ const Navbar = (props) => {
     navbarClasses.push("scrolled ");
   }
 
+  // console.log("Navbar currentLocation", currentLocation);
+
   return fadingMenu(
     (styles, item) =>
       item && (
@@ -66,7 +71,9 @@ const Navbar = (props) => {
                 <li>
                   <NavLink
                     exact
-                    className={location === "home" ? "menu__current__item" : ""}
+                    className={
+                      currentLocation === "home" ? "menu__current__item" : ""
+                    }
                     smooth
                     to="#"
                   >
@@ -78,10 +85,10 @@ const Navbar = (props) => {
                   <NavLink
                     // exact
                     className={
-                      location === "projects" ||
-                      location === "letstalk" ||
-                      location === "mysecondhandbookstore" ||
-                      location === "spotifylibray"
+                      currentLocation === "projects" ||
+                      currentLocation === "letstalk" ||
+                      currentLocation === "mysecondhandbookstore" ||
+                      currentLocation === "spotifylibrary"
                         ? "menu__current__item"
                         : ""
                     }
@@ -90,7 +97,10 @@ const Navbar = (props) => {
                     // scroll={(el) =>
                     //   el.scrollIntoView({ behavior: "auto", block: "end" })
                     // }
-                    onClick={() => gotoSummary(true)}
+                    onClick={() => {
+                      gotoSummary(true);
+                      // checkHomeSummary();
+                    }}
                   >
                     Projects
                   </NavLink>
@@ -99,7 +109,7 @@ const Navbar = (props) => {
                   <NavLink
                     exact
                     className={
-                      location === "about" ? "menu__current__item" : ""
+                      currentLocation === "about" ? "menu__current__item" : ""
                     }
                     smooth
                     to="#about"

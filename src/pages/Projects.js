@@ -85,7 +85,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Projects = (props) => {
-  const { windowHeight, goBackToSummary, gotoSummary } = props;
+  const {
+    windowHeight,
+    goBackToSummary,
+    gotoSummary,
+    forceHome,
+    getCurrentLocation,
+  } = props;
 
   /**
    * @var goBackToSummary receives the menu status
@@ -94,11 +100,10 @@ const Projects = (props) => {
 
   useEffect(() => {
     if (goBackToSummary) {
-      console.log("useef");
       flip("summary");
     }
   }, [goBackToSummary]);
-  console.log(goBackToSummary);
+
   const [projectsFront, setProjectsFront] = useState(
     <ProjectsSummary
       windowHeight={windowHeight}
@@ -109,15 +114,8 @@ const Projects = (props) => {
   const [projectsBack, setProjectsBack] = useState();
   const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
-  const ref = createRef();
-
-  const classes = useStyles();
   const containerWindow = useRef();
   const projectsWindow = useRef();
-
-  const projectOne = useRef();
-  const projectTwo = useRef();
-  const projectThree = useRef();
 
   // /**
   //  * @description modal handles
@@ -158,7 +156,7 @@ const Projects = (props) => {
 
   const [showDetails, setShowDetails] = useState();
 
-  const timeoutSlides = { enter: 700, exit: 500 };
+  // const timeoutSlides = { enter: 700, exit: 500 };
 
   /**
    * @description handles hover
@@ -217,7 +215,18 @@ const Projects = (props) => {
      * send the status back
      * in this case sends false
      */
+
+    console.log(
+      window.location.href.substr(window.location.href.indexOf("#") + 1)
+    );
     gotoSummary(false);
+
+    // if (
+    //   projectsBack?.type.name !== "ProjectsSummary" ||
+    //   projectsFront?.type.name !== "ProjectsSummary"
+    // ) {
+    //   return forceHome();
+    // }
 
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
@@ -238,9 +247,32 @@ const Projects = (props) => {
     flip(obj);
   }, []);
 
-  const gotoSummaryCallback = useCallback(() => {
-    flip("summary");
-  }, []);
+  /**
+   * @desc checks the status of the slides
+   * if is not <ProjectSummary/> it forces to go to it
+   */
+
+  useEffect(() => {
+    const getLocation = window.location.href.substr(
+      window.location.href.indexOf("#") + 1
+    );
+
+    /**
+     * @desc send location to <App/>
+     */
+
+    getCurrentLocation(getLocation);
+
+    if (
+      (projectsBack?.type.name !== "ProjectsSummary" &&
+        getLocation === "projects") ||
+      (projectsFront?.type.name !== "ProjectsSummary" &&
+        getLocation === "projects")
+    ) {
+      return forceHome;
+    }
+    return;
+  }, [projectsFront, projectsBack]);
 
   return (
     <div

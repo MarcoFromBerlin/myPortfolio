@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink as NavLink } from "react-router-hash-link";
-import ProjectNavbar from "../components/ProjectNavbar";
+// import ProjectNavbar from "../components/ProjectNavbar";
 import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,9 +16,9 @@ import { makeStyles } from "@material-ui/core/styles";
  * @desc slides
  */
 
-import Modal01 from "../slides/Modal01";
-import Modal02 from "../slides/Modal02";
-import Modal03 from "../slides/Modal03";
+// import Modal01 from "../slides/Modal01";
+// import Modal02 from "../slides/Modal02";
+// import Modal03 from "../slides/Modal03";
 
 /**
  * @description images
@@ -77,20 +77,20 @@ const useStyles = makeStyles((theme) => ({
 const ProjectsSummary = (props) => {
   const { windowHeight, flip } = props;
 
-  const [projectsFront, setProjectsFront] = useState();
-  const [projectsBack, setProjectsBack] = useState();
-  // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
-  const [showProjectsMenu, setShowProjectsMenu] = useState(false);
+  // const [projectsFront, setProjectsFront] = useState();
+  // const [projectsBack, setProjectsBack] = useState();
+  // // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
+  // const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
   const ref = createRef();
 
   const classes = useStyles();
-  const containerWindow = useRef();
-  const projectsWindow = useRef();
+  // const containerWindow = useRef();
+  // const projectsWindow = useRef();
 
-  const projectOne = useRef();
-  const projectTwo = useRef();
-  const projectThree = useRef();
+  // const projectOne = useRef();
+  // const projectTwo = useRef();
+  // const projectThree = useRef();
 
   /**
    * @description obj to handle the show details thumbs

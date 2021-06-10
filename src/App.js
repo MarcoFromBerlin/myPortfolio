@@ -209,6 +209,7 @@ const App = () => {
    */
 
   const gotoSummaryCallback = useCallback((value) => {
+    console.log("gotoSummaryCallback", value);
     /**
      * @desc find location
      * if the section is project
@@ -223,26 +224,60 @@ const App = () => {
       getLocation === "letstalk" ||
       getLocation === "spotifylibrary"
     ) {
-      console.log("setProjectSummary");
       return setProjectSummary(value);
     }
-    // console.log(getLocation);
+
     if (
       getLocation === "projects" ||
       getLocation === "http://localhost:3000/" ||
       getLocation === "about"
     )
-      return console.log("projects");
+      return;
 
-    console.log("projSummary", value);
     return setProjectSummary(value);
   }, []);
+
+  /**
+   * @desc function to set Force the set home Summary home
+   */
+  const forceToHomeCallback = useCallback(() => {
+    // console.log("forcehome");
+    /**
+     * @desc sets and send back
+     */
+    return setProjectSummary(true);
+  }, []);
+
+  const [currentLocation, setCurrentLocation] = useState(
+    window.location.href.substr(window.location.href.indexOf("#") + 1)
+  );
+
+  /**
+   * @desc set current location to send to <Navbar/>
+   */
+
+  let newLoc = window.location.href.substr(
+    window.location.href.indexOf("#") + 1
+  );
+
+  const getCurrentLocation = (location) => {
+    return setCurrentLocation(location);
+  };
+
+  const getCurrentLocationCallback = useCallback((location) => {
+    getCurrentLocation(location);
+  }, []);
+
+  useEffect(() => {
+    getCurrentLocation(newLoc);
+  }, [newLoc]);
 
   return (
     <Router>
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <Navbar
+            currentLocation={currentLocation}
             gotoSummary={gotoSummaryCallback} // gotoSummaryCallback in <Projects/>
             update={updateNavbar}
             currentView={
@@ -254,6 +289,8 @@ const App = () => {
           <div ref={containerRef} className={`container`}>
             <Home windowHeight={height} />
             <Projects
+              getCurrentLocation={getCurrentLocationCallback}
+              forceHome={forceToHomeCallback}
               windowHeight={height}
               gotoSummary={gotoSummaryCallback}
               goBackToSummary={projectSummary}
