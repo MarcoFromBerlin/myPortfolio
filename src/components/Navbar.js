@@ -11,20 +11,13 @@ const Navbar = (props) => {
    * location as prop allows to set current item
    * with mobile scrolling
    */
-
-  // const location = useLocation().hash.toString().substr(1);
   const location = props.currentView.substring(1);
 
   /**
    * @desc animation fade in out
    */
-  // const [toggle, setToggle] = useState(true);
-
-  // // setToggle(props.update);
 
   const updateNavbar = props.update;
-
-  // console.log(updateNavbar);
 
   const fadingMenu = useTransition(updateNavbar, {
     from: { opacity: 0 },
@@ -37,23 +30,6 @@ const Navbar = (props) => {
     },
     delay: 400,
   });
-
-  const transitionsDelete = {
-    from: {
-      opacity: 0.35,
-      transform: "translateY(70%) translateX(0%) scaleY(0.65) scaleX(1)",
-    },
-    enter: {
-      opacity: 1,
-      transform: "translateY(0%) translateX(0%) scaleY(1) scaleX(1)",
-    },
-    leave: {
-      opacity: 0.35,
-      transform: "translateY(70%) translateX(0%) scaleY(0.65) scaleX(1)",
-    },
-    delay: 0,
-    config: { duration: 400 },
-  };
 
   /**
    * @desc set sticky menu
@@ -114,7 +90,7 @@ const Navbar = (props) => {
                     // scroll={(el) =>
                     //   el.scrollIntoView({ behavior: "auto", block: "end" })
                     // }
-                    onClick={gotoSummary}
+                    onClick={() => gotoSummary(true)}
                   >
                     Projects
                   </NavLink>

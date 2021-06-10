@@ -204,24 +204,21 @@ const App = () => {
 
   const [projectSummary, setProjectSummary] = useState(false);
 
-  const setProjectHome = () => {};
-
-  const gotoSummaryCallback = useCallback(() => {
-    // console.log("gotoSummaryCallback");
-    // console.log(
-    //   window.location.href.substr(window.location.href.indexOf("#") + 1)
-    // );
+  const gotoSummaryCallback = useCallback((value) => {
     /**
      * @desc find location
      * if the section is project
      */
-    if (window.location.href.substr(window.location.href.indexOf("#") + 1)) {
-      setProjectSummary(true);
+    if (
+      window.location.href.substr(window.location.href.indexOf("#") + 1) ===
+      "projects"
+    ) {
+      console.log("setProjectSummary");
+      return setProjectSummary(value);
+    } else {
+      return setProjectSummary(value);
     }
-    // setProjectHome();
   }, []);
-
-  // console.log(projectSummary);
 
   return (
     <Router>
@@ -238,7 +235,11 @@ const App = () => {
           />
           <div ref={containerRef} className={`container`}>
             <Home windowHeight={height} />
-            <Projects windowHeight={height} goBackToSummary={projectSummary} />
+            <Projects
+              windowHeight={height}
+              gotoSummary={gotoSummaryCallback}
+              goBackToSummary={projectSummary}
+            />
             <About windowHeight={height} />
           </div>
         </Fragment>

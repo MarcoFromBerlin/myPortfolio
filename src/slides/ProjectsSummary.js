@@ -161,7 +161,7 @@ const ProjectsSummary = (props) => {
             exact
             // className={location === "about" ? "menu__current__item" : ""}
             smooth
-            to="#mysecondhandbookstore"
+            to="#projects"
             // onClick={flip}
           >
             <div>
@@ -205,7 +205,7 @@ const ProjectsSummary = (props) => {
             exact
             // className={location === "about" ? "menu__current__item" : ""}
             smooth
-            to="#letstalk"
+            to="#projects"
             // onClick={goToProject(ref)}
           >
             <Slide
@@ -253,7 +253,7 @@ const ProjectsSummary = (props) => {
             exact
             // className={location === "about" ? "menu__current__item" : ""}
             smooth
-            to="#spotifylibray"
+            to="#projects"
             // onClick={goToProject(ref)}
           >
             <Slide

@@ -85,21 +85,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Projects = (props) => {
-  const { windowHeight, goBackToSummary } = props;
-  console.log(goBackToSummary);
+  const { windowHeight, goBackToSummary, gotoSummary } = props;
+
+  /**
+   * @var goBackToSummary receives the menu status
+   * from <App/>
+   */
 
   useEffect(() => {
     if (goBackToSummary) {
-      console.log("set summ");
       flip("summary");
     }
   }, [goBackToSummary]);
 
   const [projectsFront, setProjectsFront] = useState(
-    <ProjectsSummary flip={(obj) => flipCallback(obj)} />
+    <ProjectsSummary
+      windowHeight={windowHeight}
+      flip={(obj) => flipCallback(obj)}
+    />
   );
+
   const [projectsBack, setProjectsBack] = useState();
-  // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
   const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
   const ref = createRef();
@@ -190,48 +196,37 @@ const Projects = (props) => {
 
   const flip = (obj) => {
     const components = {
-      summary: <ProjectsSummary windowHeight={windowHeight} />,
+      summary: (
+        <ProjectsSummary
+          windowHeight={windowHeight}
+          flip={(obj) => flipCallback(obj)}
+        />
+      ),
       modal01: <Modal01 windowHeight={windowHeight} />,
       modal02: <Modal02 windowHeight={windowHeight} />,
       modal03: <Modal03 windowHeight={windowHeight} />,
     };
 
     if (containerWindow.current === undefined) return;
-    // setProjectsFront(<Modal02 windowHeight={windowHeight} />);
-    /**
-     * @desc add rotation to both of the divs
-     */
 
-    // check if attribute is present and remove or add
-
-    // console.log(
-    //   Object.values(projectsWindow.current.classList).includes("flip__project")
-    // );
     setShowProjectsMenu(true);
+
+    /**
+     * @function gotoSummary is a callback in <App/>
+     * send the status back
+     * in this case sends false
+     */
+    gotoSummary(false);
 
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
     ) {
-      // projectsWindow.current.classList.add("flip__project_2");
       setProjectsFront(components[obj]);
       projectsWindow.current.classList.remove("flip__project");
-      // setTimeout(() => {
-      //   return setProjectsBack(null);
-      // }, 3000);
     } else {
-      // projectsWindow.current.classList.remove("flip__project_2");
-
       setProjectsBack(components[obj]);
       projectsWindow.current.classList.add("flip__project");
-
-      // setTimeout(() => {
-      //   return setProjectsFront(null);
-      // }, 3000);
     }
-    // containerWindow.current.classList.add("flip__project");
-
-    // setTimeout(() => {
-    // }, 600);
   };
 
   /**
