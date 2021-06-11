@@ -43,7 +43,7 @@ const Modal03 = (props) => {
           />
         </div>
       </div>
-      <div className="col-12">
+      <div className="col-6">
         <img
           src={sc_schema_01}
           className="img__schema"
@@ -68,6 +68,27 @@ const Modal03 = (props) => {
             // }
           />
         ) : null}
+      </div>
+      <div className="col-6">
+        <h4>How does it work</h4>
+        <p>
+          Spotify Library is a fullstack app, multi-user app, where every user
+          can syncronize the Spotify collection and assign to every Album 3
+          genres (i.e. Rock, Pop). The user can create/edit/delete the genres,
+          filter the albums and search through them.
+        </p>
+        <br />
+        <h4>Demo</h4>
+        <a target="_blank" href="https://spotifylibrary.herokuapp.com/">
+          spotifylibrary.herokuapp.com/
+        </a>
+        <h4>Links</h4>
+        <a
+          target="_blank"
+          href="https://github.com/marcovignotto/my-spotify-categories"
+        >
+          github.com/marcovignotto/my-spotify-categories
+        </a>
       </div>
     </div>
   );
