@@ -156,8 +156,7 @@ const ProjectsSummary = (props) => {
   };
 
   return (
-    // <div className="col-12 t-center home__main projects__window projects__summary">
-    <>
+    <div className="project___summary__container">
       <h1 className="section__title">Projects</h1>
       <h4 className="section__subtitle">
         A few projects I made using different tecnologies
@@ -308,7 +307,7 @@ const ProjectsSummary = (props) => {
           </NavLink>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

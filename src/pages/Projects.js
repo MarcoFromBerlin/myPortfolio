@@ -185,11 +185,16 @@ const Projects = (props) => {
 
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
+      // projectsWindow.current.style.transform === "rotateY(180deg)"
     ) {
+      console.log("front", projectsWindow.current);
+      // projectsWindow.current.style.transform = "rotateY(0deg)";
       setProjectsFront(components[obj]);
       projectsWindow.current.classList.remove("flip__project");
     } else {
+      console.log("back", projectsWindow.current);
       setProjectsBack(components[obj]);
+      // projectsWindow.current.style.transform = "rotateY(180deg)";
       projectsWindow.current.classList.add("flip__project");
     }
   };
@@ -223,6 +228,7 @@ const Projects = (props) => {
         <div className="col-12 t-center home__main projects__window projects__summary">
           {projectsFront}
         </div>
+        <div className="project">{projectsBack}</div>
         {/* MOBILE VERSION */}
         <div className="col-12 project__thumb__container__mobile hide">
           <button
@@ -315,12 +321,6 @@ const Projects = (props) => {
               </div>
             </NavLink>
           </button>
-        </div>
-
-        <div className="project">
-          {/* <Modal01 /> */}
-          {projectsBack}
-          {/* <ProjectsBack /> */}
         </div>
       </div>
       {/* <div className="modals__window hide-phone1 hide-tablet1" ref={projectOne}>

@@ -25,7 +25,6 @@ const Navbar = forwardRef((props, ref) => {
    */
 
   const checkMenu = (to) => {
-    console.log(to);
     const arrMenuProjects = menuProjects.get();
 
     let destination = "";
@@ -39,10 +38,7 @@ const Navbar = forwardRef((props, ref) => {
         destination = arrMenuProjects[i].anchor;
       }
     }
-    console.log(
-      destination.substring(1),
-      useHookstateAppStore.currentMenuLocation.get()
-    );
+
     /**
      * @desc if the destination is the same of the location
      * stops
