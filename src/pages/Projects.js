@@ -185,16 +185,11 @@ const Projects = (props) => {
 
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
-      // projectsWindow.current.style.transform === "rotateY(180deg)"
     ) {
-      console.log("front", projectsWindow.current);
-      // projectsWindow.current.style.transform = "rotateY(0deg)";
       setProjectsFront(components[obj]);
       projectsWindow.current.classList.remove("flip__project");
     } else {
-      console.log("back", projectsWindow.current);
       setProjectsBack(components[obj]);
-      // projectsWindow.current.style.transform = "rotateY(180deg)";
       projectsWindow.current.classList.add("flip__project");
     }
   };
