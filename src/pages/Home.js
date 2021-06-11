@@ -11,9 +11,9 @@ const Home = (props) => {
       <div className="row-1 home__a center-x-y">
         <div className="col-121 t-center home__main">
           <span>
-            <h1>Welcome</h1>
+            <h1>Hi, how are you?</h1>
           </span>
-          <h4>Here we are</h4>
+          <h3>Here we are</h3>
         </div>
       </div>
     </div>

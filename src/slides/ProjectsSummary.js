@@ -29,6 +29,13 @@ import reduxIcon from "../images/redux.png";
 
 import imageSlide03 from "../images/image_slide03.png";
 
+/**
+ * @desc Hookstate
+ */
+
+import { useState as useHookstate } from "@hookstate/core";
+import appStore from "../store/appStore";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
@@ -75,6 +82,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProjectsSummary = (props) => {
+  const useHookstateAppStore = useHookstate(appStore);
+
   const { windowHeight, flip } = props;
 
   const [projectsFront, setProjectsFront] = useState();
@@ -141,6 +150,12 @@ const ProjectsSummary = (props) => {
   //   return setProjectsBack(components[obj]);
   // };
 
+  const setLocation = (location) => {
+    // useHookstateAppStore.currentMenuLocation.set(location);
+  };
+
+  console.log(useHookstateAppStore);
+
   return (
     // <div className="col-12 t-center home__main projects__window projects__summary">
     <>
@@ -154,7 +169,10 @@ const ProjectsSummary = (props) => {
           className="col-4 project__thumb-left btn-no-css"
           onMouseEnter={() => handleOver({ thumb: "one", value: true })}
           onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-          onClick={() => flip("modal01")}
+          onClick={() => {
+            setLocation("mysecondhandbookstore");
+            flip("modal01");
+          }}
           // onClick={() => flip(<Modal01 windowHeight={windowHeight} />)}
         >
           <NavLink
@@ -199,7 +217,10 @@ const ProjectsSummary = (props) => {
           className="col-4 project__thumb-center btn-no-css"
           onMouseEnter={() => handleOver({ thumb: "two", value: true })}
           onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-          onClick={() => flip("modal02")}
+          onClick={() => {
+            setLocation("letstalk");
+            flip("modal02");
+          }}
         >
           <NavLink
             exact
@@ -241,7 +262,10 @@ const ProjectsSummary = (props) => {
           className="col-4 project__thumb-right btn-no-css"
           onMouseEnter={() => handleOver({ thumb: "three", value: true })}
           onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-          onClick={() => flip("modal03")}
+          onClick={() => {
+            setLocation("spotifylibray");
+            flip("modal03");
+          }}
           style={{
             backgroundImage: `url(${imageSlide03})`,
             backgroundSize: 400,

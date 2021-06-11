@@ -39,6 +39,13 @@ import reduxIcon from "../images/redux.png";
 
 import imageSlide03 from "../images/image_slide03.png";
 
+/**
+ * @desc Hookstate
+ */
+
+import { useState as useHookstate } from "@hookstate/core";
+import appStore from "../store/appStore";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 180,
@@ -85,13 +92,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Projects = (props) => {
-  const { windowHeight } = props;
+  const useHookstateAppStore = useHookstate(appStore);
+  /**
+   * @desc setLocation uses useCallback
+   */
+  const { windowHeight, setLocation } = props;
+
+  /**
+   * @desc ProjectsSummary receives the states
+   */
 
   const [projectsFront, setProjectsFront] = useState(
-    <ProjectsSummary flip={(obj) => flipCallback(obj)} />
+    <ProjectsSummary
+      // useHookstate={useHookstate}
+      flip={(obj) => flipCallback(obj)}
+    />
   );
+
   const [projectsBack, setProjectsBack] = useState();
-  // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
+
   const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
   const ref = createRef();
@@ -157,28 +176,6 @@ const Projects = (props) => {
   /**
    * @desc sets the back of the project
    */
-  // const flip = (obj) => {
-  //   const components = {
-  //     modal01: <Modal01 windowHeight={windowHeight} />,
-  //     modal02: <Modal02 windowHeight={windowHeight} />,
-  //     modal03: <Modal03 windowHeight={windowHeight} />,
-  //   };
-
-  //   if (containerWindow.current === undefined) return;
-
-  //   /**
-  //    * @desc add rotation to both of the divs
-  //    */
-  //   // containerWindow.current.classList.add("flip__project");
-  //   projectsWindow.current.classList.remove("flip__project");
-
-  //   setTimeout(() => {
-  //     projectsWindow.current.classList.add("flip__project");
-  //   }, 600);
-
-  //   setShowProjectsMenu(true);
-  //   return setProjectsBack(components[obj]);
-  // };
 
   const flip = (obj) => {
     const components = {
@@ -234,10 +231,12 @@ const Projects = (props) => {
     flip(obj);
   }, []);
 
-  const gotoSummaryCallback = useCallback(() => {
-    flip("summary");
-  }, []);
+  // console.log(useHookstate.currentMenuLocation);
 
+  // useEffect(() => {
+  //   setLocation(useHookstateAppStore.currentMenuLocation);
+  // }, [useHookstateAppStore]);
+  console.log(useHookstateAppStore);
   return (
     <div
       ref={containerWindow}

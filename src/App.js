@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useRef,
   useLayoutEffect,
+  useCallback,
 } from "react";
 
 import "./css/main.css";
@@ -23,6 +24,13 @@ import { theme } from "../src/styles/Theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import { useMatrix } from "./components/useMatrix";
+
+/**
+ * @desc Hookstate
+ */
+
+import { useState as useHookstate } from "@hookstate/core";
+import appStore from "./store/appStore";
 
 /**
  *
@@ -57,6 +65,13 @@ library.add(
  * passed to the <AlbumItem/> by props
  */
 const App = () => {
+  /**
+   * @desc putting useHookstate into a var to use as a prop
+   */
+
+  const useHookstateAppStore = useHookstate(appStore);
+  // const { currentMenuLocation } = useHookstate(appStore);
+
   const containerRef = useRef();
 
   const [anchorHome, setAnchorHome] = useState();
@@ -201,11 +216,25 @@ const App = () => {
     }, 500);
   };
 
+  // const setLocation = (location) => {
+  //   useHookstate.currentMenuLocation?.set(location);
+  // };
+
+  // const setLocationCallback = useCallback((location) => {
+  //   console.log("ser");
+  //   setLocation(location);
+  // }, []);
+
+  useEffect(() => {
+    console.log(useHookstateAppStore.currentMenuLocation.get());
+  }, [useHookstateAppStore]);
+
   return (
     <Router>
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <Navbar
+            useHookstate={useHookstateAppStore}
             // gotoSummary={}  // gotoSummaryCallback in <Projects/>
             update={updateNavbar}
             currentView={
@@ -215,9 +244,13 @@ const App = () => {
             }
           />
           <div ref={containerRef} className={`container`}>
-            <Home windowHeight={height} />
-            <Projects windowHeight={height} />
-            <About windowHeight={height} />
+            <Home useHookstate={useHookstateAppStore} windowHeight={height} />
+            <Projects
+              // setLocation={setLocationCallback}
+              useHookstate={useHookstateAppStore}
+              windowHeight={height}
+            />
+            <About useHookstate={useHookstateAppStore} windowHeight={height} />
           </div>
         </Fragment>
       </MuiThemeProvider>

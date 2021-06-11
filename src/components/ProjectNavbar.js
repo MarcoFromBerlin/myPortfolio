@@ -3,8 +3,19 @@ import React, { Fragment, useEffect, useState, forwardRef } from "react";
 import { HashLink as NavLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
 
+/**
+ * @desc Hookstate
+ */
+
+import { useState as useHookstate } from "@hookstate/core";
+import appStore from "../store/appStore";
+
 const Navbar = forwardRef((props, ref) => {
+  const useHookstateAppStore = useHookstate(appStore);
+
   const location = useLocation().hash.toString().substr(1);
+
+  // const { useHookstate } = props;
 
   /**
    * @desc Sends to parent the page to visit
@@ -12,6 +23,12 @@ const Navbar = forwardRef((props, ref) => {
   const sendData = (to) => {
     props.goTo(to);
   };
+
+  const setLocation = (location) => {
+    useHookstateAppStore.currentMenuLocation.set(location);
+  };
+
+  console.log(useHookstateAppStore);
 
   return (
     <Fragment>
@@ -24,7 +41,10 @@ const Navbar = forwardRef((props, ref) => {
                 // className={location === "" ? "menu__current__item" : ""}
                 smooth
                 // to="#mysecondhandbookstore"
-                onClick={() => sendData("modal01")}
+                onClick={() => {
+                  setLocation("mysecondhandbookstore");
+                  sendData("modal01");
+                }}
               >
                 My Second Hand Bookstore
               </NavLink>
@@ -36,7 +56,10 @@ const Navbar = forwardRef((props, ref) => {
                 // className={location === "projects" ? "menu__current__item" : ""}
                 smooth
                 // to="#letstalk"
-                onClick={() => sendData("modal02")}
+                onClick={() => {
+                  setLocation("letstalk");
+                  sendData("modal02");
+                }}
               >
                 Let's talk about the weather
               </NavLink>
@@ -48,7 +71,10 @@ const Navbar = forwardRef((props, ref) => {
                 smooth
                 // to="#spotifylibray"
                 // onClick={goToProject(ref)}
-                onClick={() => sendData("modal03")}
+                onClick={() => {
+                  setLocation("spotifylibray");
+                  sendData("modal03");
+                }}
               >
                 Spotify Library
               </NavLink>

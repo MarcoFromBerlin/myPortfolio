@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useSpring, animated, useTransition } from "@react-spring/web";
 
 const Navbar = (props) => {
-  const { gotToSummary } = props;
+  const { gotToSummary, useHookstate } = props;
   /**
    * @desc to get the anchor
    * location as prop allows to set current item
@@ -80,6 +80,10 @@ const Navbar = (props) => {
     navbarClasses.push("scrolled ");
   }
 
+  const setLocation = (location) => {
+    useHookstate.currentMenuLocation.set(location);
+  };
+
   return fadingMenu(
     (styles, item) =>
       item && (
@@ -93,6 +97,7 @@ const Navbar = (props) => {
                     className={location === "home" ? "menu__current__item" : ""}
                     smooth
                     to="#"
+                    onClick={() => setLocation("home")}
                   >
                     Home
                   </NavLink>
@@ -114,7 +119,7 @@ const Navbar = (props) => {
                     // scroll={(el) =>
                     //   el.scrollIntoView({ behavior: "auto", block: "end" })
                     // }
-                    onClick={() => console.log("summary")}
+                    onClick={() => setLocation("projects")}
                   >
                     Projects
                   </NavLink>
@@ -127,6 +132,7 @@ const Navbar = (props) => {
                     }
                     smooth
                     to="#about"
+                    onClick={() => setLocation("about")}
                   >
                     About
                   </NavLink>
