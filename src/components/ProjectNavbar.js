@@ -17,8 +17,55 @@ const Navbar = forwardRef((props, ref) => {
 
   // const { useHookstate } = props;
 
+  const { menuProjects } = useHookstateAppStore;
+
   /**
    * @desc Sends to parent the page to visit
+   * checks if the user clicks twice on the same menu
+   */
+
+  const checkMenu = (to) => {
+    console.log(to);
+    const arrMenuProjects = menuProjects.get();
+
+    let destination = "";
+
+    /**
+     * @desc loop to set destination
+     */
+
+    for (let i = 0; i < arrMenuProjects.length; i++) {
+      if (arrMenuProjects[i].compName === to) {
+        destination = arrMenuProjects[i].anchor;
+      }
+    }
+    console.log(
+      destination.substring(1),
+      useHookstateAppStore.currentMenuLocation.get()
+    );
+    /**
+     * @desc if the destination is the same of the location
+     * stops
+     */
+    if (
+      destination.substring(1) ===
+      useHookstateAppStore.currentMenuLocation.get()
+    )
+      return;
+
+    /**
+     * @desc if false sends data
+     */
+    sendData(to);
+
+    /**
+     * @desc re-use destination to set current location
+     */
+    setLocation(destination.substring(1));
+  };
+
+  /**
+   * @desc  send page to visit
    */
   const sendData = (to) => {
     props.goTo(to);
@@ -43,8 +90,7 @@ const Navbar = forwardRef((props, ref) => {
                 smooth
                 // to="#mysecondhandbookstore"
                 onClick={() => {
-                  setLocation("mysecondhandbookstore");
-                  sendData("modal01");
+                  checkMenu("modal01");
                 }}
               >
                 My Second Hand Bookstore
@@ -58,8 +104,7 @@ const Navbar = forwardRef((props, ref) => {
                 smooth
                 // to="#letstalk"
                 onClick={() => {
-                  setLocation("letstalk");
-                  sendData("modal02");
+                  checkMenu("modal02");
                 }}
               >
                 Let's talk about the weather
@@ -73,8 +118,7 @@ const Navbar = forwardRef((props, ref) => {
                 // to="#spotifylibray"
                 // onClick={goToProject(ref)}
                 onClick={() => {
-                  setLocation("spotifylibray");
-                  sendData("modal03");
+                  checkMenu("modal03");
                 }}
               >
                 Spotify Library

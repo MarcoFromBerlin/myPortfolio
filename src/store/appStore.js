@@ -10,6 +10,11 @@ const appStore = createState({
   currentMenuLocation: "home",
   isProjectsHome: true,
   setProjectsHome: false,
+  menuProjects: [
+    { id: "01", compName: "modal01", anchor: "#mysecondhandbookstore" },
+    { id: "02", compName: "modal02", anchor: "#letstalk" },
+    { id: "03", compName: "modal03", anchor: "#spotifylibray" },
+  ],
 });
 
 export default appStore;

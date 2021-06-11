@@ -193,7 +193,6 @@ const Projects = (props) => {
       projectsWindow.current.classList.add("flip__project");
     }
   };
-  console.log("showProjectsMenu", showProjectsMenu);
   /**
    * @desc to use the inputs comming from <ProjectSummary/>
    */
@@ -207,7 +206,6 @@ const Projects = (props) => {
   // useEffect(() => {
   //   setLocation(useHookstateAppStore.currentMenuLocation);
   // }, [useHookstateAppStore]);
-  console.log("isProjectsHome", useHookstateAppStore.isProjectsHome.get());
   return (
     <div
       ref={containerWindow}
