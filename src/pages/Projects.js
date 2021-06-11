@@ -112,13 +112,20 @@ const Projects = (props) => {
    * @desc check menu changes to set the ProjectsSummary
    */
   useEffect(() => {
-    console.log(
-      "useHookstateAppStore PROJ",
-      useHookstateAppStore.setProjectsHome.get()
-    );
     if (useHookstateAppStore.setProjectsHome.get()) {
       flip("summary");
+      useHookstateAppStore.isProjectsHome.set(true);
       useHookstateAppStore.setProjectsHome.set(false);
+    }
+  }, [useHookstateAppStore]);
+
+  /**
+   * @desc sets project navigation menu
+   */
+
+  useEffect(() => {
+    if (useHookstateAppStore.isProjectsHome.get()) {
+      setShowProjectsMenu(false);
     }
   }, [useHookstateAppStore]);
 
@@ -126,42 +133,8 @@ const Projects = (props) => {
 
   const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
-  const ref = createRef();
-
-  const classes = useStyles();
   const containerWindow = useRef();
   const projectsWindow = useRef();
-
-  const projectOne = useRef();
-  const projectTwo = useRef();
-  const projectThree = useRef();
-
-  // /**
-  //  * @description modal handles
-  //  */
-
-  // const [open, setOpen] = useState(false);
-  // const [modalContents, setModalContents] = useState({});
-
-  /**
-   *
-   * @param {*} obj is a slide
-   * that gets forwared to the modal
-   */
-  // const handleOpen = (obj) => {
-  //   setOpen(true);
-  //   setModalContents(obj);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  // const goToProject = (project) => {
-  //   project.current.scrollIntoView({
-  //     behavior: "smooth",
-  //   });
-  // };
 
   /**
    * @description obj to handle the show details thumbs
@@ -204,43 +177,23 @@ const Projects = (props) => {
     };
 
     if (containerWindow.current === undefined) return;
-    // setProjectsFront(<Modal02 windowHeight={windowHeight} />);
     /**
      * @desc add rotation to both of the divs
      */
 
-    // check if attribute is present and remove or add
-
-    // console.log(
-    //   Object.values(projectsWindow.current.classList).includes("flip__project")
-    // );
     setShowProjectsMenu(true);
 
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
     ) {
-      // projectsWindow.current.classList.add("flip__project_2");
       setProjectsFront(components[obj]);
       projectsWindow.current.classList.remove("flip__project");
-      // setTimeout(() => {
-      //   return setProjectsBack(null);
-      // }, 3000);
     } else {
-      // projectsWindow.current.classList.remove("flip__project_2");
-
       setProjectsBack(components[obj]);
       projectsWindow.current.classList.add("flip__project");
-
-      // setTimeout(() => {
-      //   return setProjectsFront(null);
-      // }, 3000);
     }
-    // containerWindow.current.classList.add("flip__project");
-
-    // setTimeout(() => {
-    // }, 600);
   };
-
+  console.log("showProjectsMenu", showProjectsMenu);
   /**
    * @desc to use the inputs comming from <ProjectSummary/>
    */
@@ -254,7 +207,7 @@ const Projects = (props) => {
   // useEffect(() => {
   //   setLocation(useHookstateAppStore.currentMenuLocation);
   // }, [useHookstateAppStore]);
-  console.log(useHookstateAppStore);
+  console.log("isProjectsHome", useHookstateAppStore.isProjectsHome.get());
   return (
     <div
       ref={containerWindow}

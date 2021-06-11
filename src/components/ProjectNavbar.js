@@ -29,7 +29,7 @@ const Navbar = forwardRef((props, ref) => {
     useHookstateAppStore.isProjectsHome.set(false);
   };
 
-  console.log(useHookstateAppStore);
+  // console.log(useHookstateAppStore);
 
   return (
     <Fragment>
