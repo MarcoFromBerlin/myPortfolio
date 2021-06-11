@@ -21,7 +21,7 @@ const Navbar = (props) => {
 
   const updateNavbar = props.update;
 
-  console.log(updateNavbar);
+  // console.log(updateNavbar);
 
   const fadingMenu = useTransition(updateNavbar, {
     initial: { opacity: 1 },
@@ -88,64 +88,57 @@ const Navbar = (props) => {
     useHookstate.currentMenuLocation.set(location);
   };
 
-  return fadingMenu(
-    (styles, item) =>
-      item && (
-        <animated.div style={styles}>
-          <div id="menu" className={`${navbarClasses.join(" ")}menu row-1"`}>
-            <nav className="navigation">
-              <ul>
-                <li>
-                  <NavLink
-                    exact
-                    className={location === "home" ? "menu__current__item" : ""}
-                    smooth
-                    to="#"
-                    onClick={() => setLocation("home")}
-                  >
-                    Home
-                  </NavLink>
-                </li>
-                {/* All the project anchors are givin the current item */}
-                <li>
-                  <NavLink
-                    // exact
-                    className={
-                      location === "projects" ||
-                      location === "letstalk" ||
-                      location === "mysecondhandbookstore" ||
-                      location === "spotifylibray"
-                        ? "menu__current__item"
-                        : ""
-                    }
-                    smooth
-                    to="#projects"
-                    // scroll={(el) =>
-                    //   el.scrollIntoView({ behavior: "auto", block: "end" })
-                    // }
-                    onClick={() => setLocation("projects")}
-                  >
-                    Projects
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    exact
-                    className={
-                      location === "about" ? "menu__current__item" : ""
-                    }
-                    smooth
-                    to="#about"
-                    onClick={() => setLocation("about")}
-                  >
-                    About
-                  </NavLink>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </animated.div>
-      )
+  return (
+    <div id="menu" className={`${navbarClasses.join(" ")}menu row-1"`}>
+      <nav className="navigation">
+        <ul>
+          <li>
+            <NavLink
+              exact
+              className={location === "home" ? "menu__current__item" : ""}
+              smooth
+              to="#"
+              onClick={() => setLocation("home")}
+            >
+              Home
+            </NavLink>
+          </li>
+          {/* All the project anchors are givin the current item */}
+          <li>
+            <NavLink
+              // exact
+              className={
+                location === "projects" ||
+                location === "letstalk" ||
+                location === "mysecondhandbookstore" ||
+                location === "spotifylibray"
+                  ? "menu__current__item"
+                  : ""
+              }
+              smooth
+              to="#projects"
+              // scroll={(el) =>
+              //   el.scrollIntoView({ behavior: "auto", block: "end" })
+              // }
+              onClick={() => setLocation("projects")}
+            >
+              Projects
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              exact
+              className={location === "about" ? "menu__current__item" : ""}
+              smooth
+              to="#about"
+              onClick={() => setLocation("about")}
+            >
+              About
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };
 
