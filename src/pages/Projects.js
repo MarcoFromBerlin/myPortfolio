@@ -108,6 +108,19 @@ const Projects = (props) => {
       flip={(obj) => flipCallback(obj)}
     />
   );
+  /**
+   * @desc check menu changes to set the ProjectsSummary
+   */
+  useEffect(() => {
+    console.log(
+      "useHookstateAppStore PROJ",
+      useHookstateAppStore.setProjectsHome.get()
+    );
+    if (useHookstateAppStore.setProjectsHome.get()) {
+      flip("summary");
+      useHookstateAppStore.setProjectsHome.set(false);
+    }
+  }, [useHookstateAppStore]);
 
   const [projectsBack, setProjectsBack] = useState();
 
@@ -179,7 +192,12 @@ const Projects = (props) => {
 
   const flip = (obj) => {
     const components = {
-      summary: <ProjectsSummary windowHeight={windowHeight} />,
+      summary: (
+        <ProjectsSummary
+          windowHeight={windowHeight}
+          flip={(obj) => flipCallback(obj)}
+        />
+      ),
       modal01: <Modal01 windowHeight={windowHeight} />,
       modal02: <Modal02 windowHeight={windowHeight} />,
       modal03: <Modal03 windowHeight={windowHeight} />,

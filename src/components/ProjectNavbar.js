@@ -13,7 +13,7 @@ import appStore from "../store/appStore";
 const Navbar = forwardRef((props, ref) => {
   const useHookstateAppStore = useHookstate(appStore);
 
-  const location = useLocation().hash.toString().substr(1);
+  // const location = useLocation().hash.toString().substr(1);
 
   // const { useHookstate } = props;
 
@@ -26,6 +26,7 @@ const Navbar = forwardRef((props, ref) => {
 
   const setLocation = (location) => {
     useHookstateAppStore.currentMenuLocation.set(location);
+    useHookstateAppStore.isProjectsHome.set(false);
   };
 
   console.log(useHookstateAppStore);

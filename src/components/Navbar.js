@@ -80,7 +80,13 @@ const Navbar = (props) => {
     navbarClasses.push("scrolled ");
   }
 
+  /**
+   * @desc checks the status of the Projects is home or not
+   *
+   */
+
   const setLocation = (location) => {
+    // console.log(useHookstate.isProjectsHome.get());
     useHookstate.currentMenuLocation.set(location);
   };
 

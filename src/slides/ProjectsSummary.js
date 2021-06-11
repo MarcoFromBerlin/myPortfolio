@@ -86,20 +86,20 @@ const ProjectsSummary = (props) => {
 
   const { windowHeight, flip } = props;
 
-  const [projectsFront, setProjectsFront] = useState();
-  const [projectsBack, setProjectsBack] = useState();
+  // const [projectsFront, setProjectsFront] = useState();
+  // const [projectsBack, setProjectsBack] = useState();
   // const [projectsBack, setProjectsBack] = useState(<Modal01 />);
-  const [showProjectsMenu, setShowProjectsMenu] = useState(false);
+  // const [showProjectsMenu, setShowProjectsMenu] = useState(false);
 
-  const ref = createRef();
+  // const ref = createRef();
 
   const classes = useStyles();
-  const containerWindow = useRef();
-  const projectsWindow = useRef();
+  // const containerWindow = useRef();
+  // const projectsWindow = useRef();
 
-  const projectOne = useRef();
-  const projectTwo = useRef();
-  const projectThree = useRef();
+  // const projectOne = useRef();
+  // const projectTwo = useRef();
+  // const projectThree = useRef();
 
   /**
    * @description obj to handle the show details thumbs
@@ -151,10 +151,9 @@ const ProjectsSummary = (props) => {
   // };
 
   const setLocation = (location) => {
-    // useHookstateAppStore.currentMenuLocation.set(location);
+    useHookstateAppStore.currentMenuLocation.set(location);
+    useHookstateAppStore.isProjectsHome.set(false);
   };
-
-  console.log(useHookstateAppStore);
 
   return (
     // <div className="col-12 t-center home__main projects__window projects__summary">

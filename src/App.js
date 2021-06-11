@@ -226,7 +226,16 @@ const App = () => {
   // }, []);
 
   useEffect(() => {
-    console.log(useHookstateAppStore.currentMenuLocation.get());
+    /**
+     * @desc checks if the Projects Home is active if
+     * not set it request setting setProjectsHome true
+     */
+    if (
+      useHookstateAppStore.currentMenuLocation.get() === "projects" &&
+      useHookstateAppStore.isProjectsHome.get() === false
+    ) {
+      useHookstateAppStore.setProjectsHome.set(true);
+    }
   }, [useHookstateAppStore]);
 
   return (
