@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f546ce0a.chunk.css",
+    "main.js": "/static/js/main.f72ae18a.chunk.js",
+    "main.js.map": "/static/js/main.f72ae18a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.45398524.js",
+    "runtime-main.js.map": "/static/js/runtime-main.45398524.js.map",
+    "static/css/2.ab18fb39.chunk.css": "/static/css/2.ab18fb39.chunk.css",
+    "static/js/2.e9f1cafb.chunk.js": "/static/js/2.e9f1cafb.chunk.js",
+    "static/js/2.e9f1cafb.chunk.js.map": "/static/js/2.e9f1cafb.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.ab18fb39.chunk.css.map": "/static/css/2.ab18fb39.chunk.css.map",
+    "static/css/main.f546ce0a.chunk.css.map": "/static/css/main.f546ce0a.chunk.css.map",
+    "static/js/2.e9f1cafb.chunk.js.LICENSE.txt": "/static/js/2.e9f1cafb.chunk.js.LICENSE.txt",
+    "static/media/image_slide03.2fd7afab.png": "/static/media/image_slide03.2fd7afab.png",
+    "static/media/mongoDb.3a9ba5ce.png": "/static/media/mongoDb.3a9ba5ce.png",
+    "static/media/redux.f63dffb2.png": "/static/media/redux.f63dffb2.png",
+    "static/media/sc_schema_01.2ab28a09.png": "/static/media/sc_schema_01.2ab28a09.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.45398524.js",
+    "static/css/2.ab18fb39.chunk.css",
+    "static/js/2.e9f1cafb.chunk.js",
+    "static/css/main.f546ce0a.chunk.css",
+    "static/js/main.f72ae18a.chunk.js"
+  ]
+}
