@@ -72,8 +72,6 @@ const Navbar = forwardRef((props, ref) => {
     useHookstateAppStore.isProjectsHome.set(false);
   };
 
-  // console.log(useHookstateAppStore);
-
   return (
     <Fragment>
       <div className={`projects__navbar row-1"`}>

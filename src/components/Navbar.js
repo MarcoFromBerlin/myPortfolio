@@ -18,24 +18,23 @@ const Navbar = (props) => {
   /**
    * @desc animation fade in out
    */
-  // const [toggle, setToggle] = useState(true);
-
-  // // setToggle(props.update);
 
   const updateNavbar = props.update;
 
-  // console.log(updateNavbar);
+  console.log(updateNavbar);
 
   const fadingMenu = useTransition(updateNavbar, {
-    from: { opacity: 0 },
+    initial: { opacity: 1 },
+    from: { opacity: 1 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    leave: { opacity: 1 },
     config: {
       tension: 220,
       friction: 120,
-      duration: 400,
+      duration: 2000,
     },
-    delay: 400,
+    delay: 0,
+    trail: 1500,
   });
 
   const transitionsDelete = {
@@ -86,7 +85,6 @@ const Navbar = (props) => {
    */
 
   const setLocation = (location) => {
-    // console.log(useHookstate.isProjectsHome.get());
     useHookstate.currentMenuLocation.set(location);
   };
 

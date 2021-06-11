@@ -83,6 +83,10 @@ const App = () => {
 
   const [updateNavbar, setUpdateNavbar] = useState(true);
 
+  /**
+   * @desc Set window dimensions
+   */
+
   const updateDimensions = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
@@ -92,6 +96,10 @@ const App = () => {
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
+
+  /**
+   * @desc Matxis 3d effect
+   */
 
   /**
    * @desc set anchors
@@ -145,6 +153,7 @@ const App = () => {
      */
     containerRef.current.addEventListener("touchstart", scrollTouchStart);
     containerRef.current.addEventListener("touchend", scrollTouchEnd);
+    containerRef.current.style.zIndex = "-10000";
   });
 
   /**
@@ -216,14 +225,9 @@ const App = () => {
     }, 500);
   };
 
-  // const setLocation = (location) => {
-  //   useHookstate.currentMenuLocation?.set(location);
-  // };
-
-  // const setLocationCallback = useCallback((location) => {
-  //   console.log("ser");
-  //   setLocation(location);
-  // }, []);
+  /**
+   * @desc set project home
+   */
 
   useEffect(() => {
     /**

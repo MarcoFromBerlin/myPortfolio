@@ -201,11 +201,6 @@ const Projects = (props) => {
     flip(obj);
   }, []);
 
-  // console.log(useHookstate.currentMenuLocation);
-
-  // useEffect(() => {
-  //   setLocation(useHookstateAppStore.currentMenuLocation);
-  // }, [useHookstateAppStore]);
   return (
     <div
       ref={containerWindow}
