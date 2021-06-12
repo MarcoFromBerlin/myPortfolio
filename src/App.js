@@ -7,7 +7,6 @@ import React, {
   useCallback,
 } from "react";
 
-import "./css/main.css";
 import Navbar from "./components/Navbar";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
