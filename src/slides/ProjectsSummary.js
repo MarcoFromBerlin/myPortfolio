@@ -7,7 +7,15 @@ import React, {
 } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink as NavLink } from "react-router-hash-link";
-import ProjectNavbar from "../components/ProjectNavbar";
+
+/**
+ * @desc Detect mobile
+ */
+import { MobileView, BrowserView } from "react-device-detect";
+
+/**
+ * @desc MAT UI
+ */
 import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
@@ -156,158 +164,280 @@ const ProjectsSummary = (props) => {
   };
 
   return (
-    <div className="project___summary__container hide-phone hide-tablet">
-      <h1 className="section__title">Projects</h1>
-      <h4 className="section__subtitle">
-        A few projects I made using different tecnologies
-      </h4>
+    <>
       {/* WEB VERSION */}
-      <div className="row project__thumb__container">
-        <button
-          className="col-4 project__thumb-left btn-no-css"
-          onMouseEnter={() => handleOver({ thumb: "one", value: true })}
-          onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-          onClick={() => {
-            setLocation("mysecondhandbookstore");
-            flip("modal01");
-          }}
-          // onClick={() => flip(<Modal01 windowHeight={windowHeight} />)}
-        >
-          <NavLink
-            exact
-            // className={location === "about" ? "menu__current__item" : ""}
-            smooth
-            to="#mysecondhandbookstore"
-            // onClick={flip}
-          >
-            <div>
-              <Slide
-                direction="right"
-                in={showDetails === undefined ? false : showDetails["one"]}
-                mountOnEnter
-                unmountOnExit
-                className={classes.slide}
-                timeout={timeoutSlides}
+      <BrowserView>
+        <div className="project___summary__container">
+          <h1 className="section__title">Projects</h1>
+          <h4 className="section__subtitle">
+            A few projects I made using different tecnologies
+          </h4>
+          <div className="row project__thumb__container">
+            <button
+              className="col-4 project__thumb-left btn-no-css"
+              onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+              onClick={() => {
+                setLocation("mysecondhandbookstore");
+                flip("modal01");
+              }}
+              // onClick={() => flip(<Modal01 windowHeight={windowHeight} />)}
+            >
+              <NavLink
+                exact
+                // className={location === "about" ? "menu__current__item" : ""}
+                smooth
+                to="#mysecondhandbookstore"
+                // onClick={flip}
               >
-                <Paper elevation={4} className={classes.paper}>
-                  <h5 className="slide__title">My Second Hand Bookstore</h5>
-                  <h6 className="slide__description">
-                    Web App + iOS/Android App to find and stock second hand
-                    books
-                  </h6>
-                  <div className="slide__icons">
-                    <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
-                    <FontAwesomeIcon
-                      icon={["fab", "wordpress-simple"]}
-                      size="2x"
-                    />
-                    <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                    <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
-                    <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
-                  </div>
-                </Paper>
-              </Slide>
-            </div>
-          </NavLink>
-        </button>
-
-        <button
-          className="col-4 project__thumb-center btn-no-css"
-          onMouseEnter={() => handleOver({ thumb: "two", value: true })}
-          onMouseLeave={() => handleOver({ thumb: "two", value: false })}
-          onClick={() => {
-            setLocation("letstalk");
-            flip("modal02");
-          }}
-        >
-          <NavLink
-            exact
-            // className={location === "about" ? "menu__current__item" : ""}
-            smooth
-            to="#letstalk"
-            // onClick={goToProject(ref)}
-          >
-            <Slide
-              direction="up"
-              in={showDetails === undefined ? false : showDetails["two"]}
-              mountOnEnter
-              unmountOnExit
-              className={classes.slide}
-              timeout={timeoutSlides}
-            >
-              <Paper elevation={4} className={classes.paper}>
-                <h5 className="slide__title">Let's Talk About the weather</h5>
-                <h6 className="slide__description">
-                  Dashboard that shows all the locations and the weather of a
-                  team
-                </h6>
-                <div className="slide__icons">
-                  <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
-                  <FontAwesomeIcon icon={["fab", "js"]} size="2x" />
-                  <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                  <img
-                    src={mongoDbIcon}
-                    className="svg__icon"
-                    alt="React Logo"
-                  />
+                <div>
+                  <Slide
+                    direction="right"
+                    in={showDetails === undefined ? false : showDetails["one"]}
+                    mountOnEnter
+                    unmountOnExit
+                    className={classes.slide}
+                    timeout={timeoutSlides}
+                  >
+                    <Paper elevation={4} className={classes.paper}>
+                      <h5 className="slide__title">My Second Hand Bookstore</h5>
+                      <h6 className="slide__description">
+                        Web App + iOS/Android App to find and stock second hand
+                        books
+                      </h6>
+                      <div className="slide__icons">
+                        <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                        <FontAwesomeIcon
+                          icon={["fab", "wordpress-simple"]}
+                          size="2x"
+                        />
+                        <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                        <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
+                        <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
+                      </div>
+                    </Paper>
+                  </Slide>
                 </div>
-              </Paper>
-            </Slide>
-          </NavLink>
-        </button>
+              </NavLink>
+            </button>
 
-        <button
-          className="col-4 project__thumb-right btn-no-css"
-          onMouseEnter={() => handleOver({ thumb: "three", value: true })}
-          onMouseLeave={() => handleOver({ thumb: "three", value: false })}
-          onClick={() => {
-            setLocation("letstalk");
-            flip("modal02");
-          }}
-          style={{
-            backgroundImage: `url(${imageSlide03})`,
-            backgroundSize: 400,
-            backgroundPositionX: -50,
-            backgroundPositionY: -50,
-          }}
-        >
-          <NavLink
-            exact
-            // className={location === "about" ? "menu__current__item" : ""}
-            smooth
-            to="#spotifylibray"
-            // onClick={goToProject(ref)}
-          >
-            <Slide
-              direction="left"
-              in={showDetails === undefined ? false : showDetails["three"]}
-              mountOnEnter
-              unmountOnExit
-              className={classes.slide}
-              timeout={timeoutSlides}
+            <button
+              className="col-4 project__thumb-center btn-no-css"
+              onMouseEnter={() => handleOver({ thumb: "two", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "two", value: false })}
+              onClick={() => {
+                setLocation("letstalk");
+                flip("modal02");
+              }}
             >
-              <Paper elevation={4} className={classes.paper}>
-                <h5 className="slide__title">Spotify Library</h5>
+              <NavLink
+                exact
+                // className={location === "about" ? "menu__current__item" : ""}
+                smooth
+                to="#letstalk"
+                // onClick={goToProject(ref)}
+              >
+                <Slide
+                  direction="up"
+                  in={showDetails === undefined ? false : showDetails["two"]}
+                  mountOnEnter
+                  unmountOnExit
+                  className={classes.slide}
+                  timeout={timeoutSlides}
+                >
+                  <Paper elevation={4} className={classes.paper}>
+                    <h5 className="slide__title">
+                      Let's Talk About the weather
+                    </h5>
+                    <h6 className="slide__description">
+                      Dashboard that shows all the locations and the weather of
+                      a team
+                    </h6>
+                    <div className="slide__icons">
+                      <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+                      <FontAwesomeIcon icon={["fab", "js"]} size="2x" />
+                      <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                      <img
+                        src={mongoDbIcon}
+                        className="svg__icon"
+                        alt="React Logo"
+                      />
+                    </div>
+                  </Paper>
+                </Slide>
+              </NavLink>
+            </button>
+
+            <button
+              className="col-4 project__thumb-right btn-no-css"
+              onMouseEnter={() => handleOver({ thumb: "three", value: true })}
+              onMouseLeave={() => handleOver({ thumb: "three", value: false })}
+              onClick={() => {
+                setLocation("letstalk");
+                flip("modal02");
+              }}
+              style={{
+                backgroundImage: `url(${imageSlide03})`,
+                backgroundSize: 400,
+                backgroundPositionX: -50,
+                backgroundPositionY: -50,
+              }}
+            >
+              <NavLink
+                exact
+                // className={location === "about" ? "menu__current__item" : ""}
+                smooth
+                to="#spotifylibray"
+                // onClick={goToProject(ref)}
+              >
+                <Slide
+                  direction="left"
+                  in={showDetails === undefined ? false : showDetails["three"]}
+                  mountOnEnter
+                  unmountOnExit
+                  className={classes.slide}
+                  timeout={timeoutSlides}
+                >
+                  <Paper elevation={4} className={classes.paper}>
+                    <h5 className="slide__title">Spotify Library</h5>
+                    <h6 className="slide__description">
+                      Web App to organize by category your Spotify Collection
+                    </h6>
+                    <div className="slide__icons">
+                      <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                      <img
+                        src={reduxIcon}
+                        className="png__icon"
+                        alt="Redux Logo"
+                      />
+                      <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+                      <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                      <img
+                        src={mongoDbIcon}
+                        className="svg__icon"
+                        alt="React Logo"
+                      />
+                    </div>
+                  </Paper>
+                </Slide>
+              </NavLink>
+            </button>
+          </div>
+        </div>
+      </BrowserView>
+      {/* MOB VERSION */}
+      <MobileView>
+        <div className="col-12 project__thumb__container__mobile">
+          <div className="projects__mobile___title__container">
+            <h1 className="section__title">Projects</h1>
+            <h4 className="section__subtitle">
+              A few projects I made using different tecnologies
+            </h4>
+          </div>
+          <button
+            className=" project__thumb__mobile btn-no-css"
+            // onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+            // onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+            onClick={() => {
+              setLocation("mysecondhandbookstore");
+              flip("modal01");
+            }}
+          >
+            <NavLink
+              exact
+              // className={location === "about" ? "menu__current__item" : ""}
+              smooth
+              to="#mysecondhandbookstore"
+              // onClick={goToProject(ref)}
+            >
+              <div>
+                <h5 className="slide__title">My Second Hand Bookstore</h5>
                 <h6 className="slide__description">
-                  Web App to organize by category your Spotify Collection
+                  Web App + iOS/Android App to find and stock second hand books
                 </h6>
                 <div className="slide__icons">
                   <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
-                  <img src={reduxIcon} className="png__icon" alt="Redux Logo" />
-                  <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
-                  <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
-                  <img
-                    src={mongoDbIcon}
-                    className="svg__icon"
-                    alt="React Logo"
+                  <FontAwesomeIcon
+                    icon={["fab", "wordpress-simple"]}
+                    size="2x"
                   />
+                  <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                  <FontAwesomeIcon icon={["fab", "android"]} size="2x" />
+                  <FontAwesomeIcon icon={["fab", "apple"]} size="2x" />
                 </div>
-              </Paper>
-            </Slide>
-          </NavLink>
-        </button>
-      </div>
-    </div>
+              </div>
+            </NavLink>
+          </button>
+
+          <button
+            className="project__thumb__mobile btn-no-css"
+            // onMouseEnter={() => handleOver({ thumb: "two", value: true })}
+            // onMouseLeave={() => handleOver({ thumb: "two", value: false })}
+            // onClick={() => handleOpen(<Modal02 />)}
+            onClick={() => {
+              setLocation("letstalk");
+              flip("modal02");
+            }}
+          >
+            <NavLink
+              exact
+              // className={location === "about" ? "menu__current__item" : ""}
+              smooth
+              to="#letstalk"
+              // onClick={goToProject(ref)}
+            >
+              <h5 className="slide__title">Let's Talk About the weather</h5>
+              <h6 className="slide__description">
+                Dashboard that shows all the locations and the weather of a team
+              </h6>
+              <div className="slide__icons">
+                <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+                <FontAwesomeIcon icon={["fab", "js"]} size="2x" />
+                <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                <img src={mongoDbIcon} className="svg__icon" alt="React Logo" />
+              </div>
+            </NavLink>
+          </button>
+
+          <button
+            className="project__thumb__mobile btn-no-css"
+            // onMouseEnter={() => handleOver({ thumb: "three", value: true })}
+            // onMouseLeave={() => handleOver({ thumb: "three", value: false })}
+            // onClick={() => goToProject(projectThree)}
+            // style={{
+            //   backgroundImage: `url(${imageSlide03})`,
+            //   backgroundSize: 400,
+            //   backgroundPositionX: -50,
+            //   backgroundPositionY: -50,
+            // }}
+            onClick={() => {
+              setLocation("letstalk");
+              flip("modal02");
+            }}
+          >
+            <NavLink
+              exact
+              // className={location === "about" ? "menu__current__item" : ""}
+              smooth
+              to="#spotifylibray"
+              // onClick={goToProject(ref)}
+            >
+              <h5 className="slide__title">Spotify Library</h5>
+              <h6 className="slide__description">
+                Web App to organize by category your Spotify Collection
+              </h6>
+              <div className="slide__icons">
+                <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
+                <img src={reduxIcon} className="png__icon" alt="Redux Logo" />
+                <FontAwesomeIcon icon={["fab", "node-js"]} size="2x" />
+                <FontAwesomeIcon icon={["fab", "chrome"]} size="2x" />
+                <img src={mongoDbIcon} className="svg__icon" alt="React Logo" />
+              </div>
+            </NavLink>
+          </button>
+        </div>
+      </MobileView>
+    </>
   );
 };
 

@@ -187,8 +187,25 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    // & ul {
+    //   margin-right: 0px;
+    // }
   }
 
+  .projects__navbar {
+    margin: 0 auto;
+    margin-top: 55px;
+    padding: 0px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal__container {
+    margin-top: 140px;
+    overflow-y: scroll;
+    padding: 15px;
+  }
   .home__main {
     padding-bottom: 0px;
     padding-top: 70px;

@@ -4,6 +4,12 @@ import { HashLink as NavLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
 
 /**
+ * @desc detect mobile
+ */
+
+import { MobileView, BrowserView } from "react-device-detect";
+
+/**
  * @desc Hookstate
  */
 
