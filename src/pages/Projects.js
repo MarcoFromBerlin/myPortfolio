@@ -96,7 +96,7 @@ const Projects = (props) => {
   /**
    * @desc setLocation uses useCallback
    */
-  const { windowHeight, setLocation } = props;
+  const { windowHeight } = props;
 
   /**
    * @desc ProjectsSummary receives the states
@@ -148,16 +148,16 @@ const Projects = (props) => {
 
   const [showDetails, setShowDetails] = useState();
 
-  const timeoutSlides = { enter: 700, exit: 500 };
+  // const timeoutSlides = { enter: 700, exit: 500 };
 
-  /**
-   * @description handles hover
-   * @param {*} obj { thumb: "one", value: true }
-   */
-  const handleOver = (obj) => {
-    objShowDetails[obj.thumb] = obj.value;
-    setShowDetails(objShowDetails);
-  };
+  // /**
+  //  * @description handles hover
+  //  * @param {*} obj { thumb: "one", value: true }
+  //  */
+  // const handleOver = (obj) => {
+  //   objShowDetails[obj.thumb] = obj.value;
+  //   setShowDetails(objShowDetails);
+  // };
 
   /**
    * @desc sets the back of the project
@@ -201,6 +201,15 @@ const Projects = (props) => {
     flip(obj);
   }, []);
 
+  /**
+   * @desc interacts with Hookstate
+   */
+
+  const setLocation = (location) => {
+    useHookstateAppStore.currentMenuLocation.set(location);
+    useHookstateAppStore.isProjectsHome.set(false);
+  };
+
   return (
     <div
       ref={containerWindow}
@@ -223,9 +232,12 @@ const Projects = (props) => {
         <div className="col-12 project__thumb__container__mobile hide">
           <button
             className=" project__thumb__mobile btn-no-css"
-            onMouseEnter={() => handleOver({ thumb: "one", value: true })}
-            onMouseLeave={() => handleOver({ thumb: "one", value: false })}
-            // onClick={() => handleOpen(<Modal01 />)}
+            // onMouseEnter={() => handleOver({ thumb: "one", value: true })}
+            // onMouseLeave={() => handleOver({ thumb: "one", value: false })}
+            onClick={() => {
+              setLocation("mysecondhandbookstore");
+              flip("modal01");
+            }}
           >
             <NavLink
               exact
@@ -255,9 +267,13 @@ const Projects = (props) => {
 
           <button
             className="project__thumb__mobile btn-no-css"
-            onMouseEnter={() => handleOver({ thumb: "two", value: true })}
-            onMouseLeave={() => handleOver({ thumb: "two", value: false })}
+            // onMouseEnter={() => handleOver({ thumb: "two", value: true })}
+            // onMouseLeave={() => handleOver({ thumb: "two", value: false })}
             // onClick={() => handleOpen(<Modal02 />)}
+            onClick={() => {
+              setLocation("letstalk");
+              flip("modal02");
+            }}
           >
             <NavLink
               exact
@@ -281,8 +297,8 @@ const Projects = (props) => {
 
           <button
             className="project__thumb__mobile btn-no-css"
-            onMouseEnter={() => handleOver({ thumb: "three", value: true })}
-            onMouseLeave={() => handleOver({ thumb: "three", value: false })}
+            // onMouseEnter={() => handleOver({ thumb: "three", value: true })}
+            // onMouseLeave={() => handleOver({ thumb: "three", value: false })}
             // onClick={() => goToProject(projectThree)}
             // style={{
             //   backgroundImage: `url(${imageSlide03})`,
@@ -290,6 +306,10 @@ const Projects = (props) => {
             //   backgroundPositionX: -50,
             //   backgroundPositionY: -50,
             // }}
+            onClick={() => {
+              setLocation("letstalk");
+              flip("modal02");
+            }}
           >
             <NavLink
               exact

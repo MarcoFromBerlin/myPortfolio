@@ -156,13 +156,13 @@ const ProjectsSummary = (props) => {
   };
 
   return (
-    <div className="project___summary__container">
+    <div className="project___summary__container hide-phone hide-tablet">
       <h1 className="section__title">Projects</h1>
       <h4 className="section__subtitle">
         A few projects I made using different tecnologies
       </h4>
       {/* WEB VERSION */}
-      <div className="row project__thumb__container hide-phone hide-tablet">
+      <div className="row project__thumb__container">
         <button
           className="col-4 project__thumb-left btn-no-css"
           onMouseEnter={() => handleOver({ thumb: "one", value: true })}
@@ -261,8 +261,8 @@ const ProjectsSummary = (props) => {
           onMouseEnter={() => handleOver({ thumb: "three", value: true })}
           onMouseLeave={() => handleOver({ thumb: "three", value: false })}
           onClick={() => {
-            setLocation("spotifylibray");
-            flip("modal03");
+            setLocation("letstalk");
+            flip("modal02");
           }}
           style={{
             backgroundImage: `url(${imageSlide03})`,
