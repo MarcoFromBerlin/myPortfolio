@@ -9,6 +9,8 @@ import React, {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink as NavLink } from "react-router-hash-link";
 
+import FadeIn from "react-fade-in";
+
 import ProjectNavbar from "../components/ProjectNavbar";
 
 /**

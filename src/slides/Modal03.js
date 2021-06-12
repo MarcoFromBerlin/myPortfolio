@@ -19,13 +19,13 @@ const Modal03 = (props) => {
 
   return (
     <div className="row modal__container">
-      <div className="col-12">
+      <div className="col-12 col-lg-3">
         <h2>Spotify Library</h2>
       </div>
-      <div className="col-12">
+      <div className="col-12 col-lg-3">
         <h4>Web App to organize by category your Spotify Collection</h4>
       </div>
-      <div className="col-12">
+      <div className="col-12 col-lg-3">
         <div className="slide__icons">
           <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
           <img src={reduxIcon} className="modal__png__icon" alt="Redux Logo" />
@@ -38,7 +38,7 @@ const Modal03 = (props) => {
           />
         </div>
       </div>
-      <div className="col-6">
+      <div className="col-6 col-lg-3">
         <img
           src={sc_schema_01}
           className="img__schema"
@@ -65,7 +65,7 @@ const Modal03 = (props) => {
         ) : null}
         <p>Go through the slides to see how it works!</p>
       </div>
-      <div className="col-6">
+      <div className="col-6 col-lg-3">
         <h4>How does it work</h4>
         <p>
           Spotify Library is a fullstack app, multi-user app, where every user
