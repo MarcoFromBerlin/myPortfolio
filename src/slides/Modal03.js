@@ -25,9 +25,6 @@ const Modal03 = (props) => {
       <div className="col-12">
         <h4>Web App to organize by category your Spotify Collection</h4>
       </div>
-      {/* <div className="col-12">
-        <h5>App made with:</h5>
-      </div> */}
       <div className="col-12">
         <div className="slide__icons">
           <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
@@ -66,6 +63,7 @@ const Modal03 = (props) => {
             // }
           />
         ) : null}
+        <p>Go through the slides to see how it works!</p>
       </div>
       <div className="col-6">
         <h4>How does it work</h4>
@@ -77,16 +75,21 @@ const Modal03 = (props) => {
         </p>
         <br />
         <h4>Demo</h4>
-        <a target="_blank" href="https://spotifylibrary.herokuapp.com/">
-          spotifylibrary.herokuapp.com/
-        </a>
+        <p>
+          <a target="_blank" href="https://spotifylibrary.herokuapp.com/">
+            spotifylibrary.herokuapp.com/
+          </a>
+        </p>
+        <br />
         <h4>Links</h4>
-        <a
-          target="_blank"
-          href="https://github.com/marcovignotto/my-spotify-categories"
-        >
-          github.com/marcovignotto/my-spotify-categories
-        </a>
+        <p>
+          <a
+            target="_blank"
+            href="https://github.com/marcovignotto/my-spotify-categories"
+          >
+            github.com/marcovignotto/my-spotify-categories
+          </a>
+        </p>
       </div>
     </div>
   );
