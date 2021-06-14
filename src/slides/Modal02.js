@@ -5,6 +5,11 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
 /**
+ * @desc Detect mobile
+ */
+import { MobileView, BrowserView, isMobile } from "react-device-detect";
+
+/**
  * @description images
  */
 
@@ -18,17 +23,17 @@ const Modal02 = (props) => {
   const [isImgZoomed, setIsImgZoomed] = useState(false);
 
   return (
-    <div className="row modal__container">
-      <div className="col-12">
+    <div
+      className="row modal__container"
+      style={{ height: isMobile ? windowHeight - 20 : windowHeight }}
+    >
+      <div className="col-12 col-lg-3">
         <h2>Let's Talk About the Weather</h2>
       </div>
-      <div className="col-12">
+      <div className="col-12 col-lg-3">
         <h4>Web App to organize by category your Spotify Collection</h4>
       </div>
-      {/* <div className="col-12">
-        <h5>App made with:</h5>
-      </div> */}
-      <div className="col-12">
+      <div className="col-12 col-lg-3">
         <div className="slide__icons">
           <FontAwesomeIcon icon={["fab", "react"]} size="2x" />
           <img src={reduxIcon} className="modal__png__icon" alt="Redux Logo" />
@@ -41,7 +46,7 @@ const Modal02 = (props) => {
           />
         </div>
       </div>
-      <div className="col-6">
+      <div className="col-6 col-lg-3">
         <img
           src={sc_schema_01}
           className="img__schema"
@@ -66,8 +71,9 @@ const Modal02 = (props) => {
             // }
           />
         ) : null}
+        <p>Go through the slides to see how it works!</p>
       </div>
-      <div className="col-6">
+      <div className="col-6 col-lg-3">
         <h4>How does it work</h4>
         <p>
           Spotify Library is a fullstack app, multi-user app, where every user
@@ -77,16 +83,21 @@ const Modal02 = (props) => {
         </p>
         <br />
         <h4>Demo</h4>
-        <a target="_blank" href="https://spotifylibrary.herokuapp.com/">
-          spotifylibrary.herokuapp.com/
-        </a>
+        <p>
+          <a target="_blank" href="https://spotifylibrary.herokuapp.com/">
+            spotifylibrary.herokuapp.com/
+          </a>
+        </p>
+        <br />
         <h4>Links</h4>
-        <a
-          target="_blank"
-          href="https://github.com/marcovignotto/my-spotify-categories"
-        >
-          github.com/marcovignotto/my-spotify-categories
-        </a>
+        <p>
+          <a
+            target="_blank"
+            href="https://github.com/marcovignotto/my-spotify-categories"
+          >
+            github.com/marcovignotto/my-spotify-categories
+          </a>
+        </p>
       </div>
     </div>
   );

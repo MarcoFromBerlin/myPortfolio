@@ -167,7 +167,10 @@ const ProjectsSummary = (props) => {
     <>
       {/* WEB VERSION */}
       <BrowserView>
-        <div className="project___summary__container">
+        <div
+          className="project___summary__container"
+          // style={{ height: windowHeight }}
+        >
           <h1 className="section__title">Projects</h1>
           <h4 className="section__subtitle">
             A few projects I made using different tecnologies
@@ -273,8 +276,8 @@ const ProjectsSummary = (props) => {
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
               onClick={() => {
-                setLocation("letstalk");
-                flip("modal02");
+                setLocation("spotifylibray");
+                flip("modal03");
               }}
               style={{
                 backgroundImage: `url(${imageSlide03})`,
@@ -411,8 +414,8 @@ const ProjectsSummary = (props) => {
             //   backgroundPositionY: -50,
             // }}
             onClick={() => {
-              setLocation("letstalk");
-              flip("modal02");
+              setLocation("spotifylibray");
+              flip("modal03");
             }}
           >
             <NavLink

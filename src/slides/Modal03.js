@@ -5,6 +5,11 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
 /**
+ * @desc Detect mobile
+ */
+import { MobileView, BrowserView, isMobile } from "react-device-detect";
+
+/**
  * @description images
  */
 
@@ -12,13 +17,29 @@ import mongoDbIcon from "../images/mongoDb.png";
 import reduxIcon from "../images/redux.png";
 import sc_schema_01 from "../images/sc_schema_01.png";
 
+/**
+ * @desc Hookstate
+ */
+
+import { useState as useHookstate } from "@hookstate/core";
+import appStore from "../store/appStore";
+
 const Modal03 = (props) => {
+  /**
+   * @desc use Hookstate
+   */
+
+  const useHookstateAppStore = useHookstate(appStore);
+
   const { windowHeight } = props;
 
   const [isImgZoomed, setIsImgZoomed] = useState(false);
 
   return (
-    <div className="row modal__container">
+    <div
+      className="row modal__container"
+      style={{ height: isMobile ? windowHeight - 20 : windowHeight }}
+    >
       <div className="col-12 col-lg-3">
         <h2>Spotify Library</h2>
       </div>

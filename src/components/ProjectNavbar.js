@@ -1,4 +1,10 @@
-import React, { Fragment, useEffect, useState, forwardRef } from "react";
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+  forwardRef,
+  useRef,
+} from "react";
 // import { NavLink } from "react-router-dom";
 import { HashLink as NavLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
@@ -19,11 +25,13 @@ import appStore from "../store/appStore";
 const Navbar = forwardRef((props, ref) => {
   const useHookstateAppStore = useHookstate(appStore);
 
+  const navbarRef = useRef();
+
   // const location = useLocation().hash.toString().substr(1);
 
   // const { useHookstate } = props;
 
-  const { menuProjects } = useHookstateAppStore;
+  const { menuProjects, menuProjectsSize } = useHookstateAppStore;
 
   /**
    * @desc Sends to parent the page to visit
@@ -78,9 +86,18 @@ const Navbar = forwardRef((props, ref) => {
     useHookstateAppStore.isProjectsHome.set(false);
   };
 
+  /**
+   * @desc sets navbar size into states
+   */
+  useEffect(() => {
+    setTimeout(() => {
+      menuProjectsSize.height.set(navbarRef.current.offsetHeight);
+    }, 100);
+  }, []);
+
   return (
     <Fragment>
-      <div className={`projects__navbar row-1"`}>
+      <div ref={navbarRef} className={`projects__navbar row-1"`}>
         <nav className="navigation">
           <ul>
             <li>
@@ -88,7 +105,7 @@ const Navbar = forwardRef((props, ref) => {
                 exact
                 // className={location === "" ? "menu__current__item" : ""}
                 smooth
-                // to="#mysecondhandbookstore"
+                to="#mysecondhandbookstore"
                 onClick={() => {
                   checkMenu("modal01");
                 }}
@@ -102,7 +119,7 @@ const Navbar = forwardRef((props, ref) => {
                 exact
                 // className={location === "projects" ? "menu__current__item" : ""}
                 smooth
-                // to="#letstalk"
+                to="#letstalk"
                 onClick={() => {
                   checkMenu("modal02");
                 }}
@@ -115,7 +132,7 @@ const Navbar = forwardRef((props, ref) => {
                 exact
                 // className={location === "about" ? "menu__current__item" : ""}
                 smooth
-                // to="#spotifylibray"
+                to="#spotifylibray"
                 // onClick={goToProject(ref)}
                 onClick={() => {
                   checkMenu("modal03");

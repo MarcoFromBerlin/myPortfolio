@@ -71,6 +71,7 @@
   * @desc new classes
   */
   .menu {
+    // height: 55px;
     width: 100%;
     & ul {
       height: 0px;
@@ -194,10 +195,11 @@
   }
 
   .projects__navbar {
+    height: 65px;
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 65px;
+    margin-top: 60px;
     // padding: 0px;
     font-size: 15px;
     display: flex;
@@ -224,7 +226,7 @@
     // margin-left: 10px;
     // margin-right: 60px;
     width: 85% !important;
-    max-height: 80vh !important;
+    // max-height: 80vh !important;
     margin-bottom: 30px;
     margin-left: 0px;
     margin-right: 0px;

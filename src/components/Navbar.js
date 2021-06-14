@@ -1,10 +1,18 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import { HashLink as NavLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
 
 import { useSpring, animated, useTransition } from "@react-spring/web";
 
 const Navbar = (props) => {
+  const navbarRef = useRef();
+
   const { gotToSummary, useHookstate } = props;
   /**
    * @desc to get the anchor
@@ -88,8 +96,25 @@ const Navbar = (props) => {
     useHookstate.currentMenuLocation.set(location);
   };
 
+  /**
+   * @desc sets navbar size into states
+   */
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     useHookstate.menuMainSize.set(navbarRef.current.offsetHeight);
+  //   }, 100);
+  //   console.log(
+  //     "navbarRef.current.offsetHeight",
+  //     navbarRef.current.offsetHeight
+  //   );
+  // }, []);
+
   return (
-    <div id="menu" className={`${navbarClasses.join(" ")}menu row-1"`}>
+    <div
+      id="menu"
+      ref={navbarRef}
+      className={`${navbarClasses.join(" ")}menu row-1"`}
+    >
       <nav className="navigation">
         <ul>
           <li>
