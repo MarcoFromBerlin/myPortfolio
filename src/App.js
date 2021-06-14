@@ -241,8 +241,12 @@ const App = () => {
     }
   }, [useHookstateAppStore]);
 
+  /**
+   * @todo check if is usefull and index.html
+   */
+
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <Navbar
