@@ -45,3 +45,9 @@
   border-bottom: 3px solid $menu-font-color-hover;
   font-weight: 600;
 }
+
+.menu__current__item__navbar__projects {
+  color: $menu-font-color-hover !important;
+  border-bottom: 0;
+  font-weight: 600;
+}

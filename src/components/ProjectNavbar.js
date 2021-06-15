@@ -31,11 +31,21 @@ const Navbar = forwardRef((props, ref) => {
 
   // const { useHookstate } = props;
 
-  const { menuProjects, menuProjectsSize } = useHookstateAppStore;
+  const { menuProjects, menuProjectsSize, currentMenuLocation } =
+    useHookstateAppStore;
+
+  console.log(menuProjects.get()[0].anchor.substr(1));
+
+  /**
+   * @desc creates location var to create current item
+   */
+
+  const location = currentMenuLocation.get();
 
   /**
    * @desc Sends to parent the page to visit
    * checks if the user clicks twice on the same menu
+   * and avoids the page to flip
    */
 
   const checkMenu = (to) => {
@@ -103,7 +113,11 @@ const Navbar = forwardRef((props, ref) => {
             <li>
               <NavLink
                 exact
-                // className={location === "" ? "menu__current__item" : ""}
+                className={
+                  location === menuProjects.get()[0].anchor.substr(1)
+                    ? "menu__current__item__navbar__projects"
+                    : ""
+                }
                 smooth
                 to="#mysecondhandbookstore"
                 onClick={() => {
@@ -117,7 +131,11 @@ const Navbar = forwardRef((props, ref) => {
             <li>
               <NavLink
                 exact
-                // className={location === "projects" ? "menu__current__item" : ""}
+                className={
+                  location === menuProjects.get()[1].anchor.substr(1)
+                    ? "menu__current__item__navbar__projects"
+                    : ""
+                }
                 smooth
                 to="#letstalk"
                 onClick={() => {
@@ -130,7 +148,11 @@ const Navbar = forwardRef((props, ref) => {
             <li>
               <NavLink
                 exact
-                // className={location === "about" ? "menu__current__item" : ""}
+                className={
+                  location === menuProjects.get()[2].anchor.substr(1)
+                    ? "menu__current__item__navbar__projects"
+                    : ""
+                }
                 smooth
                 to="#spotifylibray"
                 // onClick={goToProject(ref)}
