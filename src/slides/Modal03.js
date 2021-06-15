@@ -85,6 +85,31 @@ const Modal03 = (props) => {
           />
         ) : null}
         <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
+        <p>Go through the slides to see how it works!</p>
       </div>
       <div className="col-6 col-lg-3">
         <h4>How does it work</h4>
