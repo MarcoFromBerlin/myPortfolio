@@ -171,11 +171,11 @@ const Projects = (props) => {
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
     ) {
-      console.log("front");
+      // console.log("front");
       setProjectsFront(components[obj]);
       projectsWindow.current.classList.remove("flip__project");
     } else {
-      console.log("back");
+      // console.log("back");
       setProjectsBack(components[obj]);
       projectsWindow.current.classList.add("flip__project");
     }

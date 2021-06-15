@@ -31,11 +31,21 @@ $section-title: $eerie-black;
 $section-subtitle: $jet;
 
 // Backgrounds
-$background-gradient-home: linear-gradient(
-  48deg,
-  rgba(232, 237, 223, 1) 0%,
-  rgba(207, 219, 213, 1) 100%
+// $background-gradient-home: linear-gradient(
+//   48deg,
+//   rgba(232, 237, 223, 1) 0%,
+//   rgba(207, 219, 213, 1) 100%
+// );
+$background-gradient-home: linear-gradient(125deg, rgb(255, 80, 121), coral);
+$background-gradient-about: linear-gradient(
+  150deg,
+  SlateBlue 0%,
+  DeepSkyBlue 100%
 );
+
+// borders
+$pages-border: 3px solid white;
+$pages-border2: 3px dashed white;
 
 // BTNS COLORS
 $light-blue: rgb(142, 194, 242);

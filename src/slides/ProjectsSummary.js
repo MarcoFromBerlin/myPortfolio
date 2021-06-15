@@ -171,10 +171,12 @@ const ProjectsSummary = (props) => {
           className="project___summary__container"
           // style={{ height: windowHeight }}
         >
-          <h1 className="section__title">Projects</h1>
-          <h4 className="section__subtitle">
-            A few projects I made using different tecnologies
-          </h4>
+          <div className="project__section__titles">
+            <h1 className="section__title">Projects</h1>
+            <h4 className="section__subtitle">
+              A few projects I made using different tecnologies
+            </h4>
+          </div>
           <div className="row project__thumb__container">
             <button
               className="col-4 project__thumb-left btn-no-css"

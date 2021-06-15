@@ -25,6 +25,7 @@
   animation: AnimationName 7s ease infinite;
 
   perspective: 1000px;
+  border: $pages-border;
 }
 
 @-webkit-keyframes AnimationName {
@@ -146,6 +147,11 @@
 
 .project___summary__container {
   padding: 40px;
+  border: $pages-border2;
+  margin: 20px;
+}
+
+.project__section__titles {
 }
 
 // card front

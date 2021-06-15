@@ -7,7 +7,7 @@
  * @requires speed = seconds
  */
 
-export function useMatrix(targetDiv, matrix, speed = 1) {
+export function useMatrix(targetDiv, matrix, speed = 0.3) {
   if (!Array.isArray(matrix))
     return console.error(
       "Not valid array provided. Matrix MUST be an array of 16 numbers"
