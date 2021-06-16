@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+import "react-image-lightbox/style.css";
 
 /**
  * @desc Detect mobile
@@ -18,11 +18,22 @@ import reduxIcon from "../images/redux.png";
 import sc_schema_01 from "../images/sc_schema_01.png";
 
 /**
+ * @desc schemas
+ */
+
+import schema_01 from "../images/spotify_collection_01.jpeg";
+import schema_02 from "../images/spotify_collection_02.jpeg";
+import schema_03 from "../images/spotify_collection_03.jpeg";
+import schema_04 from "../images/spotify_collection_04.jpeg";
+
+/**
  * @desc Hookstate
  */
 
 import { useState as useHookstate } from "@hookstate/core";
 import appStore from "../store/appStore";
+
+const images = [schema_01, schema_02, schema_03, schema_04];
 
 const Modal03 = (props) => {
   /**
@@ -34,11 +45,12 @@ const Modal03 = (props) => {
   const { windowHeight } = props;
 
   const [isImgZoomed, setIsImgZoomed] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
 
   return (
     <div
       className="row modal__container"
-      style={{ height: isMobile ? windowHeight - 20 : windowHeight }}
+      style={{ maxHeight: isMobile ? windowHeight - 20 : windowHeight }}
     >
       <div className="col-12 col-lg-3">
         <h2>Spotify Library</h2>
@@ -68,47 +80,26 @@ const Modal03 = (props) => {
         />
         {isImgZoomed ? (
           <Lightbox
-            mainSrc={sc_schema_01}
-            // nextSrc={images[(photoIndex + 1) % images.length]}
-            // prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            mainSrc={images[photoIndex]}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
             onCloseRequest={() => setIsImgZoomed(false)}
-            // onMovePrevRequest={() =>
-            //   this.setState({
-            //     photoIndex: (photoIndex + images.length - 1) % images.length,
-            //   })
-            // }
-            // onMoveNextRequest={() =>
-            //   this.setState({
-            //     photoIndex: (photoIndex + 1) % images.length,
-            //   })
-            // }
+            onMovePrevRequest={() => {
+              if (photoIndex === 0) {
+                setPhotoIndex(0);
+                return setIsImgZoomed(false);
+              }
+              setPhotoIndex(photoIndex + images.length - 1);
+            }}
+            onMoveNextRequest={() => {
+              if (photoIndex === images.length - 1) {
+                setPhotoIndex(0);
+                return setIsImgZoomed(false);
+              }
+              setPhotoIndex(photoIndex + 1);
+            }}
           />
         ) : null}
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
-        <p>Go through the slides to see how it works!</p>
         <p>Go through the slides to see how it works!</p>
       </div>
       <div className="col-6 col-lg-3">

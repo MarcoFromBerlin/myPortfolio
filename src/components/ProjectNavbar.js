@@ -27,14 +27,8 @@ const Navbar = forwardRef((props, ref) => {
 
   const navbarRef = useRef();
 
-  // const location = useLocation().hash.toString().substr(1);
-
-  // const { useHookstate } = props;
-
   const { menuProjects, menuProjectsSize, currentMenuLocation } =
     useHookstateAppStore;
-
-  console.log(menuProjects.get()[0].anchor.substr(1));
 
   /**
    * @desc creates location var to create current item
