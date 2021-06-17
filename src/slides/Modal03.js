@@ -33,7 +33,7 @@ import schema_04 from "../images/spotify_collection_04.jpeg";
 import { useState as useHookstate } from "@hookstate/core";
 import appStore from "../store/appStore";
 
-const images = [schema_01, schema_02, schema_03, schema_04];
+const images = [sc_schema_01, schema_01, schema_02, schema_03, schema_04];
 
 const Modal03 = (props) => {
   /**
@@ -74,6 +74,30 @@ const Modal03 = (props) => {
       <div className="col-6 col-lg-3">
         <img
           src={sc_schema_01}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+        <img
+          src={schema_01}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+        <img
+          src={schema_02}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+        <img
+          src={schema_03}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+        <img
+          src={schema_04}
           className="img__schema"
           alt="React Logo"
           onClick={() => setIsImgZoomed(true)}
