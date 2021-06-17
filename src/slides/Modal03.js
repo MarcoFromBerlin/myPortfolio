@@ -86,6 +86,8 @@ const Modal03 = (props) => {
           filter the albums and search through them.
         </p>
         <br />
+      </div>
+      <div className="col-6 col-lg-4">
         <h4>Demo</h4>
         <p>
           <a target="_blank" href="https://spotifylibrary.herokuapp.com/">
@@ -93,6 +95,8 @@ const Modal03 = (props) => {
           </a>
         </p>
         <br />
+      </div>
+      <div className="col-6 col-lg-4">
         <h4>Links</h4>
         <p>
           <a
@@ -102,6 +106,52 @@ const Modal03 = (props) => {
             github.com/marcovignotto/my-spotify-categories
           </a>
         </p>
+      </div>
+      <div className="col-12 col-lg-4 apps__flow">
+        <h4>App's Flow</h4>
+        <ul>
+          <li>
+            The users log in the server (Node JS /Express) - Under the hood
+            every user has an unique User Code
+          </li>
+          <li>
+            After the successful login every user inserts user/pass of the
+            Spotify Account - Under the hood using Spotify Login Api
+          </li>
+          <li>
+            The app will show the entire Albums Collection (ordered by recently
+            added) - It won't be saved on MongoDB yet, instead on every user
+            login the app picks up the MongoDB Collection with the user's Albums
+            (it finds it with the User Code) where just the albums with at least
+            a genre linked are saved.
+          </li>
+          <li>
+            In the settings page the user can add/edit/delete the music genres
+            (i.e. Rock, Pop, Jazz) and the Albums per page - Those settings will
+            be saved in MongoDB in a Collection named with the User Code
+          </li>
+          <li>
+            The user can assign till 3 genres to every Album - With the first
+            insertion the relevant album information will be saved into MongoDB
+            in the user's Albums Collection
+          </li>
+          <li>
+            The user can modify the added genres - Every change will be saved in
+            the user's Albums Collection on MongoDB
+          </li>
+          <li>
+            The Spotify collection can be filtered by Genres with checkboxes,
+            and the user can perform a search by Title or Author - The filtered
+            search uses the data saved in redux and the search will be saved in
+            Redux separeted from the pagination therefore the user can go back
+            to the whole collection without loadings, that gives a great UX
+          </li>
+          <li>
+            The Albums can be delete in groups with the Delete mode - The albums
+            will be deleted on the Spotify server and in the existing pages in
+            Redux
+          </li>
+        </ul>
       </div>
       <div className="col-12 t-center-x col-lg-4">
         <p>Go through the slides to see how it works!</p>
