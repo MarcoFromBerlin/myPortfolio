@@ -5,6 +5,7 @@ import React, {
   useRef,
   useEffect,
   useCallback,
+  createRef,
 } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { HashLink as NavLink } from "react-router-hash-link";
@@ -94,6 +95,8 @@ import appStore from "../store/appStore";
 // }));
 
 const Projects = (props) => {
+  // const navbarRef = createRef();
+
   const useHookstateAppStore = useHookstate(appStore);
 
   /**
@@ -101,11 +104,31 @@ const Projects = (props) => {
    */
 
   const { windowHeight } = props;
+
   const finalWindowHeight =
     windowHeight -
     50 -
     useHookstateAppStore.menuProjectsSize.height.get() -
     useHookstateAppStore.menuMainSize.height.get();
+
+  // const [finalWindowHeight, setFinalWindowHeight] = useState(
+  //   windowHeight -
+  //     50 -
+  //     useHookstateAppStore.menuProjectsSize.height.get() -
+  //     useHookstateAppStore.menuMainSize.height.get()
+  // );
+
+  // useEffect(() => {
+  //   setFinalWindowHeight(
+  //     windowHeight -
+  //       50 -
+  //       useHookstateAppStore.menuProjectsSize.height.get() -
+  //       useHookstateAppStore.menuMainSize.height.get()
+  //   );
+  // }, [
+  //   useHookstateAppStore.menuProjectsSize.height.get(),
+  //   useHookstateAppStore.menuMainSize.height.get(),
+  // ]);
 
   /**
    * @desc ProjectsSummary receives the states
@@ -171,11 +194,9 @@ const Projects = (props) => {
     if (
       Object.values(projectsWindow.current.classList).includes("flip__project")
     ) {
-      // console.log("front");
       setProjectsFront(components[obj]);
       projectsWindow.current.classList.remove("flip__project");
     } else {
-      // console.log("back");
       setProjectsBack(components[obj]);
       projectsWindow.current.classList.add("flip__project");
     }
@@ -202,18 +223,20 @@ const Projects = (props) => {
       ref={containerWindow}
       id="projects"
       className="home__main__wrap flip-card"
-      style={{ height: windowHeight }}
     >
       {showProjectsMenu ? <ProjectNavbar goTo={(to) => flip(to)} /> : null}
 
       <div
         ref={projectsWindow}
         className="row home__c projects flip-card-inner"
+        style={{ height: windowHeight }}
       >
-        <div className="col-12 col-lg-3 t-center projects__window projects__summary">
+        {/* Front Card */}
+        <div className="col-12 col-lg-4 projects__window projects__summary">
           {projectsFront}
         </div>
-        <div className="project col-lg-3">{projectsBack}</div>
+        {/* Back Card */}
+        <div className="project projects__window col-lg-4">{projectsBack}</div>
       </div>
     </div>
   );

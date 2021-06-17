@@ -161,12 +161,16 @@
 .project {
   // margin-top: 120px;
   // margin-top: 40px;
+  // position: relative !important;
   position: absolute;
   width: 100%;
-  padding: 0px;
+  // padding: 0px;
   // height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+}
+.projects__summary {
+  // position: absolute;
 }
 
 /* Style the back side */

@@ -16,7 +16,7 @@ const appStore = createState({
     { id: "03", compName: "modal03", anchor: "#spotifylibray" },
   ],
   menuProjectsSize: {
-    height: 0,
+    height: 35,
   },
   menuMainSize: {
     height: 50,

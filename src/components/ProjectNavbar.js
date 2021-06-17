@@ -27,6 +27,8 @@ const Navbar = forwardRef((props, ref) => {
 
   const navbarRef = useRef();
 
+  // console.log(ref);
+
   const { menuProjects, menuProjectsSize, currentMenuLocation } =
     useHookstateAppStore;
 

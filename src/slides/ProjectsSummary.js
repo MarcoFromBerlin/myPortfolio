@@ -169,7 +169,7 @@ const ProjectsSummary = (props) => {
       <BrowserView>
         <div
           className="project___summary__container"
-          // style={{ height: windowHeight }}
+          style={{ height: windowHeight }}
         >
           <div className="project__section__titles">
             <h1 className="section__title">Projects</h1>
@@ -332,7 +332,10 @@ const ProjectsSummary = (props) => {
       </BrowserView>
       {/* MOB VERSION */}
       <MobileView>
-        <div className="col-12 project__thumb__container__mobile">
+        <div
+          className="col-12 project__thumb__container__mobile"
+          // style={{ height: windowHeight }}
+        >
           <div className="projects__mobile___title__container">
             <h1 className="section__title">Projects</h1>
             <h4 className="section__subtitle">
