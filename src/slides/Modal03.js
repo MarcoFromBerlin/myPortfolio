@@ -33,7 +33,14 @@ import schema_04 from "../images/spotify_collection_04.jpeg";
 import { useState as useHookstate } from "@hookstate/core";
 import appStore from "../store/appStore";
 
-const images = [sc_schema_01, schema_01, schema_02, schema_03, schema_04];
+// const images = [sc_schema_01, schema_01, schema_02, schema_03, schema_04];
+const images = [
+  { img: schema_01 },
+  { img: schema_02 },
+  { img: schema_03 },
+  { img: schema_04 },
+  { img: sc_schema_01 },
+];
 
 const Modal03 = (props) => {
   /**
@@ -44,8 +51,8 @@ const Modal03 = (props) => {
 
   const { windowHeight } = props;
 
-  const [isImgZoomed, setIsImgZoomed] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [isImgZoomed, setIsImgZoomed] = useState(false);
 
   return (
     <div
@@ -71,62 +78,8 @@ const Modal03 = (props) => {
           />
         </div>
       </div>
-      <div className="col-6 col-lg-3">
-        <img
-          src={sc_schema_01}
-          className="img__schema"
-          alt="React Logo"
-          onClick={() => setIsImgZoomed(true)}
-        />
-        <img
-          src={schema_01}
-          className="img__schema"
-          alt="React Logo"
-          onClick={() => setIsImgZoomed(true)}
-        />
-        <img
-          src={schema_02}
-          className="img__schema"
-          alt="React Logo"
-          onClick={() => setIsImgZoomed(true)}
-        />
-        <img
-          src={schema_03}
-          className="img__schema"
-          alt="React Logo"
-          onClick={() => setIsImgZoomed(true)}
-        />
-        <img
-          src={schema_04}
-          className="img__schema"
-          alt="React Logo"
-          onClick={() => setIsImgZoomed(true)}
-        />
-        {isImgZoomed ? (
-          <Lightbox
-            mainSrc={images[photoIndex]}
-            nextSrc={images[(photoIndex + 1) % images.length]}
-            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-            onCloseRequest={() => setIsImgZoomed(false)}
-            onMovePrevRequest={() => {
-              if (photoIndex === 0) {
-                setPhotoIndex(0);
-                return setIsImgZoomed(false);
-              }
-              setPhotoIndex(photoIndex + images.length - 1);
-            }}
-            onMoveNextRequest={() => {
-              if (photoIndex === images.length - 1) {
-                setPhotoIndex(0);
-                return setIsImgZoomed(false);
-              }
-              setPhotoIndex(photoIndex + 1);
-            }}
-          />
-        ) : null}
-        <p>Go through the slides to see how it works!</p>
-      </div>
-      <div className="col-6 col-lg-3">
+
+      <div className="col-12">
         <h4>How does it work</h4>
         <p>
           Spotify Library is a fullstack app, multi-user app, where every user
@@ -151,6 +104,98 @@ const Modal03 = (props) => {
             github.com/marcovignotto/my-spotify-categories
           </a>
         </p>
+      </div>
+      <div className="col-12 t-center-x">
+        <p>Go through the slides to see how it works!</p>
+      </div>
+      {images.map((x, i) => {
+        if (i === 4) return;
+        return (
+          <div className="col-3">
+            <img
+              src={x.img}
+              className="img__schema"
+              alt={`${x.img}`}
+              onClick={() => {
+                setPhotoIndex(i);
+                setIsImgZoomed(true);
+              }}
+            />
+          </div>
+        );
+      })}
+      {/* <div className="col-3">
+        <img
+          src={schema_01}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+      </div>
+      <div className="col-3">
+        <img
+          src={schema_02}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+      </div>
+      <div className="col-3">
+        <img
+          src={schema_03}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+      </div>
+      <div className="col-3">
+        <img
+          src={schema_04}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        />
+      </div> */}
+      <div className="col-6 col-lg-3">
+        {/* <img
+          src={schema_04}
+          className="img__schema"
+          alt="React Logo"
+          onClick={() => setIsImgZoomed(true)}
+        /> */}
+        {isImgZoomed ? (
+          <Lightbox
+            mainSrc={images[photoIndex].img}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() => setIsImgZoomed(false)}
+            onMovePrevRequest={() => {
+              if (photoIndex === 0) {
+                setPhotoIndex(0);
+                return setIsImgZoomed(false);
+              }
+              setPhotoIndex(photoIndex + images.length - 1);
+            }}
+            onMoveNextRequest={() => {
+              if (photoIndex === images.length - 1) {
+                setPhotoIndex(0);
+                return setIsImgZoomed(false);
+              }
+              setPhotoIndex(photoIndex + 1);
+            }}
+          />
+        ) : null}
+      </div>
+      <div className="col-12 col-lg-3">
+        <img
+          src={sc_schema_01}
+          className="img__workflow"
+          alt="Project workflow"
+          onClick={() => {
+            setPhotoIndex(4);
+            setIsImgZoomed(true);
+          }}
+        />
       </div>
     </div>
   );
