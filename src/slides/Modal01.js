@@ -118,10 +118,10 @@ const Modal01 = (props) => {
             WooCommerce Api to perform CRUD operations
           </li>
           <li>
-            From the Database page the user can manage the books stock, updating
-            the price/quantity/status and filtering the titles- Like the Insert
-            Page the modified items will be immediatly available for the
-            customers
+            From the Database page the user can manage the books stock,
+            searching by title, filtering in stock/out of stock and updating the
+            price/quantity/status - Like the Insert Page the modified items will
+            be immediatly available for the customers
           </li>
           <li>
             The pagination and the search are stored in Redux, the user will not
