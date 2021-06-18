@@ -47,6 +47,7 @@ import {
   faJs,
   faGithub,
   faLinkedinIn,
+  faSass,
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -58,7 +59,8 @@ library.add(
   faJs,
   faNodeJs,
   faGithub,
-  faLinkedinIn
+  faLinkedinIn,
+  faSass
 );
 
 /**

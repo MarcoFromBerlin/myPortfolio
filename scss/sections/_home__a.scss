@@ -63,6 +63,9 @@
   //   display: table-cell;
   //   width: 100%;
   // }
+  padding: 40px;
+  border: $pages-border2;
+  margin: 20px;
   span {
     // background-color: red;
 
@@ -83,9 +86,6 @@ h4 {
 }
 .home__main {
   // margin-left: 80px;
-  padding: 40px;
-  border: $pages-border2;
-  margin: 20px;
 }
 .home__a {
   // clip-path: polygon(95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
@@ -116,5 +116,25 @@ h4 {
 .multi-row {
   & * {
     background-color: #6977b6;
+  }
+}
+.icons__container {
+  display: flex;
+  position: relative;
+
+  & svg {
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  & .icons__text {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    margin: 0;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    margin-right: 20px;
   }
 }
