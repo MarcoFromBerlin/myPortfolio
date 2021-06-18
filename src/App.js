@@ -45,9 +45,9 @@ import {
   faApple,
   faNodeJs,
   faJs,
+  faGithub,
+  faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
-// import {
-// } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faReact,
@@ -56,7 +56,9 @@ library.add(
   faAndroid,
   faApple,
   faJs,
-  faNodeJs
+  faNodeJs,
+  faGithub,
+  faLinkedinIn
 );
 
 /**
