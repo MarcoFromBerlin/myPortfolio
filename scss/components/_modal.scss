@@ -48,6 +48,39 @@
   // display: inline-block;
 
   overflow-y: scroll !important;
+  & h2 {
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  & h4 {
+    color: rgb(22, 65, 65);
+  }
+  & p {
+    font-size: 1.1rem;
+  }
+  & a {
+    padding: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  & a:hover {
+    color: rgb(51, 169, 169);
+    color: white;
+    background-color: rgb(51, 169, 169);
+  }
+
+  .flow__container {
+    font-size: 1.1rem;
+    & ul {
+      & li {
+        padding-top: 5px;
+        & span {
+          font-style: italic;
+          font-weight: 400;
+        }
+      }
+    }
+  }
 }
 
 // .modal__container__menu {

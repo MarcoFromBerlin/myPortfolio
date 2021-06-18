@@ -116,12 +116,14 @@ const Modal02 = (props) => {
       </div>
       <div className="col-12 col-lg-4 apps__flow">
         <h4>App's Flow</h4>
-        <ul>
-          <li>
-            The users log in the server (Node JS /Express) - Under the hood
-            every user has an unique User Code
-          </li>
-        </ul>
+        <div className="flow__container">
+          <ul>
+            <li>
+              The users log in the server (Node JS /Express) -{" "}
+              <span>Under the hood every user has an unique User Code</span>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="col-12 t-center-x col-lg-4">
         <p>Go through the slides to see how it works!</p>

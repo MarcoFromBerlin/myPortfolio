@@ -102,33 +102,43 @@ const Modal01 = (props) => {
       </div>
       <div className="col-12 col-lg-4 apps__flow">
         <h4>App's Flow</h4>
-        <ul>
-          <li>
-            The user logs into Wordpress and access to the app integrated into
-            it - The app is protected behind the Wordpress
-          </li>
-          <li>
-            In the Insert page the user can search for a book using
-            Title/Author(s) or ISBN code - The app searches into the Google Book
-            Api
-          </li>
-          <li>
-            The user can add the book into WooCommerce with the cover, price,
-            quantity and status with a simple click - The app uses the
-            WooCommerce Api to perform CRUD operations
-          </li>
-          <li>
-            From the Database page the user can manage the books stock,
-            searching by title, filtering in stock/out of stock and updating the
-            price/quantity/status - Like the Insert Page the modified items will
-            be immediatly available for the customers
-          </li>
-          <li>
-            The pagination and the search are stored in Redux, the user will not
-            wait for the loading once changes the page
-          </li>
-        </ul>
+        <div className="flow__container">
+          <ul>
+            <li>
+              The user logs into Wordpress and access to the app integrated into
+              it - <span>The app is protected behind the Wordpress</span>
+            </li>
+            <li>
+              In the Insert page the user can search for a book using
+              Title/Author(s) or ISBN code -{" "}
+              <span>The app searches into the Google Book Api</span>
+            </li>
+            <li>
+              The user can add the book into WooCommerce with the cover, price,
+              quantity and status with a simple click -{" "}
+              <span>
+                The app uses the WooCommerce Api to perform CRUD operations
+              </span>
+            </li>
+            <li>
+              From the Database page the user can manage the books stock,
+              searching by title, filtering in stock/out of stock and updating
+              the price/quantity/status -{" "}
+              <span>
+                Like the Insert Page the modified items will be immediatly
+                available for the customers
+              </span>
+            </li>
+            <li>
+              <span>
+                The pagination and the search are stored in Redux, the user will
+                not wait for the loading once changes the page
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <div className="col-12 t-center-x col-lg-4">
         <p>Go through the slides to see how it works!</p>
       </div>
