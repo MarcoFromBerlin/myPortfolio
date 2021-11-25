@@ -35,6 +35,8 @@ import Modal03 from "../slides/Modal03";
 import mongoDbIcon from "../images/mongoDb.png";
 import reduxIcon from "../images/redux.png";
 
+import imageSlide01 from "../images/image_slide01.png";
+import imageSlide02 from "../images/image_slide02.png";
 import imageSlide03 from "../images/image_slide03.png";
 
 /**
@@ -186,7 +188,12 @@ const ProjectsSummary = (props) => {
                 setLocation("mysecondhandbookstore");
                 flip("modal01");
               }}
-              // onClick={() => flip(<Modal01 windowHeight={windowHeight} />)}
+              style={{
+                backgroundImage: `url(${imageSlide01})`,
+                backgroundSize: 450,
+                backgroundPositionX: -50,
+                backgroundPositionY: -50,
+              }}
             >
               <NavLink
                 exact
@@ -233,6 +240,12 @@ const ProjectsSummary = (props) => {
               onClick={() => {
                 setLocation("letstalk");
                 flip("modal02");
+              }}
+              style={{
+                backgroundImage: `url(${imageSlide02})`,
+                backgroundSize: 450,
+                backgroundPositionX: -50,
+                backgroundPositionY: -50,
               }}
             >
               <NavLink
@@ -283,7 +296,7 @@ const ProjectsSummary = (props) => {
               }}
               style={{
                 backgroundImage: `url(${imageSlide03})`,
-                backgroundSize: 400,
+                backgroundSize: 450,
                 backgroundPositionX: -50,
                 backgroundPositionY: -50,
               }}
