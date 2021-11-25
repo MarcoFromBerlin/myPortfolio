@@ -20,7 +20,7 @@ const Home = (props) => {
           <span>
             <h1>Hi, how are you?</h1>
           </span>
-          <h3>I'm Marco a full stack web developer student.</h3>
+          <h3>I'm Marco a full stack web developer.</h3>
           <h3>Some tecnologies I like and I use:</h3>
           <div className="icons__container">
             <FontAwesomeIcon icon={["fab", "js"]} size="4x" />

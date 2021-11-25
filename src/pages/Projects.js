@@ -1,29 +1,6 @@
-import React, {
-  useState,
-  // createRef,
-  // forwardRef,
-  useRef,
-  useEffect,
-  useCallback,
-  createRef,
-} from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { HashLink as NavLink } from "react-router-hash-link";
-
-// import FadeIn from "react-fade-in";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 import ProjectNavbar from "../components/ProjectNavbar";
-
-// /**
-//  * @description Mat UI
-//  */
-
-// import Paper from "@material-ui/core/Paper";
-// import Slide from "@material-ui/core/Slide";
-// import Modal from "@material-ui/core/Modal";
-// import Backdrop from "@material-ui/core/Backdrop";
-// import Fade from "@material-ui/core/Fade";
-// import { makeStyles } from "@material-ui/core/styles";
 
 /**
  * @description Slides
@@ -34,65 +11,11 @@ import Modal02 from "../slides/Modal02";
 import Modal03 from "../slides/Modal03";
 
 /**
- * @description images
- */
-
-// import mongoDbIcon from "../images/mongoDb.png";
-// import reduxIcon from "../images/redux.png";
-
-// import imageSlide03 from "../images/image_slide03.png";
-
-/**
  * @desc Hookstate
  */
 
 import { useState as useHookstate } from "@hookstate/core";
 import appStore from "../store/appStore";
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     height: 180,
-//   },
-//   slide: {
-//     // backgroundColor: "blue",
-//     overflow: "auto",
-//     zIndex: -1000,
-//     // marginRight: 10,
-//     marginTop: 10,
-//     height: 180,
-//     borderRadius: 0,
-//     padding: 20,
-//     textAlign: "left",
-//     opacity: 0.8,
-//   },
-//   icons: {
-//     // color: "red",
-//   },
-//   wrapper: {
-//     width: 100 + theme.spacing(2),
-//   },
-//   paper: {
-//     zIndex: 1,
-//     position: "relative",
-//     margin: theme.spacing(1),
-//   },
-//   modal: {
-//     display: "flex",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   paperModal: {
-//     backgroundColor: theme.palette.background.paper,
-//     border: "2px solid #000",
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing(2, 4, 3),
-//   },
-//   polygon: {
-//     // fill: theme.palette.common.white,
-//     // stroke: theme.palette.divider,
-//     // strokeWidth: 1,
-//   },
-// }));
 
 const Projects = (props) => {
   // const navbarRef = createRef();
@@ -110,25 +33,6 @@ const Projects = (props) => {
     50 -
     useHookstateAppStore.menuProjectsSize.height.get() -
     useHookstateAppStore.menuMainSize.height.get();
-
-  // const [finalWindowHeight, setFinalWindowHeight] = useState(
-  //   windowHeight -
-  //     50 -
-  //     useHookstateAppStore.menuProjectsSize.height.get() -
-  //     useHookstateAppStore.menuMainSize.height.get()
-  // );
-
-  // useEffect(() => {
-  //   setFinalWindowHeight(
-  //     windowHeight -
-  //       50 -
-  //       useHookstateAppStore.menuProjectsSize.height.get() -
-  //       useHookstateAppStore.menuMainSize.height.get()
-  //   );
-  // }, [
-  //   useHookstateAppStore.menuProjectsSize.height.get(),
-  //   useHookstateAppStore.menuMainSize.height.get(),
-  // ]);
 
   /**
    * @desc ProjectsSummary receives the states
@@ -153,6 +57,7 @@ const Projects = (props) => {
       useHookstateAppStore.isProjectsHome.set(true);
       useHookstateAppStore.setProjectsHome.set(false);
     }
+    //eslint-disable-next-line
   }, [useHookstateAppStore]);
 
   /**
