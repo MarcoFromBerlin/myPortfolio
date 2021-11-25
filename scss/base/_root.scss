@@ -13,12 +13,12 @@
 }
 
 html {
-  // scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
   /* to keep the scrolling HIDDEN */
-  overflow-y: hidden;
+  overflow-y: scroll;
   margin: 0;
   height: 100%;
 }

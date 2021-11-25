@@ -1,4 +1,10 @@
-import React, { Fragment, useEffect, useState, forwardRef } from "react";
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+  forwardRef,
+  useRef,
+} from "react";
 // import { NavLink } from "react-router-dom";
 import { HashLink as NavLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
@@ -19,15 +25,23 @@ import appStore from "../store/appStore";
 const Navbar = forwardRef((props, ref) => {
   const useHookstateAppStore = useHookstate(appStore);
 
-  // const location = useLocation().hash.toString().substr(1);
+  const navbarRef = useRef();
 
-  // const { useHookstate } = props;
+  // console.log(ref);
 
-  const { menuProjects } = useHookstateAppStore;
+  const { menuProjects, menuProjectsSize, currentMenuLocation } =
+    useHookstateAppStore;
+
+  /**
+   * @desc creates location var to create current item
+   */
+
+  const location = currentMenuLocation.get();
 
   /**
    * @desc Sends to parent the page to visit
    * checks if the user clicks twice on the same menu
+   * and avoids the page to flip
    */
 
   const checkMenu = (to) => {
@@ -78,17 +92,30 @@ const Navbar = forwardRef((props, ref) => {
     useHookstateAppStore.isProjectsHome.set(false);
   };
 
+  /**
+   * @desc sets navbar size into states
+   */
+  useEffect(() => {
+    setTimeout(() => {
+      menuProjectsSize.height.set(navbarRef.current.offsetHeight);
+    }, 100);
+  }, []);
+
   return (
     <Fragment>
-      <div className={`projects__navbar row-1"`}>
+      <div ref={navbarRef} className={`projects__navbar row-1"`}>
         <nav className="navigation">
           <ul>
             <li>
               <NavLink
                 exact
-                // className={location === "" ? "menu__current__item" : ""}
+                className={
+                  location === menuProjects.get()[0].anchor.substr(1)
+                    ? "menu__current__item__navbar__projects"
+                    : ""
+                }
                 smooth
-                // to="#mysecondhandbookstore"
+                to="#mysecondhandbookstore"
                 onClick={() => {
                   checkMenu("modal01");
                 }}
@@ -100,9 +127,13 @@ const Navbar = forwardRef((props, ref) => {
             <li>
               <NavLink
                 exact
-                // className={location === "projects" ? "menu__current__item" : ""}
+                className={
+                  location === menuProjects.get()[1].anchor.substr(1)
+                    ? "menu__current__item__navbar__projects"
+                    : ""
+                }
                 smooth
-                // to="#letstalk"
+                to="#letstalk"
                 onClick={() => {
                   checkMenu("modal02");
                 }}
@@ -113,9 +144,13 @@ const Navbar = forwardRef((props, ref) => {
             <li>
               <NavLink
                 exact
-                // className={location === "about" ? "menu__current__item" : ""}
+                className={
+                  location === menuProjects.get()[2].anchor.substr(1)
+                    ? "menu__current__item__navbar__projects"
+                    : ""
+                }
                 smooth
-                // to="#spotifylibray"
+                to="#spotifylibray"
                 // onClick={goToProject(ref)}
                 onClick={() => {
                   checkMenu("modal03");

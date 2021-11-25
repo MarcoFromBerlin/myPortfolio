@@ -14,6 +14,8 @@
 
   // margin from the menu
   // margin-top: 10px;
+
+  border: 0 !important;
   // margin-top: 120px;
 }
 
@@ -31,7 +33,7 @@
 }
 .modal__container {
   // height: 90vh;
-
+  // position: absolute;
   margin-top: 70px;
   // z-index: 9999;
   background-color: white;
@@ -45,7 +47,40 @@
   box-shadow: 2px 2px 13px -1px rgba(0, 0, 0, 0.55);
   // display: inline-block;
 
-  overflow-y: hidden;
+  overflow-y: scroll !important;
+  & h2 {
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  & h4 {
+    color: rgb(22, 65, 65);
+  }
+  & p {
+    font-size: 1.1rem;
+  }
+  & a {
+    padding: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  & a:hover {
+    color: rgb(51, 169, 169);
+    color: white;
+    background-color: rgb(51, 169, 169);
+  }
+
+  .flow__container {
+    font-size: 1.1rem;
+    & ul {
+      & li {
+        padding-top: 5px;
+        & span {
+          font-style: italic;
+          font-weight: 400;
+        }
+      }
+    }
+  }
 }
 
 // .modal__container__menu {
@@ -67,10 +102,20 @@
 .modal__png__icon {
   width: 30px;
 }
-.img__schema {
+.img__schema,
+.img__workflow {
   width: 100%;
   // height: 30vw;
   // width: 50%;
   // height: 80%;
   cursor: pointer;
+}
+
+.apps__flow {
+  & ul {
+    & li {
+      margin-left: 30px;
+      list-style-type: circle;
+    }
+  }
 }

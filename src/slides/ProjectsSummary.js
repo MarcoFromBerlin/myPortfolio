@@ -35,6 +35,8 @@ import Modal03 from "../slides/Modal03";
 import mongoDbIcon from "../images/mongoDb.png";
 import reduxIcon from "../images/redux.png";
 
+import imageSlide01 from "../images/image_slide01.png";
+import imageSlide02 from "../images/image_slide02.png";
 import imageSlide03 from "../images/image_slide03.png";
 
 /**
@@ -167,11 +169,16 @@ const ProjectsSummary = (props) => {
     <>
       {/* WEB VERSION */}
       <BrowserView>
-        <div className="project___summary__container">
-          <h1 className="section__title">Projects</h1>
-          <h4 className="section__subtitle">
-            A few projects I made using different tecnologies
-          </h4>
+        <div
+          className="project___summary__container"
+          style={{ height: windowHeight }}
+        >
+          <div className="project__section__titles">
+            <h1 className="section__title">Projects</h1>
+            <h4 className="section__subtitle">
+              A few projects I made using different tecnologies
+            </h4>
+          </div>
           <div className="row project__thumb__container">
             <button
               className="col-4 project__thumb-left btn-no-css"
@@ -181,7 +188,12 @@ const ProjectsSummary = (props) => {
                 setLocation("mysecondhandbookstore");
                 flip("modal01");
               }}
-              // onClick={() => flip(<Modal01 windowHeight={windowHeight} />)}
+              style={{
+                backgroundImage: `url(${imageSlide01})`,
+                backgroundSize: 450,
+                backgroundPositionX: -50,
+                backgroundPositionY: -50,
+              }}
             >
               <NavLink
                 exact
@@ -229,6 +241,12 @@ const ProjectsSummary = (props) => {
                 setLocation("letstalk");
                 flip("modal02");
               }}
+              style={{
+                backgroundImage: `url(${imageSlide02})`,
+                backgroundSize: 450,
+                backgroundPositionX: -50,
+                backgroundPositionY: -50,
+              }}
             >
               <NavLink
                 exact
@@ -273,12 +291,12 @@ const ProjectsSummary = (props) => {
               onMouseEnter={() => handleOver({ thumb: "three", value: true })}
               onMouseLeave={() => handleOver({ thumb: "three", value: false })}
               onClick={() => {
-                setLocation("letstalk");
-                flip("modal02");
+                setLocation("spotifylibray");
+                flip("modal03");
               }}
               style={{
                 backgroundImage: `url(${imageSlide03})`,
-                backgroundSize: 400,
+                backgroundSize: 450,
                 backgroundPositionX: -50,
                 backgroundPositionY: -50,
               }}
@@ -327,7 +345,10 @@ const ProjectsSummary = (props) => {
       </BrowserView>
       {/* MOB VERSION */}
       <MobileView>
-        <div className="col-12 project__thumb__container__mobile">
+        <div
+          className="col-12 project__thumb__container__mobile"
+          // style={{ height: windowHeight }}
+        >
           <div className="projects__mobile___title__container">
             <h1 className="section__title">Projects</h1>
             <h4 className="section__subtitle">
@@ -411,8 +432,8 @@ const ProjectsSummary = (props) => {
             //   backgroundPositionY: -50,
             // }}
             onClick={() => {
-              setLocation("letstalk");
-              flip("modal02");
+              setLocation("spotifylibray");
+              flip("modal03");
             }}
           >
             <NavLink

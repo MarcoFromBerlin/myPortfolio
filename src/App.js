@@ -7,7 +7,6 @@ import React, {
   useCallback,
 } from "react";
 
-import "./css/main.css";
 import Navbar from "./components/Navbar";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -46,9 +45,10 @@ import {
   faApple,
   faNodeJs,
   faJs,
+  faGithub,
+  faLinkedinIn,
+  faSass,
 } from "@fortawesome/free-brands-svg-icons";
-// import {
-// } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faReact,
@@ -57,7 +57,10 @@ library.add(
   faAndroid,
   faApple,
   faJs,
-  faNodeJs
+  faNodeJs,
+  faGithub,
+  faLinkedinIn,
+  faSass
 );
 
 /**
@@ -242,8 +245,12 @@ const App = () => {
     }
   }, [useHookstateAppStore]);
 
+  /**
+   * @todo check if is usefull and index.html
+   */
+
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <MuiThemeProvider theme={theme}>
         <Fragment>
           <Navbar

@@ -15,6 +15,12 @@ const appStore = createState({
     { id: "02", compName: "modal02", anchor: "#letstalk" },
     { id: "03", compName: "modal03", anchor: "#spotifylibray" },
   ],
+  menuProjectsSize: {
+    height: 35,
+  },
+  menuMainSize: {
+    height: 50,
+  },
 });
 
 export default appStore;
